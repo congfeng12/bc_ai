@@ -13,6 +13,15 @@ export default new Router({
         title:'主页',
       },
       component: () => import('@/components/home'),
+    },
+    {
+      path: '/about',
+      name: 'about',
+      meta:{
+        title:'关于',
+      },
+      component: () => import('@/components/about'),
     }
-  ]
+  ],
+  mode: 'history'
 })
