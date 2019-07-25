@@ -94,7 +94,7 @@
       <div style="width: 1500px;height: auto;margin: 0 auto 0;margin-top: 60px;padding: 20px 0px 20px 0px;">
       <el-timeline>
         <h3 style="font-size: 1.5em;letter-spacing: 0.25em;line-height: 1.4;">时间轴</h3>
-        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.date" placement="top">
+        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.date" placement="top" v-bind:key="timeline.id">
           <el-card style="width: 1370px;">
             <h3 style="font-size: 1.2em;letter-spacing: 0.075em;">{{timeline.title}}</h3>
             <p style="font-size: .9em;letter-spacing: 0.025em;color: #909399;">{{timeline.msg}}</p>
@@ -227,8 +227,8 @@ export default {
       about2:'../../static/about2.jpg',
       //时间轴相关数据
       Timelines:[
-        {date:'2019-01-16',title:'蜂巢系统项目立项',msg:'开始构建系统的架构及相关技术整理'},
-        {date:'2019-05-28',title:'开始官网前台页面的开发',msg:'开始整理vue,js相关架构信息，并开始开发官网前台页面'},
+        {id:1,date:'2019-01-16',title:'蜂巢系统项目立项',msg:'开始构建系统的架构及相关技术整理'},
+        {id:2,date:'2019-05-28',title:'开始官网前台页面的开发',msg:'开始整理vue,js相关架构信息，并开始开发官网前台页面'},
       ],
       //加入我们展示图
       Joinimg1:'../../static/join_us_img1.jpg',

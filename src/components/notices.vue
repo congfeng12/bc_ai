@@ -48,7 +48,7 @@
       <h1>公告</h1>
     </div>
     <!-- 公告列表 -->
-    <div style="">
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;">
       
     </div>
     <!-- 页尾 -->
