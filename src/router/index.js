@@ -29,7 +29,23 @@ export default new Router({
         title:'进展',
       },
       component: () => import('@/components/progress'),
+    },
+    {
+      path: '/notices',
+      name: 'notices',
+      meta:{
+        title:'公告',
+      },
+      component: () => import('@/components/notices'),
     }
   ],
   mode: 'history'
+  ,
+  scrollBehavior (to, from, savedPosition) {
+  if (savedPosition) {
+    return savedPosition
+  } else {
+    return { x: 0, y: 0 }
+  }
+}
 })
