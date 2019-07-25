@@ -12,12 +12,6 @@
             <img src="../../static/logo_black.png" style="width: 70px;margin: 15px 0px 0px 0px;float: left;">
           </a>
         </div>
-        <!-- 主题文字 -->
-        <!-- <div style="width: 240px;float: left;margin: 0px;padding: 12px 0px 0px 0px;text-align: left;">
-          <a :href="HomePageTextUrl" style="text-decoration: none;">
-            <h3 style="color: #FFFFFF;font-size: 22px;">神经网络框架·蜂巢系统</h3>
-          </a>
-        </div> -->
         <!-- 标题栏按钮按钮 -->
         <div style="float: right;width: 307px;height: 30px;margin: 32px 0px 0px 0px;">
           <!-- 公告 -->
@@ -49,102 +43,15 @@
       <!-- 网页主要内容 -->
       </div>
     </div>
-    <!-- 说明 -->
-    <div style="width: 1500px;height: auto;margin:0 auto 0;">
-      <!-- 标题 -->
-      <h6 style="padding-top: 20px;font-size: .95em;letter-spacing: 0.2em;font-weight: normal;color: #606266;margin:0;float: left;">关于蜂巢</h6>
-      <!-- 内容 -->
-      <div style="width: 963px;height: auto;margin:0 auto 0;padding:15px 0px 40px 0px;">
-        <font style="font-size: 30px;">
-          蜂巢系统是一个致力于解决广大用户相关问题的人工智能系统，我们团队将保证我们所开发的人工智能将适用于益于全人类的方向。蜂巢系统采用分布式的系统架构，可以灵活的管理相关的模块。我们的办公地点灵活，只要有网络并且你有相关的技术和兴趣就可以加入我们，一起完善蜂巢系统。
-        </font>
-      </div>
+    <!-- 文字说明 -->
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;padding: 0px 0px 40px 0px;">
+      <h1 style="font-size: 1.8em;letter-spacing: 0.1em;">进展</h1>
+      <font style="font-size: 1.8em;font-family:Hiragino Sans GB;color: #303133;letter-spacing: 0.05em;">蜂巢致力于推进AI功能，安全性和策略。</font>
     </div>
-    <!-- 展示图 -->
-    <div style="width: 1500px;height: auto;margin: 0 auto 0;">
-      <img :src="about1" style="width: 1500px;">
-    </div>
-    <!-- 章程说明 -->
-    <div style="width: 713px;height: auto;margin: 0 auto 0;padding: 60px 0px 40px 0px;">
-      <font style="font-size: 1.3em;color: #303133;font-family:Hiragino Sans GB;">
-        蜂巢系统的使命是确保人工智能（AGI） - 我们所说的高度自治系统，在最具经济价值的工作中胜过人类 - 使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。
-      </font>
-      <p style="height: 10px;"></p>
-      <a :href="CharterPageUrl" style="color:#C0C4CC;text-decoration: none;font-size: 10px;letter-spacing: 0.3em;">我们的宪章&nbsp<i class="el-icon-arrow-right"></i></a>
-    </div>
-    <!-- 团队说明 -->
-    <div style="width: 713px;height: auto;margin: 0 auto 0;padding: 40px 0px 60px 0px;border-top:1px solid #DCDFE6;">
-      <font style="font-size: 1.3em;color: #303133;font-family:Hiragino Sans GB;">
-        蜂巢系统由CMAPLE管理，由一下人员为该项目提供了技术支持：吴KangLi（前端技术支持）、颜ChengJie（前端技术支持）。
-      </font>
-      <p></p>
-      <font style="font-size: 1.3em;color: #303133;font-family:Hiragino Sans GB;">
-        我们的投资者包括: null。我们很幸运能够与任务一致，注重影响，乐于助人的投资者！
-      </font>
-      <p style="height: 10px;"></p>
-      <a :href="StatePageUrl" style="color:#C0C4CC;text-decoration: none;font-size: 10px;letter-spacing: 0.3em;">了解更多关于我们的信息&nbsp<i class="el-icon-arrow-right"></i></a>
-    </div>
-    <!-- 团队照片 -->
-    <div style="width: 1500px;height: auto;margin:0 auto 0;"> 
-      <img :src="about2" style="width: 1500px;">
-      <font style="font-size: .75em;letter-spacing: 0;font-weight: normal;color: #C0C4CC;">此处为团队合影位置，暂时使用其他照片代替</font>
-    </div>
-    <!-- 时间线 -->
-    <div style="width: 100%;background-color: #f8f8f8;">
-      <div style="width: 1500px;height: auto;margin: 0 auto 0;margin-top: 60px;padding: 20px 0px 20px 0px;">
-      <el-timeline>
-        <h3 style="font-size: 1.5em;letter-spacing: 0.25em;line-height: 1.4;">时间轴</h3>
-        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.date" placement="top">
-          <el-card style="width: 1370px;">
-            <h3 style="font-size: 1.2em;letter-spacing: 0.075em;">{{timeline.title}}</h3>
-            <p style="font-size: .9em;letter-spacing: 0.025em;color: #909399;">{{timeline.msg}}</p>
-          </el-card>
-        </el-timeline-item>
-      </el-timeline>
-      </div>
-    </div>
-    <!-- 加入我们 -->
-    <div style="width: 100%;height: auto;margin-top: 80px;">
-      <div style="width: 1500px;height: 380px;margin:0 auto 0;">
-        <!-- 加入我们 -->
-        <div style="width: 470px;margin:0px;float: right;">
-          <h2 style="letter-spacing: 0.1em;">加入我们</h2>
-          <div style="margin:0px 0px 168px 0px;">
-            <font style="font-size: 20px;">加入我们一起学习、开发、完善蜂巢系统。一起打造商业级的开源深度学习神经网络架构，和优化算法工具包。</font>
-          </div>
-          <p></p>
-          <a :href="JoinPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 13.3px;letter-spacing: 0.3em;">
-              查看详细内容&nbsp<i class="el-icon-arrow-right"></i>
-          </a>
-        </div>
-        <!-- 图片集 -->
-        <div style="margin-top: 19.92px;">
-          <!-- 展示打图 -->
-          <div style="float: left;height: 325px;width: 487.5px;">
-            <img style="height: 325px;" :src="Joinimg1">
-          </div>
-          <!-- 并列图片 -->
-          <div style="float: left;height: 325px;width: 500px;">
-            <div>
-              <div style="float: left;margin-left: 14px;">
-                <img style="height: 160px;" :src="Joinimg2">
-              </div>
-              <div style="float: right;">
-                <img style="height: 160px;" :src="Joinimg3">
-              </div>
-            </div>
-            <div>
-              <div style="float: left;height: 160px;margin-left: 14px;">
-                <img style="height: 160px;" :src="Joinimg4">
-              </div>
-              <div style="float: right;height: 160px;">
-                <img style="height: 160px;" :src="Joinimg5">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- 锚点按钮 -->
+
+    <!-- 里程碑发布 -->
+    <!-- 文章报告 -->
     <!-- 页尾 -->
     <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;">
       <div style="height: 30px;width: 220px;float: left;margin-top: 10px;">

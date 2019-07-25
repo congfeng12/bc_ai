@@ -59,7 +59,7 @@
             <font style="color: #FFFFFF;font-weight: normal !important;">发现并开发安全可靠的人工智能服务。</font>
           </h1>
           <!-- 学到更多 - 链接 -->
-          <a  :href="AboutPageUrl" style="color:#FFFFFF;text-decoration: none;font-size: 14.4px;">了解更多&nbsp<i class="el-icon-arrow-right"></i></a>
+          <a  :href="AboutPageUrl" style="color:#FFFFFF;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;">了解更多&nbsp<i class="el-icon-arrow-right"></i></a>
         </div>
       </div>
       <!-- 最新发布 -->
@@ -97,7 +97,7 @@
         <p></p>
         <div style="margin-top: 35px;">
            <a :href="AboutPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;">
-              了解更多&nbsp<i class="el-icon-arrow-right"></i>
+              查看宪章&nbsp<i class="el-icon-arrow-right"></i>
            </a>
         </div>
       </div>
@@ -246,10 +246,10 @@ export default {
       WeChartVisible: false,
       //公告展示
       Progress:[
-        { id:1, url:'',text:'块稀疏GPU内核',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg'},
-        { id:2, url:'',text:'AI培训如何扩展',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/science-of-ai/1x-no-mark.jpg'},
+        { id:1, url:'',text:'了解蜂巢',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg'},
+        { id:2, url:'',text:'蜂巢系统页面开发流程',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/science-of-ai/1x-no-mark.jpg'},
         { id:3, url:'',text:'蜂巢系统宪章',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/learning-dexterity/1x-no-mark.jpg'},
-        { id:4, url:'',text:'用无监督学习提高语言理解能力',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/language-unsupervised/1x-no-mark.jpg'}
+        { id:4, url:'',text:'蜂巢系统后台使用的相关技术',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/language-unsupervised/1x-no-mark.jpg'}
       ],
       //公告列表
       Notices: [

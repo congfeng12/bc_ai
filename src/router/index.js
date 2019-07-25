@@ -21,6 +21,14 @@ export default new Router({
         title:'关于',
       },
       component: () => import('@/components/about'),
+    },
+    {
+      path: '/progress',
+      name: 'progress',
+      meta:{
+        title:'进展',
+      },
+      component: () => import('@/components/progress'),
     }
   ],
   mode: 'history'
