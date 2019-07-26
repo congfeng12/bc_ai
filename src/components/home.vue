@@ -96,7 +96,7 @@
         </font>
         <p></p>
         <div style="margin-top: 35px;">
-           <a :href="AboutPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;">
+           <a :href="CharterPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;">
               查看宪章&nbsp<i class="el-icon-arrow-right"></i>
            </a>
         </div>

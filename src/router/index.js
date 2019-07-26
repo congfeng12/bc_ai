@@ -37,6 +37,14 @@ export default new Router({
         title:'公告',
       },
       component: () => import('@/components/notices'),
+    },
+    {
+      path: '/charter',
+      name: 'charter',
+      meta:{
+        title:'宪章',
+      },
+      component: () => import('@/components/charter'),
     }
   ],
   mode: 'history'
