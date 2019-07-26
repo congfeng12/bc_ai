@@ -48,8 +48,34 @@
       <h1>公告</h1>
     </div>
     <!-- 公告列表 -->
-    <div style="width: 1500px;height: auto;margin: 0 auto 0;">
-      
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;" id="vue_global_api">
+
+      <!-- 循环列表 -->
+          <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
+            <div v-for="notice in Notices">
+                <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;overflow: hidden;clear: both;">
+                  <a :href="notice.url" style="text-decoration:none;width: 1500px;height: 100%;" target="view_window">
+                    <div :style="{height:notice.imgheight}">
+                      <div style="width: 220px;margin:0px;padding: 0px;float: left;" ref="noticeIMG">
+                      <el-card body-style="padding:7px;margin:0px;border:0px;" style="width: 194px;" shadow="hover" v-if="notice.haveimg">
+                        <img :src="notice.imgurl" style="width: 180px;">
+                      </el-card>
+                    </div>
+                    <div  style="width: 1200px;float: right;display: flex;flex-direction: column;justify-content:space-between;" :style="{height:notice.imgheight}">
+                      <div>
+                        <b style="color: #303133;font-size: 1.2em;letter-spacing: 0;line-height: 1.4;margin: 0px;font-weight:900;">{{ notice.title }}</b>
+                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.date }}</b>
+                        <p v-if="notice.haveimg" style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 600px;">{{notice.text}}</p>
+                      </div>
+                      <div v-if="notice.haveimg" style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;">
+                        {{notice.readtime}}
+                      </div>
+                    </div>
+                    </div>
+                  </a> 
+                </li>
+            </div>
+          </ol>
     </div>
     <!-- 页尾 -->
     <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 80px;">
@@ -129,6 +155,21 @@ export default {
     return {
       //微信弹窗属性
       WeChartVisible: false,
+      //公告列表
+      Notices: [
+        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg',url: '',haveimg:true},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:'../../static/notistest1.jpg',url: '',haveimg:true},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
+      ],
       //加入我们展示图
       HomePageImgUrl:'/',
       HomePageTextUrl:'/',
@@ -151,11 +192,26 @@ export default {
       //github
       GitHubPagerl:'https://github.com/congfeng12'
     }
+  },
+  created(){
+    //页面加载时执行
+
+  },
+  mounted(){
+    //页面加载后执行
+    //刷新公告列表高度属性
+    for (var i = 0; i < this.$refs.noticeIMG.length; i++) {
+      if (0!=this.$refs.noticeIMG[i].offsetHeight ) {
+        this.Notices[i].imgheight = this.$refs.noticeIMG[i].offsetHeight+'px';
+      }else{
+        //基础默认高度
+        this.Notices[i].imgheight ='22px';
+      }
+    }
+    //强制刷新
+    this.$forceUpdate();
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
