@@ -43,48 +43,57 @@
       <!-- 网页主要内容 -->
       </div>
     </div>
-    <!-- 标题 -->
-    <div style="width: 1500px;height: auto;margin: 0 auto 0;">
-      <h1>公告</h1>
-    </div>
-    <!-- 公告列表 -->
-    <div style="width: 1500px;height: auto;margin: 0 auto 0;" id="vue_global_api">
-
+    <!-- 说明内容 -->
+    <div style="width: 750px;height: auto;margin:0 auto 0;clear: both;">
+      <h1 style="margin: 40px 0px 0px 0px;">
+        <font style="font-size: 1.4em;">声明</font>
+      </h1>
+      <h3 style="margin: 25px 0px 30px 0px;">
+        <font style="color: #606266;font-weight: normal;letter-spacing: 0.14em;">蜂巢系统的使命是确保人工一般智能对全人类都有益。我们是一个由100人组成的团队，总部设在加利福尼亚州旧金山。OpenAI宪章描述了在我们执行任务时指导我们的原则。</font>
+      </h3>
+      <el-button type="info" plain style="letter-spacing: 0.14em;">查看宪章&nbsp<i class="el-icon-arrow-right"></i></el-button>
+      <h3 style="margin: 50px 0px 0px 0px;">
+        <font style="font-size: 1.6em;">我们所做的</font>
+      </h3>
+      <h3 style="margin: 30px 0px 0px 0px;">
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们致力于AI能力，安全和政策，特别强调强化学习，机器人和生成模型。</font>
+      </h3>
+      <h3 style="margin: 30px 0px 0px 0px;">
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们最近的一些成果包括：</font>
+      </h3>
       <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
             <div v-for="notice in Notices">
-                <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;overflow: hidden;clear: both;position: relative;">
-                  <a :href="notice.url" style="text-decoration:none;width: 1500px;height: 100%;" target="view_window">
-                    <div>
-                      <div style="width: 194px;margin:0px;padding: 0px;float: left;" >
-                      <el-card body-style="padding:7px;margin:0px;border:0px;" style="width: 194px;" shadow="hover" v-if="notice.haveimg">
-                        <img :src="notice.imgurl" style="width: 180px;" ref="noticeIMG">
-                      </el-card>
-                    </div>
-                    <div  style="width: 1200px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
+                  <a :href="notice.url" style="text-decoration:none;" target="view_window">
+                    <div style="width: 100%;height: auto;">
                       <div>
-                        <b style="color: #303133;font-size: 1em;letter-spacing: 0;line-height: 1.4;margin: 0px;font-weight:900;">{{ notice.title }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.date }}</b>
-                        <p v-if="notice.haveimg" style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 600px;">{{notice.text}}</p>
+                        <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ notice.title }}</b>
+                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{notice.date}}</b>
                       </div>
                     </div>
-                    </div>
                   </a> 
-                  <div v-if="notice.haveimg" style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;position: absolute;bottom: 20px;left: 300px;">
-                    {{notice.readtime}}
-                  </div>
                 </li>
             </div>
           </ol>
-          <!-- 分页按钮 -->
-          <div style="margin: 0 auto 0;width: 535px;margin-top: 20px;">
-             <el-pagination
-            :page-size="20"
-            :pager-count="11"
-            layout="prev, pager, next"
-            :total="1000">
-            </el-pagination>
-          </div>
+    <h3 style="margin: 30px 0px 20px 0px;">
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">访问我们的进度页面了解更多关于蜂巢系统的信息。</font>
+    </h3>
+    <el-button type="info" plain style="letter-spacing: 0.14em;">查看进度&nbsp<i class="el-icon-arrow-right"></i></el-button>
+    <h3 style="margin: 50px 0px 0px 0px;">
+      <font style="font-size: 1.6em;">参与者</font>
+    </h3>
+    <h3 style="margin: 30px 0px 0px 0px;">
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">OpenAI由OpenAI Nonprofit董事会管理，该公司由OpenAI LP员工Greg Brockman（董事长兼首席技术官），Ilya Sutskever（首席科学家）和Sam Altman（首席执行官）以及非员工Adam D'Angelo，Holden Karnofsky， Reid Hoffman，Sue Yoon和Tasha McCauley。
+        </font>
+    </h3>
+    <h3 style="margin: 30px 0px 20px 0px;">
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">页面参照OPEN AI官网进行制作。</font>
+    </h3>
+    <el-button type="info" plain style="letter-spacing: 0.14em;">访问OPEN AI&nbsp<i class="el-icon-arrow-right"></i></el-button>
+    <h3 style="margin: 30px 0px 20px 0px;">
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">任何问题？电子邮件：press@openai.com。</font>
+    </h3>
     </div>
     <!-- 页尾 -->
     <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 60px;">
@@ -164,30 +173,14 @@ export default {
     return {
       //微信弹窗属性
       WeChartVisible: false,
-      //公告列表
+      //职位展示
       Notices: [
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:require('../../static/notistest2.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:require('../../static/notistest2.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:require('../../static/notistest2.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true}
+        { date:'2019-07-21',title:'优化算法工具包',url: ''},
+        { date:'2019-07-21',title:'BBTI-1',url: ''},
+        { date:'2019-07-21',title:'IMGTI-1',url: ''},
+        { date:'2019-07-21',title:'人工神经网络框架',url: ''},
       ],
-      //加入我们展示图
+      //首页导航url
       HomePageImgUrl:'/',
       HomePageTextUrl:'/',
       //关于

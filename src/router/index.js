@@ -45,6 +45,22 @@ export default new Router({
         title:'宪章',
       },
       component: () => import('@/components/charter'),
+    },
+    {
+      path: '/join',
+      name: 'join',
+      meta:{
+        title:'加入我们',
+      },
+      component: () => import('@/components/join'),
+    },
+    {
+      path: '/state',
+      name: 'state',
+      meta:{
+        title:'声明页面',
+      },
+      component: () => import('@/components/state'),
     }
   ],
   mode: 'history'
