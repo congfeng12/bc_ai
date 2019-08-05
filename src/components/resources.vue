@@ -43,23 +43,68 @@
       <!-- 网页主要内容 -->
       </div>
     </div>
-    <!-- 说明内容 -->
-    <div style="width: 750px;height: auto;margin:0 auto 0;clear: both;">
-      <h1 style="margin: 40px 0px 0px 0px;">
-        <font style="font-size: 1.4em;">声明</font>
-      </h1>
-      <h3 style="margin: 25px 0px 30px 0px;">
-        <font style="color: #606266;font-weight: normal;letter-spacing: 0.14em;">蜂巢系统的使命是确保人工一般智能对全人类都有益。我们是一个由100人组成的团队，总部设在加利福尼亚州旧金山。OpenAI宪章描述了在我们执行任务时指导我们的原则。</font>
+    <!-- 标题 -->
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;">
+      <!-- 标题及说明 -->
+      <h3 style="margin: 10px 0px 0px 0px;">
+        <font style="font-size: 1.7em;font-weight: bolder;letter-spacing: 0px;">资源</font>
       </h3>
-      <el-button type="info" plain style="letter-spacing: 0.14em;">查看宪章&nbsp<i class="el-icon-arrow-right"></i></el-button>
-      <h3 style="margin: 50px 0px 0px 0px;">
-        <font style="font-size: 1.6em;">我们所做的</font>
+      <h3 style="margin: 10px 0px 0px 0px;">
+        <font style="color: #606266;font-size: 1.7em;font-weight: normal;letter-spacing: 0.05em;">蜂巢系统构建免费软件，用于</font>
       </h3>
-      <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们致力于AI能力，安全和政策，特别强调强化学习，机器人和生成模型。</font>
+      <h3 style="margin: 0px 0px 80px 0px;">
+        <font style="color: #606266;font-size: 1.7em;font-weight: normal;letter-spacing: 0.05em;">AI的培训，基准测试和实验。</font>
       </h3>
-      <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们最近的一些成果包括：</font>
+    </div>
+    <!-- 主要工具介绍 -->
+    <div style="width: 1500px;height: 400px;margin: 0 auto 0;border-top:1px solid #DCDFE6;padding-top: 40px;">
+      <!-- 标题及说明及按钮 -->
+      <div style="width: 345px;height: 442px;float: left;position: relative;">
+        <h3 style="margin: 5px 0px 0px 0px;">
+          <font font style="font-size: 1.3em;font-weight: bolder;letter-spacing: 0px;">蜂巢系统相关资源使用手册</font>
+        </h3>
+        <h3 style="margin: 10px 0px 0px 0px;">
+          <font style="color: #606266;font-size: 1em;font-weight: normal;letter-spacing: 0.05em;">一种教育资源，旨在让任何人学习成为深度强化学习的熟练从业者。</font>
+        </h3>
+        <a :href="ProgressPageUrl" style="color: #909399;text-decoration: none;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;position: absolute;bottom: 0px;">
+          查看详细内容&nbsp<i class="el-icon-arrow-right"></i>
+        </a>
+      </div>
+      <!-- 图片 -->
+      <div style="width: 1100px;height: 442px;margin: 0px;float: right;padding: 10px 0px 0px 0px;">
+        <img :src="resourcesLogoImgUrl" style="width: 720px;">
+      </div>
+    </div>
+    <!-- 工具平台 -->
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;border-top:1px solid #DCDFE6;clear: both;margin-top: 100px;padding-top: 40px;">
+      <!-- 标题及说明及按钮 -->
+      <div style="width: 345px;height: 442px;float: left;position: relative;">
+        <h3 style="margin: 5px 0px 0px 0px;">
+          <font font style="font-size: 1.3em;font-weight: bolder;letter-spacing: 0px;">资源平台</font>
+        </h3>
+        <h3 style="margin: 10px 0px 0px 0px;">
+          <font style="color: #606266;font-size: 1em;font-weight: normal;letter-spacing: 0.05em;">我们正在策划人工代理的问题集和基线实现。</font>
+        </h3>
+      </div>
+      <!-- 平台资源 -->
+      <div style="width: 1100px;height: 642px;margin: 0px;float: right;padding: 10px 0px 0px 0px;">
+        <div style="width: 400px;height: auto;clear: both;">
+          <a :href="resourcesPlatform[3]" style="text-decoration: none;">
+            <el-card :body-style="{ padding: '10px' }" shadow="always" style="width: 400px;">
+              <img style="width: 100%;" :src="resourcesPlatform[2]">
+            </el-card>
+            <h3 style="margin: 20px 0px 0px 0px;">
+              <font font style="color: #000000;font-size: 1em;font-weight: bolder;letter-spacing: 0px;">{{resourcesPlatform[0]}}</font>
+            </h3>
+            <font style="color: #606266;font-size: 0.9em;font-weight: normal;">{{resourcesPlatform[1]}}</font>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- 框架工具列表 -->
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;margin-top: 50px;clear: both;">
+      <h3 style="margin: 20px 0px 0px 0px;">
+        <font font style="color: #000000;font-size: 1em;font-weight: bolder;letter-spacing: 0px;">工具</font>
       </h3>
       <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
@@ -67,36 +112,25 @@
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
                   <a :href="notice.url" style="text-decoration:none;" target="view_window">
                     <div style="width: 100%;height: auto;">
-                      <div>
+                      <div style="position: relative;">
                         <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ notice.title }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{notice.date}}</b>
+                        <b style="color: #909399;font-size: 0.8em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;position: absolute;left: 400px;">{{ notice.msg }}</b>
+                        <b style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0;font-weight: normal;float: right;">{{notice.date}}</b>
                       </div>
                     </div>
                   </a> 
                 </li>
             </div>
           </ol>
-    <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">访问我们的进度页面了解更多关于蜂巢系统的信息。</font>
-    </h3>
-    <el-button type="info" plain style="letter-spacing: 0.14em;">查看进度&nbsp<i class="el-icon-arrow-right"></i></el-button>
-    <h3 style="margin: 50px 0px 0px 0px;">
-      <font style="font-size: 1.6em;">参与者</font>
-    </h3>
-    <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">OpenAI由OpenAI Nonprofit董事会管理，该公司由OpenAI LP员工Greg Brockman（董事长兼首席技术官），Ilya Sutskever（首席科学家）和Sam Altman（首席执行官）以及非员工Adam D'Angelo，Holden Karnofsky， Reid Hoffman，Sue Yoon和Tasha McCauley。
-        </font>
-    </h3>
-    <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;font-weight: normal;letter-spacing: 0.05em;font-weight: bolder;">页面参照OPEN AI官网进行制作。</font>
-    </h3>
-    <el-button type="info" plain style="letter-spacing: 0.14em;">访问OPEN AI&nbsp<i class="el-icon-arrow-right"></i></el-button>
-    <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">任何问题？电子邮件：press@openai.com。</font>
-    </h3>
+    </div>
+    <!-- GitHub -->
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;padding-top: 30px;clear: both;">
+      <a :href="GitHubPagerl" style="color: #909399;text-decoration: none;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;" target="view_window">
+          在GITHUB上查看更多&nbsp<i class="el-icon-arrow-right"></i>
+      </a>
     </div>
     <!-- 页尾 -->
-    <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 60px;">
+    <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 60px;clear: both;">
       <div style="height: 30px;width: 220px;float: left;margin-top: 10px;">
         <!-- github -->
         <a :href="GitHubPagerl" target="view_window">
@@ -173,16 +207,26 @@ export default {
     return {
       //微信弹窗属性
       WeChartVisible: false,
-      //职位展示
-      Notices: [
-        { date:'2019-07-21',title:'优化算法工具包',url: ''},
-        { date:'2019-07-21',title:'BBTI-1',url: ''},
-        { date:'2019-07-21',title:'IMGTI-1',url: ''},
-        { date:'2019-07-21',title:'人工神经网络框架',url: ''},
-      ],
-      //首页导航url
+      
+      //加入我们展示图
       HomePageImgUrl:'/',
       HomePageTextUrl:'/',
+      //资源页标题图片
+      resourcesLogoImgUrl:'../../static/resourselogoimg.jpg',
+      //平台资源列表title/msg/imgurl/url
+      resourcesPlatform:[
+        '蜂巢系统深度学习平台',
+        '可以使用蜂巢系统深度学习的所有在线资源，并且可以上传你的深度学习节点来完善蜂巢系统',
+        require('../../static/resourse1.svg'),
+        ''
+      ],
+      //职位展示
+      Notices: [
+        { date:'2019-07-21',title:'优化算法工具包',msg:'用于程序的算法优化',url: ''},
+        { date:'2019-07-21',title:'BBTI-1',msg:'用于文本类深度学习框架',url: ''},
+        { date:'2019-07-21',title:'IMGTI-1',msg:'用于图片类深度学习框架',url: ''},
+        { date:'2019-07-21',title:'人工神经网络框架',msg:'用于学习深度学习的基本框架',url: ''},
+      ],
       //关于
       AboutPageUrl:'/about',
       //进展

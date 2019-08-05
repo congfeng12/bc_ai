@@ -61,6 +61,14 @@ export default new Router({
         title:'声明页面',
       },
       component: () => import('@/components/state'),
+    },
+    {
+      path: '/resources',
+      name: 'resources',
+      meta:{
+        title:'资源',
+      },
+      component: () => import('@/components/resources'),
     }
   ],
   mode: 'history'
