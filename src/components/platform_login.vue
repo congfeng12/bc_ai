@@ -54,26 +54,33 @@ export default {
           remberlogin:false
       },
       rules: {
-          username: [
-            { required: true, message: '账号不能为空', trigger: 'blur' },
-            { min: 5, message: '长度需要5个字节以上', trigger: 'blur' }
-          ],
-          password: [
-            { required: true, message: '密码不能为空', trigger: 'blur' },
-            { min: 5, max: 20, message: '长度在 5 到 20 个字符', trigger: 'blur' }
-          ]
+          //暂时取消规则
+          // username: [
+          //   { required: true, message: '账号不能为空', trigger: 'blur' },
+          //   { min: 5, message: '长度需要5个字节以上', trigger: 'blur' }
+          // ],
+          // password: [
+          //   { required: true, message: '密码不能为空', trigger: 'blur' },
+          //   { min: 5, max: 20, message: '长度在 5 到 20 个字符', trigger: 'blur' }
+          // ]
         }
     }
 
   },
   methods: {
       onSubmit() {
-        console.log(this.ruleForm.username);
+        //console.log(this.ruleForm.username);
+        ///platform_login
+        if (''!=this.ruleForm.username && ''!=this.ruleForm.password) {
+          this.$router.push('/platform_home');
+        }else{
+          this.$message.error('账户名或密码错误！');
+        }
       }
   },
   created(){
     //页面加载时执行
-    console.log(document.documentElement.scrollHeight);
+    //console.log(document.documentElement.scrollHeight);
     //动态设置页面高度
     this.pageheight = (document.documentElement.scrollHeight) + 'px';
   },

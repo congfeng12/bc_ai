@@ -85,6 +85,14 @@ export default new Router({
         // },
         
       ]
+    },
+    {
+      path: '/platform_home',
+      name: 'platform_home',
+      meta:{
+        title:'资源',
+      },
+      component: () => import('@/components/platform_home'),
     }
   ],
   mode: 'history'
