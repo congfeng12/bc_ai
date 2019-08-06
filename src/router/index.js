@@ -69,6 +69,22 @@ export default new Router({
         title:'资源',
       },
       component: () => import('@/components/resources'),
+    },
+    {
+      path: '/platform_login',
+      name: 'platform_login',
+      meta:{
+        title:'平台主页-登录页面',
+      },
+      component: () => import('@/components/platform_login'),
+      children:[
+        // {
+        //   path: 'home',
+        //   name: 'about',
+        //   component: () => import('@/components/communityhome')
+        // },
+        
+      ]
     }
   ],
   mode: 'history'

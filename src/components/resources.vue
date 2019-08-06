@@ -218,7 +218,7 @@ export default {
         '蜂巢系统深度学习平台',
         '可以使用蜂巢系统深度学习的所有在线资源，并且可以上传你的深度学习节点来完善蜂巢系统',
         require('../../static/resourse1.svg'),
-        ''
+        '/platform_login'
       ],
       //职位展示
       Notices: [
@@ -227,6 +227,8 @@ export default {
         { date:'2019-07-21',title:'IMGTI-1',msg:'用于图片类深度学习框架',url: ''},
         { date:'2019-07-21',title:'人工神经网络框架',msg:'用于学习深度学习的基本框架',url: ''},
       ],
+      //在线平台
+      // CmpalePlatform:'/platform',
       //关于
       AboutPageUrl:'/about',
       //进展
