@@ -77,22 +77,22 @@ export default new Router({
         title:'平台主页-登录页面',
       },
       component: () => import('@/components/platform_login'),
-      children:[
-        // {
-        //   path: 'home',
-        //   name: 'about',
-        //   component: () => import('@/components/communityhome')
-        // },
-        
-      ]
     },
     {
-      path: '/platform_home',
-      name: 'platform_home',
+      path: '/platform_menu',
+      name: 'platform_menu',
       meta:{
         title:'资源',
       },
-      component: () => import('@/components/platform_home'),
+      component: () => import('@/components/platform_menu'),
+      children:[
+        {
+          path: '/',
+          name: '平台主页',
+          component: () => import('@/components/platform_home')
+        },
+        
+      ]
     }
   ],
   mode: 'history'

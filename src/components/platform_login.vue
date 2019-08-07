@@ -68,11 +68,11 @@ export default {
 
   },
   methods: {
-      onSubmit() {
+  onSubmit() {
         //console.log(this.ruleForm.username);
         ///platform_login
         if (''!=this.ruleForm.username && ''!=this.ruleForm.password) {
-          this.$router.push('/platform_home');
+          this.$router.push('/platform_menu');
         }else{
           this.$message.error('账户名或密码错误！');
         }
