@@ -49,7 +49,6 @@
     </div>
     <!-- 公告列表 -->
     <div style="width: 1500px;height: auto;margin: 0 auto 0;" id="vue_global_api">
-
       <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
             <div v-for="notice in Notices">

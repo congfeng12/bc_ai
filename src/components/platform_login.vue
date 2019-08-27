@@ -72,7 +72,7 @@ export default {
         //console.log(this.ruleForm.username);
         ///platform_login
         if (''!=this.ruleForm.username && ''!=this.ruleForm.password) {
-          this.$router.push('/platform_menu');
+          this.$router.push('/platform_menu/');
         }else{
           this.$message.error('账户名或密码错误！');
         }
@@ -83,6 +83,9 @@ export default {
     //console.log(document.documentElement.scrollHeight);
     //动态设置页面高度
     this.pageheight = (document.documentElement.scrollHeight) + 'px';
+    console.log(window.navigator);
+    var ua = navigator.userAgent;
+
   },
   mounted(){
     //页面加载后执行
