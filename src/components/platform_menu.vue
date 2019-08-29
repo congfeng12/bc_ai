@@ -40,13 +40,13 @@
       @close="handleClose"
       @select="handleSelect">
       <!-- 资源管理 -->
-      <el-submenu index="/platform_menu/">
+      <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-folder-opened"></i>
           <span>资源管理</span>
         </template>
         <el-menu-item-group>
-          <template slot="title">网站静态资源管理</template>
+          <template slot="title">网站主要资源管理</template>
            <!-- 二级菜单 -->
           <el-menu-item index="/platform_menu/staticresources">官网静态资源</el-menu-item>
           <el-menu-item index="/platform_menu/server">服务器资源</el-menu-item>
@@ -56,11 +56,11 @@
           <template slot="title">网站其他资源管理</template>
           <!-- 二级菜单 -->
           <el-menu-item index="/platform_menu/notices">官网公告资源</el-menu-item>
-          <el-menu-item index="/platform_menu/">里程碑资源</el-menu-item>
-          <el-menu-item index="/platform_menu/">调查报告资源</el-menu-item>
-          <el-menu-item index="/platform_menu/">空缺职位资源</el-menu-item>
-          <el-menu-item index="/platform_menu/">时间轴资源</el-menu-item>
-          <el-menu-item index="/platform_menu/">平台公告资源</el-menu-item>
+          <el-menu-item index="/platform_menu/milestone">里程碑资源</el-menu-item>
+          <el-menu-item index="/platform_menu/report">调查报告资源</el-menu-item>
+          <el-menu-item index="/platform_menu/work">空缺职位资源</el-menu-item>
+          <el-menu-item index="/platform_menu/timeaxis">时间轴资源</el-menu-item>
+          <!-- <el-menu-item index="/platform_menu/">平台公告资源</el-menu-item> -->
         </el-menu-item-group>
        <!--  <el-menu-item-group>
           <template slot="title">节点资源管理</template>
@@ -76,8 +76,8 @@
         </template>
         <el-menu-item-group>
           <template slot="title">管理及授权</template>
-          <el-menu-item index="2-1">平台账号</el-menu-item>
-          <el-menu-item index="2-2">平台管理员</el-menu-item>
+          <el-menu-item index="/platform_menu/account">平台账号</el-menu-item>
+          <el-menu-item index="/platform_menu/admin">平台管理员</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <!-- 日志 -->
@@ -88,21 +88,16 @@
         </template>
         <el-menu-item-group>
           <template slot="title">日志</template>
-          <el-menu-item index="3-1">官网日志</el-menu-item>
-          <el-menu-item index="3-2">平台日志</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">危险及警告</template>
-          <el-menu-item index="3-3">警报信息</el-menu-item>
+          <el-menu-item index="/platform_menu/logs">操作日志</el-menu-item>
+         <!--  <el-menu-item index="/platform_menu/">平台日志</el-menu-item> -->
         </el-menu-item-group>
         <el-menu-item-group>
           <template slot="title">统计信息</template>
-          <el-menu-item index="3-4">平台信息统计</el-menu-item>
-          <el-menu-item index="3-5">用户信息统计</el-menu-item>
+          <el-menu-item index="/platform_menu/1">统计信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <!-- 第三方服务管理 -->
-      <el-submenu index="5">
+      <el-submenu index="4">
         <template slot="title">
           <i class="el-icon-cloudy"></i>
           <span>第三方服务管理</span>
@@ -113,7 +108,7 @@
         </el-menu-item-group>
       </el-submenu>
       <!-- 个人服务资源 -->
-      <el-submenu index="6">
+      <el-submenu index="5">
         <template slot="title">
           <i class="el-icon-connection"></i>
           <span>个人资源中心</span>
@@ -132,15 +127,15 @@
         </el-menu-item-group>
       </el-submenu>
       <!-- 个人操作日志 --> 
-      <el-menu-item index="7">
+      <el-menu-item index="6">
         <i class="el-icon-postcard"></i>
         <span slot="title">个人操作日志</span>
       </el-menu-item>
       <!-- 平台公告 --> 
-      <el-menu-item index="8">
+     <!--  <el-menu-item index="8">
         <i class="el-icon-notebook-1"></i>
         <span slot="title">平台公告</span>
-      </el-menu-item>
+      </el-menu-item> -->
     </el-menu>
     </el-col>
     </el-aside>

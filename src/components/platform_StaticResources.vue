@@ -35,8 +35,8 @@
             style="width: 200px;position: absolute;left: 700px;" 
             size="mini">
           </el-input>
-          <el-button style="position: absolute;right: 90px;" type="primary" size="mini"round plain>添加资源</el-button>
-          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round>搜索</el-button>
+          <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加资源</el-button>
+          <el-button style="position: absolute;right: 180px;" type="primary" size="mini" round>搜索</el-button>
           <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:60px 0px 0px 0px;">
                 <li v-for="resource in Resources" style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%;overflow: hidden;clear: both;position: relative;">

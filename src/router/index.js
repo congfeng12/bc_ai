@@ -111,6 +111,43 @@ export default new Router({
           name: '官网公告资源',
           component: () => import('@/components/platform_notices')
         },
+        {
+          path: '/platform_menu/milestone',
+          name: '里程碑资源',
+          component: () => import('@/components/platform_milestone')
+        },
+        {
+          path: '/platform_menu/report',
+          name: '调查报告',
+          component: () => import('@/components/platform_report')
+        },
+        {
+          path: '/platform_menu/work',
+          name: '空缺职位',
+          component: () => import('@/components/platform_work')
+        },
+        {
+          path: '/platform_menu/timeaxis',
+          name: '时间轴',
+          component: () => import('@/components/platform_timeaxis')
+        },
+        {
+          path: '/platform_menu/account',
+          name: '平台账户',
+          component: () => import('@/components/platform_account')
+        },
+        {
+          path: '/platform_menu/admin',
+          name: '管理员账户',
+          component: () => import('@/components/platform_admin')
+        },
+        //platform_logs
+        {
+          path: '/platform_menu/logs',
+          name: '操作日志',
+          component: () => import('@/components/platform_logs')
+        },
+
       ]
     }
   ],

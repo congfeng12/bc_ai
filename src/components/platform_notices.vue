@@ -23,10 +23,25 @@
             style="width: 400px;position: absolute;left: 340px;" 
             size="mini">
           </el-input>
-          <el-button style="position: absolute;right: 90px;" type="primary" size="mini"round plain>添加公告</el-button>
-          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round>搜索</el-button>
+          <!-- 日期范围 -->
+           <h3 style="position: absolute;top: 40px;left: 20px;">
+              <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">日期范围:</font>
+           </h3>
+           <div class="block" style="position: absolute;top: 60px;left: 100px;">
+           <!--  <span class="demonstration">默认</span> -->
+            <el-date-picker
+              v-model="noticedate"
+              size="mini"
+              type="daterange"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+            </el-date-picker>
+          </div>
+          <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加公告</el-button>
+          <el-button style="position: absolute;left: 750px;" type="primary" size="mini" round>搜索</el-button>
           <!-- 循环列表 -->
-          <ol style="padding-left: 0px;margin:60px 0px 0px 0px;">
+          <ol style="padding-left: 0px;margin:80px 0px 0px 0px;">
                 <li v-for="resource in Resources" style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%;overflow: hidden;clear: both;position: relative;">
                   <!-- 带图片 -->
                   <div v-if="resource.noticestype">
@@ -119,10 +134,10 @@
                     </div>
                     <!-- 按钮组 -->
                     <div style="width: auto;height: auto;position: absolute;top: 30px;right:0px;">
-                       <el-button type="primary" size="mini">编辑公告</el-button>
+                       <el-button type="primary" size="mini" plain>编辑公告</el-button>
                     </div>
                     <div style="width: auto;height: auto;position: absolute;top: 60px;right:0px;">
-                       <el-button type="danger" size="mini">删除公告</el-button>
+                       <el-button type="danger" size="mini" plain>删除公告</el-button>
                     </div>
                   </div>
                   <!-- 不带图片 -->
@@ -199,10 +214,10 @@
                     </div>
                      <!-- 按钮组 -->
                     <div style="width: auto;height: auto;position: absolute;top: 30px;right:0px;">
-                       <el-button type="primary" size="mini">编辑公告</el-button>
+                       <el-button type="primary" size="mini" plain>编辑公告</el-button>
                     </div>
                      <div style="width: auto;height: auto;position: absolute;top: 60px;right:0px;">
-                       <el-button type="danger" size="mini">删除公告</el-button>
+                       <el-button type="danger" size="mini" plain>删除公告</el-button>
                     </div>
                   </div>
                 </li>
@@ -221,6 +236,7 @@ export default {
       pageselect:'',
       pagetype:'',
       search:'',
+      noticedate:'',
       options: [
         {
           value: '',

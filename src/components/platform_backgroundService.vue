@@ -46,8 +46,8 @@
             style="width: 150px;position: absolute;left: 800px;" 
             size="mini">
           </el-input>
-          <el-button style="position: absolute;right: 85px;" type="primary" size="mini"round plain>添加服务</el-button>
-          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round>搜索</el-button>
+          <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加服务</el-button>
+          <el-button style="position: absolute;right: 135px;" type="primary" size="mini" round>搜索</el-button>
           <!-- 循环列表 -->
           <div style="clear: both;margin-top: 40px;">
             <!-- 资源 -->
@@ -266,7 +266,7 @@ export default {
           //资源名称
           servicename:'ByteAi',
           //资源编号
-          serviceid:'R100-001',
+          serviceid:'BS100-001',
           //资源简介
           synopsis:'OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。',
           //资源版本
@@ -365,7 +365,7 @@ export default {
           //资源名称
           servicename:'ByteAi',
           //资源编号
-          serviceid:'R100-001',
+          serviceid:'BS100-001',
           //资源简介
           synopsis:'OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。',
           //资源版本
@@ -464,7 +464,7 @@ export default {
           //资源名称
           servicename:'ByteAi',
           //资源编号
-          serviceid:'R100-001',
+          serviceid:'BS100-001',
           //资源简介
           synopsis:'OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。',
           //资源版本
