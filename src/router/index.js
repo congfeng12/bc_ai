@@ -141,13 +141,17 @@ export default new Router({
           name: '管理员账户',
           component: () => import('@/components/platform_admin')
         },
-        //platform_logs
         {
           path: '/platform_menu/logs',
           name: '操作日志',
           component: () => import('@/components/platform_logs')
         },
-
+        //platform_statistics
+        {
+          path: '/platform_menu/statistics',
+          name: '统计信息',
+          component: () => import('@/components/platform_statistics')
+        },
       ]
     }
   ],

@@ -93,11 +93,11 @@
         </el-menu-item-group>
         <el-menu-item-group>
           <template slot="title">统计信息</template>
-          <el-menu-item index="/platform_menu/1">统计信息</el-menu-item>
+          <el-menu-item index="/platform_menu/statistics">统计信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <!-- 第三方服务管理 -->
-      <el-submenu index="4">
+      <!-- <el-submenu index="4">
         <template slot="title">
           <i class="el-icon-cloudy"></i>
           <span>第三方服务管理</span>
@@ -106,7 +106,12 @@
           <template slot="title">第三方服务</template>
           <el-menu-item index="5-1">第三方节点资源管理</el-menu-item>
         </el-menu-item-group>
-      </el-submenu>
+      </el-submenu> -->
+      <el-menu-item index="4">
+        <i class="el-icon-cloudy"></i>
+        <span slot="title">第三方节点资源管理</span>
+      </el-menu-item>
+
       <!-- 个人服务资源 -->
       <el-submenu index="5">
         <template slot="title">

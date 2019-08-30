@@ -429,31 +429,6 @@ export default {
           });          
         });
       },
-    
-      // startsi(){
-      //   var _this=this;
-      //   var appcount = 11;
-      //   this.interval = setInterval(function (){
-      //     var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
-
-      //     var data0 = _this.dynamicoption.series.data;
-      //     //var data1 = _this.dynamicoption.series[1].data;
-      //     data0.shift();
-      //     data0.push(Math.random() * 30);
-      //     // data1.shift();
-      //     // data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
-
-      //     _this.dynamicoption.xAxis[0].data.shift();
-      //     _this.dynamicoption.xAxis[0].data.push(axisData);
-      //     _this.dynamicoption.xAxis[1].data.shift();
-      //     _this.dynamicoption.xAxis[1].data.push(appcount++);
-
-      //     _this.dynamimyChart.setOption(_this.dynamicoption);
-      //     console.log();
-      //   }, 10000000);
-      // },
-
-
 
     },
   created(){
@@ -466,107 +441,7 @@ export default {
     var echarts = require('echarts');
     // 基于准备好的dom，初始化echarts实例
     this.dynamimyChart = echarts.init(document.getElementById('dynamicresources'));
-    // for (var i = 0; i < 1000; i++) {
-    //     this.data.push(this.randomData());
-    // }
-
     this.dynamicoption = 
-    // {
-    // title: {
-    //     text: 'CPU使用实时动态数据',
-    //     subtext: '虚拟数据'
-    // },
-    // tooltip: {
-    //     trigger: 'axis',
-    //     axisPointer: {
-    //         type: 'cross',
-    //         label: {
-    //             backgroundColor: '#283b56'
-    //         }
-    //     }
-    // },
-    // legend: {
-    //     data:['cpu使用量（百分比）']
-    // },
-    // toolbox: {
-    //     show: false,
-    //     feature: {
-    //         dataView: {readOnly: false},
-    //         restore: {},
-    //         saveAsImage: {}
-    //     }
-    // },
-    // dataZoom: {
-    //     show: false,
-    //     start: 0,
-    //     end: 100
-    // },
-    // xAxis: [
-    //     {
-    //         type: 'category',
-    //         boundaryGap: true,
-    //         data: (function (){
-    //             var now = new Date();
-    //             var res = [];
-    //             var len = 10;
-    //             while (len--) {
-    //                 res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-    //                 now = new Date(now - 5000);
-    //             }
-    //             return res;
-    //         })()
-    //     },
-    //     {
-    //         type: 'category',
-    //         boundaryGap: true,
-    //         data: (function (){
-    //             var res = [];
-    //             var len = 10;
-    //             while (len--) {
-    //                 res.push(10 - len - 1);
-    //             }
-    //             return res;
-    //         })()
-    //     },
-        
-    // ],
-    // yAxis: [
-    //     {
-    //         type: 'value',
-    //         scale: true,
-    //         name: '使用资源量',
-    //         max: 100,
-    //         min: 0,
-    //         boundaryGap: [0.2, 0.2]
-    //     },
-    //     {
-    //         type: 'value',
-    //         scale: true,
-    //         name: '请求次数',
-    //         max: 100,
-    //         min: 0,
-    //         boundaryGap: [0.2, 0.2]
-    //     },
-        
-        
-    // ],
-    // series: 
-    //     {
-    //         name:'CPU使用量（百分比）',
-    //         type:'bar',
-    //         xAxisIndex: 1,
-    //         yAxisIndex: 1,
-    //         data:(function (){
-    //             var res = [];
-    //             var len = 10;
-    //             while (len--) {
-    //                 res.push(Math.random() * 30);
-    //             }
-    //             return res;
-    //         })()
-    //     },
-    // };
-    
     {
     // color: ['#3398DB'],
     title: {
@@ -612,8 +487,6 @@ export default {
     //初始化图样
     this.dynamimyChart.setOption(this.dynamicoption);
     //心跳更新数据
-    //var _this=this;
-    //this.startsi();
 
 
   }
