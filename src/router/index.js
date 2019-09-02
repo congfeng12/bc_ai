@@ -79,6 +79,14 @@ export default new Router({
       component: () => import('@/components/platform_login'),
     },
     {
+      path: '/investigationreport',
+      name: 'investigationreport',
+      meta:{
+        title:'调查报告',
+      },
+      component: () => import('@/components/investigationreport'),
+    },
+    {
       path: '/platform_menu',
       name: 'platform_menu',
       meta:{
@@ -146,11 +154,21 @@ export default new Router({
           name: '操作日志',
           component: () => import('@/components/platform_logs')
         },
-        //platform_statistics
         {
           path: '/platform_menu/statistics',
           name: '统计信息',
           component: () => import('@/components/platform_statistics')
+        },
+        {
+          path: '/platform_menu/personalcenter',
+          name: '个人资源中心',
+          component: () => import('@/components/platform_personalcenter')
+        },
+        //platform_personallogs
+        {
+          path: '/platform_menu/personallogs',
+          name: '个人操作日志',
+          component: () => import('@/components/platform_personallogs')
         },
       ]
     }

@@ -177,9 +177,9 @@ export default {
       ],
       //公告列表
       Notices: [
-        { date:'2019-07-21',text: '为什么负责人工智能开发需要安全合作',type:'强化学习',url: ''},
-        { date:'2019-07-20',text: '只能学习研讨会2019',type:'机器人',url: '' },
-        { date:'2019-07-19',text: '机械学系学者大会' ,type:'强化学习',url: ''},
+        { date:'2019-07-21',text: '为什么负责人工智能开发需要安全合作',type:'强化学习',url: '/investigationreport'},
+        { date:'2019-07-20',text: '只能学习研讨会2019',type:'机器人',url: '/investigationreport' },
+        { date:'2019-07-19',text: '机械学系学者大会' ,type:'强化学习',url: '/investigationreport'},
         { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
         { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
         { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},

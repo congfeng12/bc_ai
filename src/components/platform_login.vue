@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;background-color: #F2F6FC;" :style="{height:pageheight}">
+  <div style="width: 100%;background-color: #F2F6FC;height: 100%">
     <div style="width: 100%;height: 100%;">
       <!-- 登录框 -->
       <div style="width: 800px;height: 400px;background-color: #FFFFFF;position: fixed;top: 200px;margin: 0 auto 0;left: 0;right: 0;border-radius: 15px;box-shadow: #EBEEF5 2px 2px 10px 2px;background-image:url(../../static/FormBackgroundImg.png)">
@@ -39,8 +39,7 @@ export default {
   data () {
     return {
       //加入我们展示图
-      //HomePageImgUrl:'/',
-      pageheight:'',
+      
       //logo图
       FormPageLogo:'../../static/logo_black.png',
       //背景图
@@ -80,9 +79,7 @@ export default {
   },
   created(){
     //页面加载时执行
-    //console.log(document.documentElement.scrollHeight);
-    //动态设置页面高度
-    this.pageheight = (document.documentElement.scrollHeight) + 'px';
+    //console.log(document.documentElement.scrollHeight)
     console.log(window.navigator);
     var ua = navigator.userAgent;
 

@@ -111,32 +111,18 @@
                 </el-card>
               </el-col>
             </el-row>
-            <el-row :gutter="12">
-              <el-col :span="12">
-                <!-- 最近一周第三方服务上线申请、上线数量统计 -->
-                <el-card shadow="hover" style="height: auto;margin-bottom: 10px;">
-                  <!-- 标题 -->
-                  <h3 style="margin:0px 0px 0px 0px;">
-                    <font style="color: #909399;font-size: 0.9em;letter-spacing: 0.1em;font-weight: bold;">最近一周第三方服务上线申请、上线数量统计</font>
-                  </h3>
-                  <div id="thirdpartyservices" style="width: 100%;height: 400px;"></div>
-                </el-card>
-              </el-col>
-              <el-col :span="12">
-                <!-- 最近一周官方服务异常服务统计 -->
-                <el-card shadow="hover" style="height: auto;margin-bottom: 10px;">
-                  <!-- 标题 -->
-                  <h3 style="margin:0px 0px 0px 0px;">
-                    <font style="color: #909399;font-size: 0.9em;letter-spacing: 0.1em;font-weight: bold;">最近一周官方服务异常服务统计</font>
-                  </h3>
-                  <div id="serviceexceptions" style="width: 100%;height: 400px;"></div>
-                </el-card>
-              </el-col>
-            </el-row>
+            <!-- 最近一周官方服务异常服务统计 -->
+            <el-card shadow="hover" style="height: auto;margin-bottom: 10px;">
+              <!-- 标题 -->
+              <h3 style="margin:0px 0px 0px 0px;">
+                <font style="color: #909399;font-size: 0.9em;letter-spacing: 0.1em;font-weight: bold;">最近一周官方服务异常服务统计</font>
+              </h3>
+              <div id="serviceexceptions" style="width: 100%;height: 400px;"></div>
+            </el-card>
             <div style="width: 100%;height: 300px;margin-bottom: 10px;">
             <el-row :gutter="12">
               <!-- 挂载服务器数量 #7dc5eb-->
-              <el-col :span="8">
+              <el-col :span="12">
                 <el-card shadow="hover" style="height: 300px;text-align: center;">
                   <!-- 图片 -->
                   <img src="../../static/fuwuqi.png" style="width: 60px;padding: 0px;margin:10px 0px 0px 0px;">
@@ -156,7 +142,7 @@
                 </el-card>
               </el-col>
                <!-- 官方在线服务数量 -->
-              <el-col :span="8">
+              <el-col :span="12">
                 <el-card shadow="hover" style="height: 300px;text-align: center;">
                   <!-- 图片 -->
                   <img src="../../static/yunfuwu.png" style="width: 60px;padding: 0px;margin:10px 0px 0px 0px;">
@@ -175,26 +161,7 @@
                   </h3>
                 </el-card>
               </el-col>
-              <!-- 第三方在线服务数量 -->
-              <el-col :span="8">
-                <el-card shadow="hover" style="height: 300px;text-align: center;">
-                   <!-- 图片 -->
-                  <img src="../../static/disanfangbangding.png" style="width: 60px;padding: 0px;margin:10px 0px 0px 0px;">
-                  <!-- 标题 -->
-                  <h3 style="margin:30px 0px 0px 0px;">
-                    <font style="color: #909399;font-size: 0.9em;letter-spacing: 0.1em;font-weight: bold;">第三方在线服务数量</font>
-                  </h3>
-                  <!-- 数据 -->
-                   <h3 style="margin:20px 0px 0px 0px;">
-                    <font style="color: #7cba59;font-size: 1.4em;letter-spacing: 0.2em;font-weight: bolder;">1,329</font>
-                  </h3>
-                  <!-- 截止时间 -->
-                  <h3 style="margin:20px 0px 0px 0px;">
-                    <font style="color: #C0C4CC;font-size: 0.6em;letter-spacing: 0.1em;font-weight: bold;">统计截止：</font>
-                    <font style="color: #C0C4CC;font-size: 0.6em;letter-spacing: 0.1em;font-weight: bold;">2019-08-29 10:10:32</font>
-                  </h3>
-                </el-card>
-              </el-col>
+         
               <!-- 注册用户数 -->
               <!-- <el-col :span="6">
                 <el-card shadow="hover" style="height: 300px;text-align: center;">
@@ -247,9 +214,6 @@ export default {
       //用户数量变化统计
       usersnumlineChart:'',
       usersnumlineoption:'',
-      //最近一周第三方服务上线申请、上线数量统计
-      thirdpartyservicesChart:'',
-      thirdpartyservicesoption:'',
       //最近一周官方服务异常服务统计
       serviceexceptionsChart:'',
       serviceexceptionsoption:'',
@@ -394,62 +358,6 @@ export default {
               ]
           };
     this.usersnumlineChart.setOption(this.usersnumlineoption);
-
-    //最近一周第三方服务上线申请、上线数量统计
-    this.thirdpartyservicesChart = echarts.init(document.getElementById('thirdpartyservices'));
-    this.thirdpartyservicesoption = 
-          {
-              tooltip : {
-                  trigger: 'axis',
-                  axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                      type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                  }
-              },
-              legend: {
-                  data: ['上线申请', '上线成功']
-              },
-              grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-              },
-              xAxis:  {
-                  type: 'value'
-              },
-              yAxis: {
-                  type: 'category',
-                  data: ['周一','周二','周三','周四','周五','周六','周日']
-              },
-              series: [
-                  {
-                      name: '上线申请',
-                      type: 'bar',
-                      stack: '总量',
-                      label: {
-                          normal: {
-                              show: true,
-                              position: 'insideRight'
-                          }
-                      },
-                      data: [320, 302, 301, 334, 390, 330, 320]
-                  },
-                  {
-                      name: '上线成功',
-                      type: 'bar',
-                      stack: '总量',
-                      label: {
-                          normal: {
-                              show: true,
-                              position: 'insideRight'
-                          }
-                      },
-                      data: [120, 132, 101, 134, 90, 230, 210]
-                  },
-                  
-              ]
-          };
-    this.thirdpartyservicesChart.setOption(this.thirdpartyservicesoption);
 
 
     //最近一周官方服务异常服务统计

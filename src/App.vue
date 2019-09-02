@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{height:pageheight+'px'}">
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
   </div>
@@ -7,8 +7,41 @@
 
 <script>
 export default {
-  name: 'App'
-}
+  name: 'App',
+  data(){
+    return{
+      pageheight:'',
+    }
+  },
+  
+    methods:{
+    getPageHeight(){
+      //this.pageheight = document.documentElement.scrollHeight;
+      this.pageheight = window.innerHeight;
+      console.log("1"+this.pageheight)
+      console.log("2"+document.documentElement.scrollHeight)
+      console.log("3"+window.innerHeight)
+
+    }
+  },
+ created(){
+    // window.addEventListener('resize', this.getPageHeight());
+  },
+  destroyed(){
+    // window.removeEventListener('resize', this.getPageHeight())
+  },
+  mounted(){
+    window.onresize = () =>{
+      return(()=>{
+        this.getPageHeight()
+      }
+        )()
+      }
+        this.getPageHeight()
+    }
+  
+  }
+
 </script>
 
 <style>

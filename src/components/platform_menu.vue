@@ -1,6 +1,6 @@
 <template>
-  <div style="width: 100%;background-color: #F2F6FC;" :style="{height:pageheight}">
-    <el-container >
+  <div style="width: 100%;background-color: #F2F6FC;height: 100%;" >
+    <el-container style="height: 100%">
       <!-- 页头 -->
       <el-header style="border-bottom:1px solid #DCDFE6;background-color: #FFFFFF;box-shadow: #EBEEF5 2px 2px 10px 2px;padding-left: 0px;">
         <!-- 图标 -->
@@ -29,7 +29,7 @@
       </el-header>
     <el-container>
     <!-- 导航栏 -->
-    <el-aside width="260px" :style="{height:asideheight}" style="background-color: #FFFFFF;clear: both;box-shadow: #EBEEF5 2px 2px 10px 0px;">
+    <el-aside width="260px" style="background-color: #FFFFFF;clear: both;box-shadow: #EBEEF5 2px 2px 10px 0px;">
     <el-col style="clear: both;">
     <el-menu
       class="el-menu-vertical-demo"
@@ -60,13 +60,7 @@
           <el-menu-item index="/platform_menu/report">调查报告资源</el-menu-item>
           <el-menu-item index="/platform_menu/work">空缺职位资源</el-menu-item>
           <el-menu-item index="/platform_menu/timeaxis">时间轴资源</el-menu-item>
-          <!-- <el-menu-item index="/platform_menu/">平台公告资源</el-menu-item> -->
         </el-menu-item-group>
-       <!--  <el-menu-item-group>
-          <template slot="title">节点资源管理</template>
-          二级菜单
-          <el-menu-item index="1-10">服务节点资源</el-menu-item>
-        </el-menu-item-group> -->
       </el-submenu>
       <!-- 用户管理 -->
       <el-submenu index="2">
@@ -89,58 +83,22 @@
         <el-menu-item-group>
           <template slot="title">日志</template>
           <el-menu-item index="/platform_menu/logs">操作日志</el-menu-item>
-         <!--  <el-menu-item index="/platform_menu/">平台日志</el-menu-item> -->
         </el-menu-item-group>
         <el-menu-item-group>
           <template slot="title">统计信息</template>
           <el-menu-item index="/platform_menu/statistics">统计信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <!-- 第三方服务管理 -->
-      <!-- <el-submenu index="4">
-        <template slot="title">
-          <i class="el-icon-cloudy"></i>
-          <span>第三方服务管理</span>
-        </template>
-        <el-menu-item-group>
-          <template slot="title">第三方服务</template>
-          <el-menu-item index="5-1">第三方节点资源管理</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu> -->
-      <el-menu-item index="4">
-        <i class="el-icon-cloudy"></i>
-        <span slot="title">第三方节点资源管理</span>
-      </el-menu-item>
-
-      <!-- 个人服务资源 -->
-      <el-submenu index="5">
-        <template slot="title">
-          <i class="el-icon-connection"></i>
-          <span>个人资源中心</span>
-        </template>
-        <el-menu-item-group>
-          <template slot="title">个人资源</template>
-          <el-menu-item index="6-1">个人服务资源</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">官方资源</template>
-          <el-menu-item index="6-2">官方后台服务资源</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">第三方资源</template>
-          <el-menu-item index="6-3">第三方后台服务资源</el-menu-item>
-        </el-menu-item-group>
       </el-submenu>
+       <el-menu-item index="/platform_menu/personalcenter">
+        <i class="el-icon-connection"></i>
+        <span slot="title">服务资源中心</span>
+      </el-menu-item>
       <!-- 个人操作日志 --> 
-      <el-menu-item index="6">
+      <el-menu-item index="/platform_menu/personallogs">
         <i class="el-icon-postcard"></i>
         <span slot="title">个人操作日志</span>
       </el-menu-item>
-      <!-- 平台公告 --> 
-     <!--  <el-menu-item index="8">
-        <i class="el-icon-notebook-1"></i>
-        <span slot="title">平台公告</span>
-      </el-menu-item> -->
     </el-menu>
     </el-col>
     </el-aside>
@@ -259,10 +217,6 @@
 export default {
   data () {
     return {
-      //页面高度
-      pageheight:'',
-      //导航栏高度
-      asideheight:'',
       //页面logo图片url
       PageLogo:'../../static/logo_black.png',
       //抽屉页面显示标志
@@ -276,7 +230,6 @@ export default {
       //个人身份标签类型
       PCType:'',
     }
-
   },
   methods: {
     //打开导航栏标签
@@ -303,10 +256,7 @@ export default {
     },
   created(){
     //页面加载时执行
-    //console.log(document.documentElement.scrollHeight);
-    //动态设置页面高度
-    this.pageheight = (document.documentElement.scrollHeight) + 'px';
-    this.asideheight = (document.documentElement.scrollHeight-60) + 'px';
+  
   },
   mounted(){
     //页面加载后执行
@@ -319,5 +269,4 @@ export default {
   border-radius: 50px !important;
 }
 </style>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 
