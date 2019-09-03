@@ -18,9 +18,9 @@ export default {
     getPageHeight(){
       //this.pageheight = document.documentElement.scrollHeight;
       this.pageheight = window.innerHeight;
-      console.log("1"+this.pageheight)
-      console.log("2"+document.documentElement.scrollHeight)
-      console.log("3"+window.innerHeight)
+      // console.log("1"+this.pageheight)
+      // console.log("2"+document.documentElement.scrollHeight)
+      // console.log("3"+window.innerHeight)
 
     }
   },

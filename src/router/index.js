@@ -87,6 +87,31 @@ export default new Router({
       component: () => import('@/components/investigationreport'),
     },
     {
+      path: '/Announcement',
+      name: 'Announcement',
+      meta:{
+        title:'公告内容',
+      },
+      component: () => import('@/components/Announcement'),
+    },
+    {
+      path: '/jobdescription',
+      name: 'jobdescription',
+      meta:{
+        title:'工作说明',
+      },
+      component: () => import('@/components/jobdescription'),
+    },
+    {
+      path: '/sendresume',
+      name: 'sendresume',
+      meta:{
+        title:'工作申请',
+      },
+      component: () => import('@/components/sendresume'),
+    },
+    //里程碑页面
+    {
       path: '/platform_menu',
       name: 'platform_menu',
       meta:{

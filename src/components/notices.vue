@@ -55,23 +55,20 @@
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;overflow: hidden;clear: both;position: relative;">
                   <a :href="notice.url" style="text-decoration:none;width: 1500px;height: 100%;" target="view_window">
                     <div>
-                      <div style="width: 194px;margin:0px;padding: 0px;float: left;" >
-                      <el-card body-style="padding:7px;margin:0px;border:0px;" style="width: 194px;" shadow="hover" v-if="notice.haveimg">
-                        <img :src="notice.imgurl" style="width: 180px;" ref="noticeIMG">
-                      </el-card>
-                    </div>
-                    <div  style="width: 1200px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                      <div>
-                        <b style="color: #303133;font-size: 1em;letter-spacing: 0;line-height: 1.4;margin: 0px;font-weight:900;">{{ notice.title }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.date }}</b>
-                        <p v-if="notice.haveimg" style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 600px;">{{notice.text}}</p>
+                      <div  style="width: 1500px;float: left;display: flex;flex-direction: column;justify-content:space-between;">
+                        <div>
+                          <b style="color: #303133;font-size: 1em;letter-spacing: 0;line-height: 1.4;margin: 0px;font-weight:900;">{{ notice.title }}</b>
+                          <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.date }}</b>
+                          <p style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 1000px;">{{notice.text}}</p>
+                        </div>
                       </div>
                     </div>
-                    </div>
-                  </a> 
-                  <div v-if="notice.haveimg" style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;position: absolute;bottom: 20px;left: 300px;">
+                  
+                  <p></p>
+                  <div style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;">
                     {{notice.readtime}}
                   </div>
+                  </a>
                 </li>
             </div>
           </ol>
@@ -165,26 +162,76 @@ export default {
       WeChartVisible: false,
       //公告列表
       Notices: [
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:require('../../static/notistest2.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:require('../../static/notistest2.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'这是一条测试消息zheshi',text: '',readtime:'',imgurl:'',url: '',haveimg:false},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',readtime:'24分钟阅读',imgurl:require('../../static/notistest2.jpg'),url: '',haveimg:true},
-        { date:'2019-07-21',title:'为什么负责人工智能开发需要安全合作',text: '我们创建了OpenAI LP，这是一家新的“上限利润”公司，它允许我们快速增加对计算和人才的投资，同时包括制衡以实现我们的使命。',readtime:'16分钟阅读',imgurl:require('../../static/notistest1.jpg'),url: '',haveimg:true}
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '/Announcement',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '/Announcement',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '/Announcement',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '/Announcement',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '/Announcement',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '',
+        },
+        { 
+          date:'2019-07-21',
+          title:'为什么负责人工智能开发需要安全合作',
+          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
+          readtime:'24分钟阅读',
+          url: '',
+        },
       ],
       //加入我们展示图
       HomePageImgUrl:'/',

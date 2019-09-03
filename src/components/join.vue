@@ -266,8 +266,8 @@ export default {
       joinimgurl5:'../../static/join_us_img5.jpg',
       //职位展示
       Notices: [
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
+        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '/jobdescription',place:'不限制地区'},
+        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '/jobdescription',place:'不限制地区'},
         { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
         { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
         { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},

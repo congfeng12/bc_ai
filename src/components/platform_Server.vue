@@ -6,15 +6,21 @@
       <!-- 心跳服务开关 -->
       <el-switch v-model="dynamicswitch" active-color="#13ce66" inactive-color="#ff4949" style="" ></el-switch>
       <el-divider></el-divider>
-      <el-tabs v-model="activeName" @tab-click="handleClick" :tab-position="tabPosition">
+      <!-- <el-tabs v-model="activeName" @tab-click="handleClick" :tab-position="tabPosition">
         <el-tab-pane label="cpu" name="cpu">
-          <!-- 前台定时请求动态资源图 -->
-          <div id="dynamicresources" style="width: 100%;height:400px;"></div>
+         
         </el-tab-pane>
         <el-tab-pane label="内存" name="2">内存</el-tab-pane>
         <el-tab-pane label="硬盘" name="3">硬盘</el-tab-pane>
         <el-tab-pane label="网络" name="4">网络</el-tab-pane>
       </el-tabs>
+      <el-divider></el-divider> -->
+       <!-- 前台定时请求动态资源图 -->
+      <div id="cpu" style="width: 100%;height:400px;"></div>
+      <!-- 内存 -->
+
+      <!-- 硬盘 -->
+      <!-- 网络 -->
       <el-divider></el-divider>
       <!-- 服务器资源信息表 -->
       <h3 style="margin: 0px 0px 0px 5px;">
@@ -155,8 +161,8 @@ export default {
       //pageheight:'',
       //activeNames: ['1'],
       dialogVisible: false,
-      activeName: 'cpu',
-      tabPosition:'top',
+      // activeName: 'cpu',
+      // tabPosition:'top',
       dynamicswitch: true,
       //动态实时信息
       dynamicoption:{},
@@ -370,6 +376,7 @@ export default {
         },
 
       ],
+      
 
 
 
@@ -440,53 +447,73 @@ export default {
     //页面加载后执行
     var echarts = require('echarts');
     // 基于准备好的dom，初始化echarts实例
-    this.dynamimyChart = echarts.init(document.getElementById('dynamicresources'));
-    this.dynamicoption = 
-    {
-    // color: ['#3398DB'],
-    title: {
-        text: 'CPU使用量（百分比）',
-        subtext: '单位 - %'
-    },
-    tooltip : {
-        trigger: 'axis',
-        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-        }
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis : [
-        {
-            type : 'category',
-            data : ['S100-001', 'S100-002', 'S100-003', 'S100-004', 'S100-005', 'S100-006', 'S100-007'],
-            axisTick: {
-                alignWithLabel: true
-            }
-        }
-    ],
-    yAxis : [
-        {
-            type : 'value',
-            max:100,
-        }
-    ],
-    series : [
-        {
-            name:'CPU使用率',
-            type:'bar',
-            barWidth: '60%',
-            data:[10, 52, 20, 33, 39, 30, 21]
-        }
-    ]
-    };
+    //cpu动态信息
+    this.cpumyChart = echarts.init(document.getElementById('cpu'));
+    this.cpucoption=
+      {
+          title: {
+              text: '主机CPU使用率'
+          },
+          tooltip: {
+              trigger: 'axis',
+              formatter: "{a} <br/>{b} : {c}%"
+          },
+          legend: {
+              data:['主机CPU使用率']
+          },
+          grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+          },
+          xAxis: {
+              type: 'category',
+              boundaryGap: false,
+              data: ['11:54:31','11:54:33','11:54:35','11:54:37','11:54:39','11:54:41','11:54:43','11:54:45','11:54:47','11:54:49',]
+          },
+          yAxis: {
+              type: 'value',
+              axisLabel: {
+                  formatter: '{value} %'
+              },
+              max : 100
+          },
+          series: [
+              {
+                  name:'主机CPU使用率',
+                  type:'line',
+                  stack: '总量',
+                  data:[22.2, 23.4, 12.5, 21.7, 45.8, 32.6, 79.2,23.4,23.5,12.4],
+                  markPoint: {
+                      data: [
+                          {type: 'max', name: '最大值'},
+                          {type: 'min', name: '最小值'}
+                      ]
+                  },
+                  markLine : { //添加警戒线
+                    symbol:'none', //去掉警戒线最后面的箭头
+                    name:'警戒线',
+                    label:{
+                      position:'middle', //将警示值放在哪个位置，三个值“start”,“middle”,“end” 开始 中点 结束
+                      formatter: '警戒线' +95+ '%',
+                    },
+                    data : 
+                    [{
+                     
+                      lineStyle:{ //警戒线的样式 ，虚实 颜色
+                        type:'average',
+                      },
+                      name: '警戒线',
+                      yAxis: 95
+                    }]
+                    }
+              },
+          ]
+      };
     //初始化图样
-    this.dynamimyChart.setOption(this.dynamicoption);
-    //心跳更新数据
+    this.cpumyChart.setOption(this.cpucoption);
+    
 
 
   }
