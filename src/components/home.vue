@@ -70,7 +70,7 @@
         <el-row :gutter="11">
           <!-- 公告循环 -->
           <el-col v-for="progres in Progress" v-bind:key="progres.id" :span="6" >
-            <a :href="progres.url" style="text-decoration: none;">
+            <a :href="progres.url" style="text-decoration: none;" target="_blank">
               <el-card :body-style="{ padding: '12px' }" shadow="always">
                 <p style="margin: 5px 0px 30px 0px;font-weight: 700;">{{progres.text}}</p>
                 <img style="width: 100%;" :src="progres.jpgurl">
@@ -91,9 +91,11 @@
     <!--  -->
     <div style="width: 100%;">
       <div style="width: 962px;margin: 0 auto 0;height: auto;margin-top: 90px;">
-        <font style="font-size: 30px;">
-          蜂巢系统的使命是确保人工智能对全人类都有益。我们是一个完全有相同的目标组成的一个团队。我们没有固定的办公地点，只需要在有网络的地方我们就可以进行办公和沟通，这并不会打扰到你原来的工作。该【宪章】介绍了指导我们执行我们的任务的基本原则。
-        </font>
+        <h3>
+          <font style="font-size: 27px;font-weight: normal;">
+            蜂巢系统的使命是确保人工智能对全人类都有益。我们是一个完全有相同的目标组成的一个团队。我们没有固定的办公地点，只需要在有网络的地方我们就可以进行办公和沟通，这并不会打扰到你原来的工作。该【宪章】介绍了指导我们执行我们的任务的基本原则。
+          </font>
+        </h3>
         <p></p>
         <div style="margin-top: 35px;">
            <a :href="CharterPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;">
@@ -110,7 +112,7 @@
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
             <div v-for="notice in Notices">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
-                  <a :href="notice.url" style="text-decoration:none;">
+                  <a :href="notice.url" style="text-decoration:none;" target="_blank">
                     <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 175px;">{{ notice.date }}</b>
                     <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ notice.text }}</b>
                   </a> 
@@ -170,7 +172,7 @@
     <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;">
       <div style="height: 30px;width: 220px;float: left;margin-top: 10px;">
         <!-- github -->
-        <a :href="GitHubPagerl" target="view_window">
+        <a :href="GitHubPagerl" target="_blank">
           <img style="height: 25px;float: left;" src="../../static/github.png">
         </a>
         <!-- 微信 -->
@@ -235,8 +237,7 @@
         <span slot="footer" class="dialog-footer">
           关注微信订阅号，随时获取最新的消息
         </span>
-    </el-dialog>
-  </div>
+    </el-dialog>  </div>
 </template>
 <script>
 export default {
@@ -246,10 +247,10 @@ export default {
       WeChartVisible: false,
       //公告展示
       Progress:[
-        { id:1, url:'',text:'了解蜂巢',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg'},
-        { id:2, url:'',text:'蜂巢系统页面开发流程',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/science-of-ai/1x-no-mark.jpg'},
-        { id:3, url:'',text:'蜂巢系统宪章',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/learning-dexterity/1x-no-mark.jpg'},
-        { id:4, url:'',text:'蜂巢系统后台使用的相关技术',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/language-unsupervised/1x-no-mark.jpg'}
+        { id:1, url:'/milestone',text:'了解蜂巢',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg'},
+        { id:2, url:'/milestone',text:'蜂巢系统页面开发流程',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/science-of-ai/1x-no-mark.jpg'},
+        { id:3, url:'/milestone',text:'蜂巢系统宪章',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/learning-dexterity/1x-no-mark.jpg'},
+        { id:4, url:'/milestone',text:'蜂巢系统后台使用的相关技术',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/language-unsupervised/1x-no-mark.jpg'}
       ],
       //公告列表
       Notices: [
@@ -288,10 +289,6 @@ export default {
       GitHubPagerl:'https://github.com/congfeng12'
     }
   }
+
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

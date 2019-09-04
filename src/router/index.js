@@ -5,7 +5,6 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-  //个人住也
     {
       path: '/',
       name: 'home',
@@ -110,7 +109,14 @@ export default new Router({
       },
       component: () => import('@/components/sendresume'),
     },
-    //里程碑页面
+    {
+      path: '/milestone',
+      name: 'milestone',
+      meta:{
+        title:'里程碑内容显示',
+      },
+      component: () => import('@/components/milestone'),
+    },
     {
       path: '/platform_menu',
       name: 'platform_menu',
@@ -189,7 +195,6 @@ export default new Router({
           name: '个人资源中心',
           component: () => import('@/components/platform_personalcenter')
         },
-        //platform_personallogs
         {
           path: '/platform_menu/personallogs',
           name: '个人操作日志',

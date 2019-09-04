@@ -164,7 +164,7 @@ export default {
       WeChartVisible: false,
       //公告展示
       Progress:[
-        { id:1, url:'',text:'了解蜂巢',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg'},
+        { id:1, url:'/milestone',text:'了解蜂巢',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg'},
         { id:2, url:'',text:'蜂巢系统页面开发流程',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/science-of-ai/1x-no-mark.jpg'},
         { id:3, url:'',text:'蜂巢系统宪章',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/learning-dexterity/1x-no-mark.jpg'},
         { id:4, url:'',text:'蜂巢系统后台使用的相关技术',jpgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/language-unsupervised/1x-no-mark.jpg'},
