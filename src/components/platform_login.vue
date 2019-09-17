@@ -34,6 +34,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data () {
@@ -86,7 +87,10 @@ export default {
   },
   mounted(){
     //页面加载后执行
-    
+    //
+    // console.log(localStorage.hasOwnProperty('returnCitySN'));
+    console.log(localStorage.getItem('cip'));
+    console.log(localStorage.getItem('cname'));
   }
 }
 </script>
@@ -95,4 +99,5 @@ export default {
   border-radius: 50px !important;
 }
 </style>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->

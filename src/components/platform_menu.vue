@@ -117,7 +117,7 @@
     <!-- 内容 -->
     <span>
       <!-- 个人中心显示内容 -->
-      <div>
+      <div style="position: relative;height: 100%">
         <div style="margin: 0 auto 0;width: 60px;" >
           <!-- 头像 -->
           <el-avatar :size="60"  :src="userimg"></el-avatar>
@@ -197,7 +197,7 @@
           </ol>
         </div>
         <!-- 按钮 -->
-        <div style="width: 280px;height: auto;margin: 0 auto 0;margin-top: 370px;">
+        <div style="width: 280px;height: auto;margin: 0 auto 0;bottom: 30px;left: 0px;right: 0px;position: absolute;">
           <!-- 检查客户端设置 -->
           <el-tooltip class="item" effect="dark" content="检查客户端设置" placement="top-start">
             <el-button icon="el-icon-monitor" circle></el-button>

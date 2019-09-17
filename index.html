@@ -6,8 +6,18 @@
     <title>蜂巢系统</title>
     <link rel="shortcut icon" href="../../static/favicon.ico">
   </head>
+  <!-- 引入搜狐接口获取客户端IP、地址 -->
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
   <body style="padding: 0px;margin: 0px;">
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script type="text/javascript">
+      localStorage.clear()
+      // console.log(returnCitySN['cip']);
+      // console.log(returnCitySN['cname']);
+      // console.log(returnCitySN);
+      localStorage.setItem("cip",returnCitySN['cip']);
+      localStorage.setItem("cname",returnCitySN['cname']);
+  </script>
 </html>

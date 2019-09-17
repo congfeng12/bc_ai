@@ -27,7 +27,7 @@
           <h3 style="position: absolute;top: 40px;left: 320px;">
             <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">操作类型:</font>
           </h3>
-          <el-select v-model="type" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 400px;width: 150px;" size="mini">
+          <el-select v-model="operatetype" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 400px;width: 150px;" size="mini">
             <el-option label="不限制" value=""></el-option>
             <el-option label="账号操作类型" value="1"></el-option>
             <el-option label="资源操作类型" value="2"></el-option>
@@ -45,11 +45,13 @@
               type="daterange"
               range-separator="至"
               start-placeholder="开始日期"
-              end-placeholder="结束日期">
+              end-placeholder="结束日期"
+              value-format="yyyy-MM-dd">
+
             </el-date-picker>
           </div>
           <!-- <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加时间轴</el-button> -->
-          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round>搜索</el-button>
+          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round @click="open">搜索</el-button>
           <el-button style="position: absolute;right: 20px;top: 60px;" type="success" size="mini" round plain>导出EXCEL</el-button>
           <!-- <el-button style="position: absolute;right: 120px;top: 60px;" type="info" size="mini" round plain>将3月之前的日志存为文件</el-button>
           <el-button style="position: absolute;right: 300px;top: 60px;" type="info" size="mini" round plain>读取文件日志</el-button> -->
@@ -113,7 +115,7 @@ export default {
       logstype:'',
       search:'',
       timeaxisdate:'',
-      type:'',
+      operatetype:'',
       tableData: [
           {
             //流水号
@@ -328,7 +330,27 @@ export default {
       }
   },
   methods: {  
-
+      open(){
+        // console.log(new Date());
+        console.log(this.timeaxisdate);
+        // console.log(this.timeaxisdate);
+        // this.$Axios.post('http://localhost:8081/operationlog/getUsersByParams',{
+        //   'logstype':this.logstype,
+        //   'search':this.search,
+        //   'timeaxisdate':this.timeaxisdate,
+        //   'operatetype':this.operatetype
+        // })
+        // .then(function(res){
+        //   console.log(res);
+        // })
+        // .catch(function(err){
+        //   console.log(err);
+        // });
+      }, 
+      // dataFormat(time){
+      //   return `${time.getFullYear()}-${time.getMonth() + 1 >= 10 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1)}-${time.getDate() >= 10 ? time.getDate() : '0' + time.getDate()}
+      //           ${time.getHours() >= 10 ? time.getHours() : '0' + time.getHours()} : ${time.getMinutes()>=10?time.getMinutes():'0'+time.getMinutes()} : ${time.getSeconds() >= 10 ? time.getSeconds() : '0' + time.getSeconds()}`;
+      //        }
     },
   created(){
     //页面加载时执行
