@@ -201,10 +201,18 @@ export default new Router({
           component: () => import('@/components/platform_personallogs')
         },
       ]
+    },
+    {
+      //当访问了不存在的路由的时候
+      path: '*',
+      name: 'err_404',
+      meta:{
+        title:'404错误页面',
+      },
+      component: () => import('@/components/err_404'),
     }
   ],
-  mode: 'history'
-  ,
+  mode: 'history',
   scrollBehavior (to, from, savedPosition) {
   if (savedPosition) {
     return savedPosition
@@ -213,3 +221,15 @@ export default new Router({
   }
 }
 })
+// router.beforeEach((to, from, next) => {
+//   console.log(to);
+//    console.log(from);
+//   if (to.matched.length === 0) { 
+//     from.name ? next({
+//       name: from.name
+//     }) : next('/errorinfo'); 
+//   } else {
+//     next(); //如果匹配到正确跳转
+//   }
+// });
+// export default router;
