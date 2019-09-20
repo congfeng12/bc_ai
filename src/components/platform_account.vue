@@ -19,10 +19,11 @@
             <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">用户状态:</font>
           </h3>
           <el-select v-model="accounttype" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 100px;width: 150px;" size="mini">
-            <el-option label="不限制" value=""></el-option>
-            <el-option label="正常" value="1"></el-option>
-            <el-option label="锁定" value="2"></el-option>
-            <el-option label="异常状态" value="3"></el-option>
+            <el-option label="不限制" value="n/s"></el-option>
+            <el-option label="正常" value="normal"></el-option>
+            <el-option label="锁定" value="lock"></el-option>
+            <el-option label="删除" value="del"></el-option>
+            <el-option label="异常状态" value="abnormal"></el-option>
           </el-select>
           <!-- 日期范围 -->
            <h3 style="position: absolute;top: 0px;left: 550px;">
@@ -36,7 +37,8 @@
               type="daterange"
               range-separator="至"
               start-placeholder="开始日期"
-              end-placeholder="结束日期">
+              end-placeholder="结束日期"
+              value-format="yyyy-MM-dd">
             </el-date-picker>
           </div>
           <!-- <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加时间轴</el-button> -->
@@ -98,7 +100,7 @@
               prop="id">
             </el-table-column>
             <el-table-column
-              label="用户姓名"
+              label="用户昵称"
               width="200"
               prop="username">
             </el-table-column>
@@ -109,7 +111,8 @@
               <template slot-scope="props">
                 <el-tag v-if="'normal' === props.row.state" type="success" size="mini">正常</el-tag>
                 <el-tag v-else-if="'lock' === props.row.state" type="warning" size="mini">锁定</el-tag>
-                <el-tag v-else type="danger" size="mini">错误状态</el-tag>
+                <el-tag v-else-if="'del' === props.row.state" type="danger" size="mini">删除</el-tag>
+                <el-tag v-else type="danger" size="mini">异常状态</el-tag>
               </template>
             </el-table-column>
             <el-table-column
@@ -184,7 +187,7 @@ export default {
           //用户名
           username:'功夫大师',
           //用户类型
-          type:'admin',
+          type:'member',
           //用户状态
           state:'normal',
           //用户注册时间

@@ -513,9 +513,7 @@ export default {
       };
     //初始化图样
     this.cpumyChart.setOption(this.cpucoption);
-    
-
-
+  
   }
 }
 </script>

@@ -99,7 +99,7 @@
               prop="id">
             </el-table-column>
             <el-table-column
-              label="用户姓名"
+              label="用户昵称"
               width="200"
               prop="username">
             </el-table-column>
@@ -323,7 +323,6 @@ export default {
   },
   mounted(){
     //页面加载后执行
-    
   }
 }
 </script>

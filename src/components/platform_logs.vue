@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;height: 100%;background-color: #F2F6FC;">
+  <div style="width: 100%;height: 100%;background-color: #F2F6FC;" >
     <div style="width: 1150px;height: 100%;margin: 0 auto 0;position: relative;">
        <!-- 显示栏 -->
        <el-card style="position: absolute;top: 20px;width: 100%;height: auto;margin-bottom: 50px;">

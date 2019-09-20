@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;background-color: #F2F6FC;height: 100%;" >
+  <div style="width: 100%;background-color: #F2F6FC;height: 100%;">
     <el-container style="height: 100%">
       <!-- 页头 -->
       <el-header style="border-bottom:1px solid #DCDFE6;background-color: #FFFFFF;box-shadow: #EBEEF5 2px 2px 10px 2px;padding-left: 0px;">
@@ -103,7 +103,7 @@
     </el-col>
     </el-aside>
     <!-- 主要内容 -->
-    <el-main style="clear: both;padding: 0px;">
+    <el-main style="clear: both;padding: 0px;" >
       <router-view/>
     </el-main>
   </el-container>
@@ -260,7 +260,6 @@ export default {
   },
   mounted(){
     //页面加载后执行
-    
   }
 }
 </script>
