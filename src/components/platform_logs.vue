@@ -19,19 +19,19 @@
             <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">日志类型:</font>
           </h3>
           <el-select v-model="logstype" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 100px;width: 150px;" size="mini">
-            <el-option label="不限制" value=""></el-option>
-            <el-option label="正常类型" value="1"></el-option>
-            <el-option label="异常类型" value="2"></el-option>
+            <el-option label="不限制" value="all"></el-option>
+            <el-option label="正常类型" value="normal"></el-option>
+            <el-option label="异常类型" value="exception"></el-option>
           </el-select>
           <!-- 操作类型 -->
           <h3 style="position: absolute;top: 40px;left: 320px;">
             <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">操作类型:</font>
           </h3>
           <el-select v-model="operatetype" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 400px;width: 150px;" size="mini">
-            <el-option label="不限制" value=""></el-option>
-            <el-option label="账号操作类型" value="1"></el-option>
-            <el-option label="资源操作类型" value="2"></el-option>
-            <el-option label="日志操作类型" value="3"></el-option>
+            <el-option label="不限制" value="all"></el-option>
+            <el-option label="账号操作类型" value="account"></el-option>
+            <el-option label="资源操作类型" value="resources"></el-option>
+            <!-- <el-option label="日志操作类型" value="log"></el-option> -->
           </el-select>
           <!-- 日期范围 -->
            <h3 style="position: absolute;top: 0px;left: 550px;">
@@ -332,20 +332,20 @@ export default {
   methods: {  
       open(){
         // console.log(new Date());
+        //console.log(this.timeaxisdate);
         console.log(this.timeaxisdate);
-        // console.log(this.timeaxisdate);
-        // this.$Axios.post('http://localhost:8081/operationlog/getUsersByParams',{
-        //   'logstype':this.logstype,
-        //   'search':this.search,
-        //   'timeaxisdate':this.timeaxisdate,
-        //   'operatetype':this.operatetype
-        // })
-        // .then(function(res){
-        //   console.log(res);
-        // })
-        // .catch(function(err){
-        //   console.log(err);
-        // });
+        this.$Axios.post('http://localhost:8081/operationlog/getUsersByParams',{
+          'logstype':this.logstype,
+          'search':this.search,
+          'timeaxisdate':this.timeaxisdate,
+          'operatetype':this.operatetype
+        })
+        .then(function(res){
+          console.log(res);
+        })
+        .catch(function(err){
+          console.log(err);
+        });
       }, 
       // dataFormat(time){
       //   return `${time.getFullYear()}-${time.getMonth() + 1 >= 10 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1)}-${time.getDate() >= 10 ? time.getDate() : '0' + time.getDate()}

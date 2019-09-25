@@ -36,7 +36,8 @@
               type="daterange"
               range-separator="至"
               start-placeholder="开始日期"
-              end-placeholder="结束日期">
+              end-placeholder="结束日期"
+              value-format="yyyy-MM-dd">
             </el-date-picker>
           </div>
           <!-- <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加时间轴</el-button> -->
