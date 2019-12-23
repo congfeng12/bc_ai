@@ -1,303 +1,252 @@
 <template>
   <div style="width: 100%;height: 100%;background-color: #F2F6FC;">
     <div style="width: 1150px;height: 100%;margin: 0 auto 0;position: relative;">
-       <!-- 显示栏 -->
-       <el-card style="position: absolute;top: 20px;width: 100%;height: auto;margin-bottom: 50px;">
-           <!-- 位置 -->
-         <h3 style="position: absolute;top: 0px;">
-            <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">资源位置:</font>
-         </h3>
-          <el-select v-model="pageselect" filterable clearable placeholder="请选择" style="position: absolute;left: 100px;" size="mini">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-          </el-select>
-         <!-- 类型 -->
-          <h3 style="position: absolute;top: 0px;left: 340px;">
-            <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">类型:</font>
-          </h3>
-          <el-select v-model="pagetype" placeholder="请选择活动区域" style="position: absolute;left: 385px;" size="mini">
-            <el-option label="不限制" value=""></el-option>
-            <el-option label="图片" value="img"></el-option>
-            <el-option label="域名" value="domainname"></el-option>
-          </el-select>
-         <!-- 全局搜索 -->
-          <h3 style="position: absolute;top: 0px;left: 620px;">
-            <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">全文搜索:</font>
-          </h3>
-          <el-input
-            placeholder="请输入内容"
-            v-model="search"
-            clearable
-            style="width: 200px;position: absolute;left: 700px;" 
-            size="mini">
-          </el-input>
-          <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加资源</el-button>
-          <el-button style="position: absolute;right: 180px;" type="primary" size="mini" round>搜索</el-button>
-          <!-- 循环列表 -->
-          <ol style="padding-left: 0px;margin:60px 0px 0px 0px;">
-                <li v-for="resource in Resources" style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%;overflow: hidden;clear: both;position: relative;">
-                  <!-- 图片 -->
-                  <div v-if="resource.imgtype">
-                  <div style="width: 194px;margin:0px;padding: 20px 0px 20px 0px;float: left;" >
-                    <el-card body-style="padding:7px;margin:0px;border:0px;" style="width: 194px;" shadow="always">
-                      <el-image style="width: 180px;min-height: 100px;" :src="resource.imgurl" :preview-src-list="resource.bigimgurl" ></el-image>
-                    </el-card>
-                  </div>
-                    <!-- 图片实际大小 -->
-                     <div style="width: auto;height: auto;position: absolute;top: 5px;left: 230px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">图片实际大小:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.imgrealsize}}</font>
-                      </h3>
-                     </div>
-                    <!-- 图片所在网页所需大小 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 5px;left: 550px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">图片所在网页所需大小:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.imgrelativesize}}</font>
-                      </h3>
-                    </div>
-                    <!-- 图片绝对路径 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 35px;left: 230px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">图片绝对路径:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.imgrealpath}}</font>
-                      </h3>
-                    </div>
-                    <!-- 图片引用路径 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 65px;left: 230px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">图片引用路径:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.imgrelativepath}}</font>
-                      </h3>
-                    </div>
-                    <!-- 图片所在页面位置 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 95px;left: 230px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">图片所在页面位置:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.inpagepath}}</font>
-                      </h3>
-                    </div>
-                    <!-- 图片名称 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 95px;left: 550px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">图片名称:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.imgname}}</font>
-                      </h3>
-                    </div>
-                    <!-- 按钮组 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 30px;right:0px;">
-                       <el-button type="primary" size="mini" plain>编辑图片</el-button>
-                    </div>
-                    <div style="width: auto;height: auto;position: absolute;top: 60px;right:0px;">
-                       <el-button type="danger" size="mini" plain>删除图片</el-button>
-                    </div>
-                  </div>
-                  <!-- 域名资源 -->
-                  <div v-if="!resource.imgtype">
-                     <div style="width: 194px;min-height: 60px;margin:0px;padding: 20px 0px 20px 0px;float: left;" >
-                       
-                     </div>
-                    <!-- 域名 -->
-                     <div style="width: auto;height: auto;position: absolute;top: 20px;left: 230px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">域名:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.domainname}}</font>
-                      </h3>
-                     </div>
-                     <!-- 域名 -->
-                     <div style="width: auto;height: auto;position: absolute;top: 20px;left: 550px;">
-                      <h3>
-                        <font style="color: #C0C4CC;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">域名所在位置:</font>
-                        <font style="color: #606266;font-size: 0.7em;letter-spacing: 0.1em;font-weight: bold;">{{resource.inpagepath}}</font>
-                      </h3>
-                     </div>
-                     <!-- 按钮组 -->
-                    <div style="width: auto;height: auto;position: absolute;top: 30px;right:0px;">
-                       <el-button type="primary" size="mini" plain>编辑域名</el-button>
-                    </div>
-                      <div style="width: auto;height: auto;position: absolute;top: 60px;right:0px;">
-                       <el-button type="danger" size="mini" plain>删除域名</el-button>
-                    </div>
-                  </div>
-                </li>
-          </ol>
-          <!-- 分页按钮 -->
-          <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000" style="width: 535px;margin: 0 auto 0;margin-top: 50px;margin-bottom: 20px;"></el-pagination>
-       </el-card>
+      <!-- 地址栏显示区域&按钮 -->
+      <el-card style="position: absolute;top: 20px;width: 100%;height: 65px;margin-bottom: 50px;">
+        <h3 style="position: absolute;top: 0px;">
+          <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">资源位置:{{resourcespath}}</font>
+        </h3>
+        <el-button type="primary" style="float: right;margin-top: -7px;"><i class="el-icon-upload"></i>&nbsp上传文件</el-button>
+        <el-button v-if="'/Users/congfeng/Downloads' !== resourcespath" style="float: right;margin-top: -7px;margin-right: 5px;"><i class="el-icon-back"></i>&nbsp返回上级</el-button>
+      </el-card>
+      <el-card style="position: absolute;top: 100px;width: 100%;height: auto;margin-bottom: 50px;">
+        <!-- 静态资源列表 -->
+        <el-row :gutter="12">
+          <el-col :span="3" v-for="(resource , index) in Resources" :key="index" style="margin-bottom: 10px;">
+            <el-card :body-style="{padding: '5px'}" shadow="hover" style="background-color: #F8F8F8;position: relative;">
+                <!-- 类型图片 -->
+                <img v-if="'jpeg' === resource.suffix || 'png' === resource.suffix || 'jpg' === resource.suffix" src="../../static/img.png" style="height: 69.48px;">
+                <img v-else-if="'null' === resource.suffix" src="../../static/directory.png" style="height: 69.48px;">
+                <img v-else-if="'war' === resource.suffix" src="../../static/code.png" style="width: 60px;height: 69.48px;margin-left: 4px;">
+                <img v-else-if="'pdf' === resource.suffix" src="../../static/pdf.png" style="height: 69.48px;">
+                <img v-else-if="'txt' === resource.suffix" src="../../static/txt.png" style="height: 69.48px;">
+                <img v-else-if="'zip' === resource.suffix || 'rar' === resource.suffix" src="../../static/zip.png" style="height: 69.48px;">
+                <img v-else src="../../static/file.png" style="height: 69.48px;">
+               <div>
+                 <div style="width: 100px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; display: block;">
+                  <h3 style="padding: 0px;margin: 0px;">
+                    <font style="color: #000000;font-size: 0.6em;letter-spacing: 0.1em;font-weight: bold;">{{resource.filename}}</font>
+                  </h3>
+                 </div>
+               </div>
+               <el-button @click="resourceinfo(resource)" icon="el-icon-arrow-down" type="info" style="position: absolute;top: 2px;right: 2px;padding: 2px;"></el-button>
+            </el-card>
+            <!-- 弹出框 -->
+          </el-col>
+        </el-row>
+        <!-- 页脚 -->
+         <el-dialog title="文件&文件夹详情" :visible.sync="dialogTableVisible">
+              <!-- 文件相关介绍 -->
+              <h3 style="padding: 0px;margin: 0px;">
+                <font style="color: #606266;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">文件名：{{resourcedata.filename}}</font>
+              </h3>
+              <h3 style="padding: 0px;margin: 0px;">
+                <font style="color: #606266;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">文件类型：{{resourcedata.filetype}}</font>
+              </h3>
+              <h3 style="padding: 0px;margin: 0px;">
+                <font style="color: #606266;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">文件路径：{{resourcedata.filepath}}</font>
+              </h3>
+              <h3 style="padding: 0px;margin: 0px;">
+                <font style="color: #606266;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">文件大小：{{resourcedata.filesize}}</font>
+              </h3>
+              <h3 style="padding: 0px;margin: 0px;">
+                <font style="color: #606266;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">文件创建时间：{{resourcedata.createtime}}</font>
+              </h3>
+              <h3 style="padding: 0px;margin: 0px;">
+                <font style="color: #606266;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">文件修改时间：{{resourcedata.modifytime}}</font>
+              </h3>
+              <el-divider></el-divider>
+              <!-- 按钮组 -->
+              <el-row>
+                <!-- 查看文件夹内文件信息 -->
+                <el-button v-if="'null' === resourcedata.suffix" type="primary"><i class="el-icon-s-unfold"></i>&nbsp查看文件夹内文件信息</el-button>
+                <!-- 访问文件夹 -->
+                <el-button v-if="'null' === resourcedata.suffix" type="primary"><i class="el-icon-s-data"></i>&nbsp访问文件夹</el-button>
+                <!-- 移动文件到指定目录 - 文件夹不可显示 -->
+                <el-button v-if="'null' !== resourcedata.suffix" type="primary"><i class="el-icon-upload"></i>&nbsp移动文件到指定目录</el-button>
+                <!-- 下载文件到本地 -->
+                <el-button v-if="'null' !== resourcedata.suffix" type="primary"><i class="el-icon-download"></i>&nbsp下载文件</el-button>
+                <!-- 删除文件 - 文件夹不可显示 -->
+                <el-button v-if="'null' !== resourcedata.suffix" type="danger"><i class="el-icon-delete"></i>&nbsp删除文件</el-button>
+              </el-row>
+            </el-dialog>
+      </el-card>
+
     </div>
   </div>
+
 </template>
 
 <script>
 export default {
   data () {
     return {
-      pageselect:'',
-      pagetype:'',
-      search:'',
-      options: [
-        {
-          value: '',
-          label: '不限制'
-        }, 
-        {
-          value: '选项1',
-          label: '官网主页'
-        }, {
-          value: '选项2',
-          label: '关于页面'
-        }, {
-          value: '选项3',
-          label: '进展页面'
-        }, {
-          value: '选项4',
-          label: '资源页面'
-        }, {
-          value: '选项5',
-          label: '宪章页面'
-        }],
+      resourcespath:'/Users/congfeng/Downloads',
+      dialogTableVisible: false,
+      resourcedata:[],
       //静态资源列表
       Resources: [
         {
-          imgtype:true,
-          imgurl:require('../../static/about2.jpg'),
-          //数组
-          bigimgurl: [require('../../static/about2.jpg')],
-          imgrealsize:'638 × 848',
-          imgrelativesize:'180 × 239',
-          imgrealpath:'www/server/apache-tomcat-default/webapps/ROOT/static', 
-          imgrelativepath:'require('+'../../static/about2.jpg'+')',
-          inpagepath:'关于页面 - 团队合影',
-          imgname:'about2.jpg',
-          domainname:'',
+          filename:'报销.jpeg',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/报销.jpeg',
+          filesize:'194.66K',
+          suffix:'jpeg',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - LOGO',
-          imgname:'',
-          domainname:'/',
+          filename:'游戏素材',
+          filetype:'Directory',
+          filepath:'/Users/congfeng/Downloads/游戏素材',
+          filesize:'24.11M',
+          suffix:'null',
+          createtime:'2019-01-15 16:51:39',
+          modifytime:'2019-09-23 14:35:21'
         },
         {
-          imgtype:true,
-          imgurl:require('../../static/notistest2.jpg'),
-          //数组
-          bigimgurl: [require('../../static/notistest2.jpg')],
-          imgrealsize:'638 × 848',
-          imgrelativesize:'180 × 239',
-          imgrealpath:'www/server/apache-tomcat-default/webapps/ROOT/static', 
-          imgrelativepath:'require('+'../../static/notistest2.jpg'+')',
-          inpagepath:'公告页面 - 公告',
-          imgname:'notistest2.jpg',
-          domainname:'',
+          filename:'hello.war',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/hello.war',
+          filesize:'28.16M',
+          suffix:'war',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 关于页面',
-          imgname:'',
-          domainname:'/about',
+          filename:'demo.pdf',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/demo.pdf',
+          filesize:'194.66K',
+          suffix:'pdf',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 进展页面',
-          imgname:'',
-          domainname:'/progress',
+          filename:'游戏素材',
+          filetype:'Directory',
+          filepath:'/Users/congfeng/Downloads/游戏素材',
+          filesize:'24.11M',
+          suffix:'null',
+          createtime:'2019-01-15 16:51:39',
+          modifytime:'2019-09-23 14:35:21'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 资源页面',
-          imgname:'',
-          domainname:'/resources',
+          filename:'hello.txt',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/hello.txt',
+          filesize:'28.16M',
+          suffix:'txt',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 公告页面',
-          imgname:'',
-          domainname:'/notices',
+          filename:'报销.jpeg',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/报销.jpeg',
+          filesize:'194.66K',
+          suffix:'jpeg',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 加入页面',
-          imgname:'',
-          domainname:'/join',
+          filename:'游戏素材',
+          filetype:'Directory',
+          filepath:'/Users/congfeng/Downloads/游戏素材',
+          filesize:'24.11M',
+          suffix:'null',
+          createtime:'2019-01-15 16:51:39',
+          modifytime:'2019-09-23 14:35:21'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 宪章页面',
-          imgname:'',
-          domainname:'/charter',
+          filename:'Overlord纯简体版ePub合集.rar',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/Overlord纯简体版ePub合集.rar',
+          filesize:'63.14M',
+          suffix:'rar',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
         {
-          imgtype:false,
-          imgurl:'',
-          //数组
-          bigimgurl: [],
-          imgrealsize:'',
-          imgrelativesize:'',
-          imgrealpath:'', 
-          imgrelativepath:'',
-          inpagepath:'官网主页 - 声明页面',
-          imgname:'',
-          domainname:'/state',
+          filename:'报销.jpeg',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/报销.jpeg',
+          filesize:'194.66K',
+          suffix:'jpeg',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
+        },
+        {
+          filename:'游戏素材',
+          filetype:'Directory',
+          filepath:'/Users/congfeng/Downloads/游戏素材',
+          filesize:'24.11M',
+          suffix:'null',
+          createtime:'2019-01-15 16:51:39',
+          modifytime:'2019-09-23 14:35:21'
+        },
+        {
+          filename:'hello.war',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/hello.war',
+          filesize:'28.16M',
+          suffix:'war',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
+        },
+        {
+          filename:'报销.jpeg',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/报销.jpeg',
+          filesize:'194.66K',
+          suffix:'jpeg',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
+        },
+        {
+          filename:'报销.jpeg',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/报销.jpeg',
+          filesize:'194.66K',
+          suffix:'jpeg',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
+        },
+        {
+          filename:'游戏素材',
+          filetype:'Directory',
+          filepath:'/Users/congfeng/Downloads/游戏素材',
+          filesize:'24.11M',
+          suffix:'null',
+          createtime:'2019-01-15 16:51:39',
+          modifytime:'2019-09-23 14:35:21'
+        },
+        {
+          filename:'hello.war',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/hello.war',
+          filesize:'28.16M',
+          suffix:'war',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
+        },
+        {
+          filename:'报销.jpeg',
+          filetype:'File',
+          filepath:'/Users/congfeng/Downloads/报销.jpeg',
+          filesize:'194.66K',
+          suffix:'jpeg',
+          createtime:'2019-06-17 09:52:03',
+          modifytime:'2019-11-10 20:20:31'
         },
       ],
     }
   },
   methods: {
-   
+   resourceinfo(data){
+        this.dialogTableVisible = true;
+        this.resourcedata = data;
+      }
     },
   created(){
     //页面加载时执行

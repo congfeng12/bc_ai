@@ -50,10 +50,10 @@
         <font style="font-size: 1.7em;font-weight: bolder;letter-spacing: 0px;">资源</font>
       </h3>
       <h3 style="margin: 10px 0px 0px 0px;">
-        <font style="color: #606266;font-size: 1.7em;font-weight: normal;letter-spacing: 0.05em;">蜂巢系统构建免费软件，用于</font>
+        <font style="color: #606266;font-size: 1.7em;font-weight: normal;letter-spacing: 0.05em;">蜂巢系统主要用于发现并开</font>
       </h3>
       <h3 style="margin: 0px 0px 80px 0px;">
-        <font style="color: #606266;font-size: 1.7em;font-weight: normal;letter-spacing: 0.05em;">AI的培训，基准测试和实验。</font>
+        <font style="color: #606266;font-size: 1.7em;font-weight: normal;letter-spacing: 0.05em;">发有趣的应用或者服务。</font>
       </h3>
     </div>
     <!-- 主要工具介绍 -->
@@ -64,7 +64,7 @@
           <font font style="font-size: 1.3em;font-weight: bolder;letter-spacing: 0px;">蜂巢系统相关资源使用手册</font>
         </h3>
         <h3 style="margin: 10px 0px 0px 0px;">
-          <font style="color: #606266;font-size: 1em;font-weight: normal;letter-spacing: 0.05em;">一种教育资源，旨在让任何人学习成为深度强化学习的熟练从业者。</font>
+          <font style="color: #606266;font-size: 1em;font-weight: normal;letter-spacing: 0.05em;">系统中相关服务和应用的相关教育资源，宗旨是让参考人员熟练的使用及开发相关资源。</font>
         </h3>
         <a :href="ProgressPageUrl" style="color: #909399;text-decoration: none;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;position: absolute;bottom: 0px;">
           查看详细内容&nbsp<i class="el-icon-arrow-right"></i>
@@ -83,7 +83,7 @@
           <font font style="font-size: 1.3em;font-weight: bolder;letter-spacing: 0px;">资源平台</font>
         </h3>
         <h3 style="margin: 10px 0px 0px 0px;">
-          <font style="color: #606266;font-size: 1em;font-weight: normal;letter-spacing: 0.05em;">我们正在策划人工代理的问题集和基线实现。</font>
+          <font style="color: #606266;font-size: 1em;font-weight: normal;letter-spacing: 0.05em;">查看并使用在线相关服务，管理员可以通过资源平台进行资源管理。</font>
         </h3>
       </div>
       <!-- 平台资源 -->
@@ -185,7 +185,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -215,8 +215,8 @@ export default {
       resourcesLogoImgUrl:'../../static/resourselogoimg.jpg',
       //平台资源列表title/msg/imgurl/url
       resourcesPlatform:[
-        '蜂巢系统深度学习平台',
-        '可以使用蜂巢系统深度学习的所有在线资源，并且可以上传你的深度学习节点来完善蜂巢系统',
+        '蜂巢系统资源平台',
+        '可以使用蜂巢系统的所有在线资源，并且可以上传你的服务节点来完善蜂巢系统',
         require('../../static/resourse1.svg'),
         '/platform_login'
       ],

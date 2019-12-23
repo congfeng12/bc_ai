@@ -46,7 +46,7 @@
     <!-- 文字说明 -->
     <div style="width: 1500px;height: auto;margin: 0 auto 0;padding: 0px 0px 40px 0px;">
       <h1 style="font-size: 1.8em;letter-spacing: 0.1em;">进展</h1>
-      <font style="font-size: 1.8em;font-family:Hiragino Sans GB;color: #303133;letter-spacing: 0.05em;">蜂巢致力于推进AI功能，安全性和策略。</font>
+      <font style="font-size: 1.8em;font-family:Hiragino Sans GB;color: #303133;letter-spacing: 0.05em;">蜂巢致力于开发有趣的应用和服务。</font>
     </div>
     <!-- 锚点按钮 -->
     <!-- 里程碑发布 -->
@@ -140,7 +140,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->

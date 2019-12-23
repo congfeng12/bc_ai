@@ -210,37 +210,7 @@ export default {
     return {
       //最近一周服务使用折线图
       servicelineChart:'',
-      servicelineoption:'',
-      //用户数量变化统计
-      usersnumlineChart:'',
-      usersnumlineoption:'',
-      //最近一周官方服务异常服务统计
-      serviceexceptionsChart:'',
-      serviceexceptionsoption:'',
-      //官方服务使用趋势图（所有服务数量总和）
-      servicesallChart:'',
-      servicesalloption:'',
-      //服务总量统计
-      servicestatisticsChart:'',
-      servicestatisticsoption:'',
-      
-      }
-  },
-  methods: {  
-
-    },
-  created(){
-    //页面加载时执行
-    
-  },
-  mounted(){
-    //页面加载后执行
-    var echarts = require('echarts');
-    // 基于准备好的dom，初始化echarts实例
-    //最近一周使用趋势
-    this.servicelineChart = echarts.init(document.getElementById('servicelineusage'));
-    this.servicelineoption = 
-            {
+      servicelineoption:{
               // title: {
               //     text: '堆叠区域图'
               // },
@@ -284,50 +254,43 @@ export default {
                       name:'邮件营销',
                       type:'line',
                       stack: '总量',
-                      areaStyle: {},
+                      areaStyle:'',
                       data:[120, 132, 101, 134, 90, 230, 210]
                   },
                   {
                       name:'联盟广告',
                       type:'line',
                       stack: '总量',
-                      areaStyle: {},
+                      areaStyle:'',
                       data:[220, 182, 191, 234, 290, 330, 310]
                   },
                   {
                       name:'视频广告',
                       type:'line',
                       stack: '总量',
-                      areaStyle: {},
+                      areaStyle:'',
                       data:[150, 232, 201, 154, 190, 330, 410]
                   },
                   {
                       name:'直接访问',
                       type:'line',
                       stack: '总量',
-                      areaStyle: {normal: {}},
+                      areaStyle:'',
                       data:[320, 332, 301, 334, 390, 330, 320]
                   },
                   {
                       name:'搜索引擎',
                       type:'line',
                       stack: '总量',
-                      label: {
-                          normal: {
-                              show: true,
-                              position: 'top'
-                          }
-                      },
-                      areaStyle: {normal: {}},
+                      areaStyle:'',
                       data:[820, 932, 901, 934, 1290, 1330, 1320]
                   }
               ]
-          };
-    this.servicelineChart.setOption(this.servicelineoption);
-    //用户数量变化
-    this.usersnumlineChart = echarts.init(document.getElementById('usersnumlinesticsusage'));
-    this.usersnumlineoption = 
-            {
+          },
+      //用户数量变化统计
+      usersnumlineChart:'',
+      usersnumlineoption:
+        {
               tooltip: {
                   trigger: 'axis'
               },
@@ -356,14 +319,11 @@ export default {
                       data:[120, 122, 132, 134, 134, 230, 231]
                   },
               ]
-          };
-    this.usersnumlineChart.setOption(this.usersnumlineoption);
-
-
-    //最近一周官方服务异常服务统计
-    this.serviceexceptionsChart = echarts.init(document.getElementById('serviceexceptions'));
-    this.serviceexceptionsoption = 
-          {
+          },
+      //最近一周官方服务异常服务统计
+      serviceexceptionsChart:'',
+      serviceexceptionsoption:
+        {
               tooltip: {
                   trigger: 'axis'
               },
@@ -416,11 +376,70 @@ export default {
                       data:[820, 932, 901, 934, 1290, 1330, 1320]
                   }
               ]
-          };
+          },
+      //官方服务使用趋势图（所有服务数量总和）
+      servicesallChart:'',
+      servicesalloption:'',
+      //服务总量统计
+      servicestatisticsChart:'',
+      servicestatisticsoption:
+        {
+              tooltip: {
+                  trigger: 'axis',
+                  axisPointer: {
+                      type: 'shadow'
+                  }
+              },
+              legend: {
+                  data: ['服务使用次数']
+              },
+              grid: {
+                  left: '3%',
+                  right: '4%',
+                  bottom: '3%',
+                  containLabel: true
+              },
+              xAxis: {
+                  type: 'value',
+                  boundaryGap: [0, 0.01]
+              },
+              yAxis: {
+                  type: 'category',
+                  data: ['IMGTI-4','IMGTI-3','IMGTI-2','IMGTI-1','BBTI-1','优化算法工具包']
+              },
+              series: [
+                  {
+                      name: '服务使用次数',
+                      type: 'bar',
+                      data: [18203, 23489, 29034, 104970, 131744, 630230]
+                  },
+                 
+              ]
+          },
+      }
+  },
+  methods: {  
+
+    },
+  created(){
+    //页面加载时执行
+    
+  },
+  mounted(){
+    //页面加载后执行
+    var echarts = require('echarts');
+    // 基于准备好的dom，初始化echarts实例
+    //最近一周使用趋势
+    this.servicelineChart = echarts.init(document.getElementById('servicelineusage'));
+    this.servicelineChart.setOption(this.servicelineoption);
+    //用户数量变化
+    this.usersnumlineChart = echarts.init(document.getElementById('usersnumlinesticsusage'));
+    this.usersnumlineChart.setOption(this.usersnumlineoption);
+    //最近一周官方服务异常服务统计
+    this.serviceexceptionsChart = echarts.init(document.getElementById('serviceexceptions'));
     this.serviceexceptionsChart.setOption(this.serviceexceptionsoption);
     //官方服务使用趋势图（所有服务数量总和）
     var data = [["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137],["2000-06-22",128],["2000-06-23",85],["2000-06-24",94],["2000-06-25",71],["2000-06-26",106],["2000-06-27",84],["2000-06-28",93],["2000-06-29",85],["2000-06-30",73],["2000-07-01",83],["2000-07-02",125],["2000-07-03",107],["2000-07-04",82],["2000-07-05",44],["2000-07-06",72],["2000-07-07",106],["2000-07-08",107],["2000-07-09",66],["2000-07-10",91],["2000-07-11",92],["2000-07-12",113],["2000-07-13",107],["2000-07-14",131],["2000-07-15",111],["2000-07-16",64],["2000-07-17",69],["2000-07-18",88],["2000-07-19",77],["2000-07-20",83],["2000-07-21",111],["2000-07-22",57],["2000-07-23",55],["2000-07-24",60]];
-
     var dateList = data.map(function (item) {
       return item[0];
     });
@@ -458,50 +477,7 @@ export default {
 
     //使用量统计
     this.servicstatisticseChart = echarts.init(document.getElementById('servicestatisticsusage'));
-    this.servicestatisticsoption = 
-          {
-              // title: {
-              //     text: '世界人口总量',
-              //     subtext: '数据来自网络'
-              // },
-              tooltip: {
-                  trigger: 'axis',
-                  axisPointer: {
-                      type: 'shadow'
-                  }
-              },
-              legend: {
-                  data: ['服务使用次数']
-              },
-              grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-              },
-              xAxis: {
-                  type: 'value',
-                  boundaryGap: [0, 0.01]
-              },
-              yAxis: {
-                  type: 'category',
-                  data: ['IMGTI-4','IMGTI-3','IMGTI-2','IMGTI-1','BBTI-1','优化算法工具包']
-              },
-              series: [
-                  {
-                      name: '服务使用次数',
-                      type: 'bar',
-                      data: [18203, 23489, 29034, 104970, 131744, 630230]
-                  },
-                 
-              ]
-          };
-        //初始化图样
-      this.servicstatisticseChart.setOption(this.servicestatisticsoption);
-      //
-
-
-    
+    this.servicstatisticseChart.setOption(this.servicestatisticsoption);
   }
 }
 </script>

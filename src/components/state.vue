@@ -49,14 +49,14 @@
         <font style="font-size: 1.4em;">声明</font>
       </h1>
       <h3 style="margin: 25px 0px 30px 0px;">
-        <font style="color: #606266;font-weight: normal;letter-spacing: 0.14em;">蜂巢系统的使命是确保人工一般智能对全人类都有益。我们是一个由100人组成的团队，总部设在加利福尼亚州旧金山。OpenAI宪章描述了在我们执行任务时指导我们的原则。</font>
+        <font style="color: #606266;font-weight: normal;letter-spacing: 0.14em;">蜂巢系统的使命是确保程序都是对社会有正面影响，并且我们的团队是来自五湖四海的线上工作者，我们在开发应用和程序的时候都在执行我们的执行标准。</font>
       </h3>
       <el-button type="info" plain style="letter-spacing: 0.14em;">查看宪章&nbsp<i class="el-icon-arrow-right"></i></el-button>
       <h3 style="margin: 50px 0px 0px 0px;">
         <font style="font-size: 1.6em;">我们所做的</font>
       </h3>
       <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们致力于AI能力，安全和政策，特别强调强化学习，机器人和生成模型。</font>
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们致力于有趣的应用和算法进行开发。</font>
       </h3>
       <h3 style="margin: 30px 0px 0px 0px;">
         <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们最近的一些成果包括：</font>
@@ -84,7 +84,7 @@
       <font style="font-size: 1.6em;">参与者</font>
     </h3>
     <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">OpenAI由OpenAI Nonprofit董事会管理，该公司由OpenAI LP员工Greg Brockman（董事长兼首席技术官），Ilya Sutskever（首席科学家）和Sam Altman（首席执行官）以及非员工Adam D'Angelo，Holden Karnofsky， Reid Hoffman，Sue Yoon和Tasha McCauley。
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">蜂巢系统由 CMAPLE、EMMA 提供核心支持，由吴KangLi（前端技术支持）、颜ChengJie（前端技术支持）提供技术支持。
         </font>
     </h3>
     <h3 style="margin: 30px 0px 20px 0px;">
@@ -92,7 +92,7 @@
     </h3>
     <el-button type="info" plain style="letter-spacing: 0.14em;">访问OPEN AI&nbsp<i class="el-icon-arrow-right"></i></el-button>
     <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">任何问题？电子邮件：press@openai.com。</font>
+        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">任何问题？电子邮件：congfeng12@163.com。</font>
     </h3>
     </div>
     <!-- 页尾 -->
@@ -151,7 +151,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->

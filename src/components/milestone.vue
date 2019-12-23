@@ -64,61 +64,6 @@
         <el-button :key="b.id" v-for="b in milestonebutton" type="info" plain :icon="b.icon" style="letter-spacing: 0.15em" @click="open(b.url)">{{b.title}}</el-button>
       </div>
       <div v-html="content"></div>
-      <!-- 页尾巴 -->
-      <div style="width: 1500px;margin: 0 auto 0;">
-        <ol style="padding-left: 0px;margin:100px 0px 0px 0px;">
-              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">脚注</b>
-                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
-                      与此同时进行的补充研究对大批量培训进行了细致的实验测试，并对以前的文献进行了广泛的回顾，清除了早期工作中的一些不一致之处。他们发现任务之间的并行可能性存在显着差异，我们的工作似乎解释了这种差异的主要部分。他们的工作还表明，大批量培训不会影响泛化。我们相信，有系统的调查，如这一个，其他人都到外地非常有价值的，并且我们致力于在继续工作“AI的科学。” ↩
-                    </b>
-                  </div>  
-              </li>
-              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">作者</b>
-                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
-                      Sam McCandlish Jared Kaplan Dario Amodei
-                    </b>
-                  </div>  
-              </li>
-              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">致谢</b>
-                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
-                      感谢OpenAI Dota团队（Greg Brockman，Brooke Chan，PrzemysławDebiak，Christy Dennison，David Farhi，RafałJózefowicz，Jakub Pachocki，Michael Petrov，HenriquePondé，Jonathan Raiman，Szymon Sidor，Jie Tang，Filip Wolski和Susan Zhang）他们对这项研究的贡献。
-                    </b>
-                  </div>  
-              </li>
-              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">编者</b>
-                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
-                      杰克克拉克和阿什利Pilipiszyn
-                    </b>
-                  </div>  
-              </li>
-              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">设计</b>
-                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
-                      贾斯汀杰伊王
-                    </b>
-                  </div>  
-              </li>
-              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">封面图稿</b>
-                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
-                      本巴里
-                    </b>
-                  </div>  
-              </li>
-            </ol>
-      </div>
-
-
     <!-- 页尾 -->
     <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 70px;">
       <div style="height: 30px;width: 220px;float: left;margin-top: 10px;">
@@ -175,7 +120,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -198,7 +143,7 @@ export default {
 
     return {
       //里程碑配图
-      milestoneimgurl:'https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg',
+      milestoneimgurl:'../../static/notistest2.jpg',
       //里程碑标题
       title:'了解蜂巢系统',
       //里程碑简介
@@ -314,6 +259,59 @@ export default {
           </h3>
           
         </div>
+      </div>
+      <!-- 页尾巴 -->
+      <div style="width: 1500px;margin: 0 auto 0;">
+        <ol style="padding-left: 0px;margin:100px 0px 0px 0px;">
+              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
+                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">脚注</b>
+                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
+                      与此同时进行的补充研究对大批量培训进行了细致的实验测试，并对以前的文献进行了广泛的回顾，清除了早期工作中的一些不一致之处。他们发现任务之间的并行可能性存在显着差异，我们的工作似乎解释了这种差异的主要部分。他们的工作还表明，大批量培训不会影响泛化。我们相信，有系统的调查，如这一个，其他人都到外地非常有价值的，并且我们致力于在继续工作“AI的科学。” ↩
+                    </b>
+                  </div>  
+              </li>
+              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
+                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">作者</b>
+                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
+                      Sam McCandlish Jared Kaplan Dario Amodei
+                    </b>
+                  </div>  
+              </li>
+              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
+                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">致谢</b>
+                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
+                      感谢OpenAI Dota团队（Greg Brockman，Brooke Chan，PrzemysławDebiak，Christy Dennison，David Farhi，RafałJózefowicz，Jakub Pachocki，Michael Petrov，HenriquePondé，Jonathan Raiman，Szymon Sidor，Jie Tang，Filip Wolski和Susan Zhang）他们对这项研究的贡献。
+                    </b>
+                  </div>  
+              </li>
+              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
+                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">编者</b>
+                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
+                      杰克克拉克和阿什利Pilipiszyn
+                    </b>
+                  </div>  
+              </li>
+              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
+                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">设计</b>
+                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
+                      贾斯汀杰伊王
+                    </b>
+                  </div>  
+              </li>
+              <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
+                <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">封面图稿</b>
+                  <div style="float: right;width: 1110px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
+                    <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">
+                      本巴里
+                    </b>
+                  </div>  
+              </li>
+            </ol>
       </div>`,
       //微信弹窗属性
       WeChartVisible: false,

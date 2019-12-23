@@ -15,7 +15,7 @@
         <!-- 主题文字 -->
         <div style="width: 240px;float: left;margin: 0px;padding: 12px 0px 0px 0px;text-align: left;">
           <a :href="HomePageTextUrl" style="text-decoration: none;">
-            <h3 style="color: #FFFFFF;font-size: 22px;">神经网络框架·蜂巢系统</h3>
+            <h3 style="color: #FFFFFF;font-size: 22px;">蜂巢系统·个人服务网站</h3>
           </a>
         </div>
         <!-- 标题栏按钮按钮 -->
@@ -56,7 +56,7 @@
         <div style="width: 800px;height: auto;float: left;">
           <!-- 大标题 -->
           <h1 style="margin: 0px 0px 30px 0px;">
-            <font style="color: #FFFFFF;font-weight: normal !important;">发现并开发安全可靠的人工智能服务。</font>
+            <font style="color: #FFFFFF;font-weight: normal !important;">发现并开发有趣的应用或者服务。</font>
           </h1>
           <!-- 学到更多 - 链接 -->
           <a  :href="AboutPageUrl" style="color:#FFFFFF;text-decoration: none;font-size: 14.4px;letter-spacing: 0.3em;">了解更多&nbsp<i class="el-icon-arrow-right"></i></a>
@@ -72,7 +72,7 @@
           <el-col v-for="progres in Progress" v-bind:key="progres.id" :span="6" >
             <a :href="progres.url" style="text-decoration: none;" target="_blank">
               <el-card :body-style="{ padding: '12px' }" shadow="always">
-                <p style="margin: 5px 0px 30px 0px;font-weight: 700;">{{progres.text}}</p>
+                <p style="margin: 5px 0px 30px 0px;font-weight: 700;">{{progres.title}}</p>
                 <img style="width: 100%;" :src="progres.jpgurl">
             </el-card>
             </a>
@@ -93,7 +93,7 @@
       <div style="width: 962px;margin: 0 auto 0;height: auto;margin-top: 90px;">
         <h3>
           <font style="font-size: 27px;font-weight: normal;">
-            蜂巢系统的使命是确保人工智能对全人类都有益。我们是一个完全有相同的目标组成的一个团队。我们没有固定的办公地点，只需要在有网络的地方我们就可以进行办公和沟通，这并不会打扰到你原来的工作。该【宪章】介绍了指导我们执行我们的任务的基本原则。
+            蜂巢系统的使命是发现并开发有趣的应用或者服务。我们是一个完全有相同的目标组成的一个团队。我们没有固定的办公地点，只需要在有网络的地方我们就可以进行办公和沟通，这并不会打扰到你原来的工作。该【宪章】介绍了指导我们执行我们的任务的基本原则。
           </font>
         </h3>
         <p></p>
@@ -114,7 +114,7 @@
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
                   <a :href="notice.url" style="text-decoration:none;" target="_blank">
                     <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 175px;">{{ notice.date }}</b>
-                    <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ notice.text }}</b>
+                    <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ notice.title }}</b>
                   </a> 
                 </li>
             </div>
@@ -133,7 +133,7 @@
         <div style="width: 470px;margin:0px;float: left;">
           <h2 style="letter-spacing: 0.1em;">加入我们</h2>
           <div style="margin:0px 0px 168px 0px;">
-            <font style="font-size: 20px;">加入我们一起学习、开发、完善蜂巢系统。一起打造商业级的开源深度学习神经网络架构，和优化算法工具包。</font>
+            <font style="font-size: 20px;">加入我们一起学习、开发、完善蜂巢系统。一起打造更多有趣的应用或者服务。</font>
           </div>
           <p></p>
           <a :href="JoinPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 13.3px;letter-spacing: 0.3em;">
@@ -224,7 +224,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -247,18 +247,18 @@ export default {
       WeChartVisible: false,
       //公告展示
       Progress:[
-        { id:1, url:'/milestone',text:'了解蜂巢',jpgurl:'../../static/notistest2.jpg'},
-        { id:2, url:'/milestone',text:'蜂巢系统页面开发流程',jpgurl:'../../static/notistest3.jpg'},
-        { id:3, url:'/milestone',text:'蜂巢系统宪章',jpgurl:'../../static/notistest4.jpg'},
-        { id:4, url:'/milestone',text:'蜂巢系统后台使用的相关技术',jpgurl:'../../static/notistest5.jpg'}
+        { id:null, url:'',title:'',jpgurl:''},
+        { id:null, url:'',title:'',jpgurl:''},
+        { id:null, url:'',title:'',jpgurl:''},
+        { id:null, url:'',title:'',jpgurl:''}
       ],
       //公告列表
       Notices: [
-        { date:'2019-07-21',text: '为什么负责人工智能开发需要安全合作',url: '/Announcement'},
-        { date:'2019-07-20',text: '只能学习研讨会2019',url: '' },
-        { date:'2019-07-19',text: '机械学系学者大会' ,url: ''},
-        { date:'2019-07-18',text: '优化算法' ,url: "http://127.0.0.4"},
-        { date:'2019-07-17',text: '深度学习网络' ,url:''}
+        { id:null,date:'',title: '',url: ''},
+        { id:null,date:'',title: '',url: ''},
+        { id:null,date:'',title: '',url: ''},
+        { id:null,date:'',title: '',url: ''},
+        { id:null,date:'',title: '',url: ''},
       ],
       //加入我们展示图
       Joinimg1:'../../static/join_us_img1.jpg',
@@ -288,6 +288,84 @@ export default {
       //github
       GitHubPagerl:'https://github.com/congfeng12'
     }
+  },
+  methods: {  
+      //获取最新的里程碑信息
+      getMilestoneAtHome(){
+        //设置必要参数
+        var c_Progress = this.Progress;
+        var that = this;
+        //请求里程碑信息
+         this.$Axios.post('/Milestone/getMilestoneAtHome',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+          //处理里程碑信息
+          for (var i = 0; i < 4; ++i) {
+            c_Progress[i].id = res.data.RTDATA[i].id;
+            c_Progress[i].title = res.data.RTDATA[i].title;
+            c_Progress[i].url = '/milestone?id='+res.data.RTDATA[i].id;
+            var c_imgurl = res.data.RTDATA[i].imgurl.split("/");
+            var imgnum = c_imgurl.length-1;
+            c_Progress[i].jpgurl = '../../static/'+c_imgurl[imgnum];
+          }
+            //that.success_Message(res.data.RTMSG);
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }, 
+      //获取公告文章
+      getAnnouncementAtHome(){
+        //设置必要参数
+        var c_Notices = this.Notices;
+        var that = this;
+        //请求公告信息
+         this.$Axios.post('/Announcement/getAnnouncementAtHome',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理公告信息
+            for (var i = 0; i < 5; ++i) {
+              c_Notices[i].id = res.data.RTDATA[i].id;
+              c_Notices[i].date = res.data.RTDATA[i].creattime;
+              c_Notices[i].title = res.data.RTDATA[i].title;
+              c_Notices[i].url = '/Announcement?id='+res.data.RTDATA[i].id;
+            }
+            //that.success_Message(res.data.RTMSG);
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      },
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
+  created(){
+    //页面加载时执行
+   //获取主页里程碑信息
+    this.getMilestoneAtHome();
+    //获取公告信息
+    this.getAnnouncementAtHome();
+  },
+  mounted(){
+    //页面加载后执行
+     
   }
 
 }

@@ -56,7 +56,7 @@
       <!-- 内容 -->
       <div style="width: 963px;height: auto;margin:0 auto 0;padding:15px 0px 40px 0px;">
         <font style="font-size: 30px;">
-          蜂巢系统是一个致力于解决广大用户相关问题的人工智能系统，我们团队将保证我们所开发的人工智能将适用于益于全人类的方向。蜂巢系统采用分布式的系统架构，可以灵活的管理相关的模块。我们的办公地点灵活，只要有网络并且你有相关的技术和兴趣就可以加入我们，一起完善蜂巢系统。
+          蜂巢系统·个人服务网站是CMAPLE搭建的个人网站，主要用于发现和开发有趣的应用和服务。我们将这些服务免费开源，所有人都可以使用或者针对自己的需求进行二次开发。或者加入我们，我们的办公地点灵活，只要有网络并且你有相关的技术和兴趣就可以加入我们，一起完善蜂巢系统。
         </font>
       </div>
     </div>
@@ -67,7 +67,7 @@
     <!-- 章程说明 -->
     <div style="width: 713px;height: auto;margin: 0 auto 0;padding: 60px 0px 40px 0px;">
       <font style="font-size: 1.3em;color: #303133;font-family:Hiragino Sans GB;">
-        蜂巢系统的使命是确保人工智能（AGI） - 我们所说的高度自治系统，在最具经济价值的工作中胜过人类 - 使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。
+        蜂巢系统的使命是发现并开发有趣的应用或者服务，让我们的工作能对全人类有意。我们将开源这些程序，如果你对我们的工作有兴趣，也可以加入我们，和我们一起完善蜂巢系统。
       </font>
       <p style="height: 10px;"></p>
       <a :href="CharterPageUrl" style="color:#C0C4CC;text-decoration: none;font-size: 10px;letter-spacing: 0.3em;">我们的宪章&nbsp<i class="el-icon-arrow-right"></i></a>
@@ -75,11 +75,11 @@
     <!-- 团队说明 -->
     <div style="width: 713px;height: auto;margin: 0 auto 0;padding: 40px 0px 60px 0px;border-top:1px solid #DCDFE6;">
       <font style="font-size: 1.3em;color: #303133;font-family:Hiragino Sans GB;">
-        蜂巢系统由CMAPLE管理，由一下人员为该项目提供了技术支持：吴KangLi（前端技术支持）、颜ChengJie（前端技术支持）。
+        蜂巢系统由CMAPLE管理，由一下人员为该项目提供了技术支持：吴 KangLi（前端技术支持）、颜 ChengJie（前端技术支持）。
       </font>
       <p></p>
       <font style="font-size: 1.3em;color: #303133;font-family:Hiragino Sans GB;">
-        我们的投资者包括: null。我们很幸运能够与任务一致，注重影响，乐于助人的投资者！
+        我们的投资者包括: 暂无。我们很幸运能够任务一致，乐于助人的投资者！
       </font>
       <p style="height: 10px;"></p>
       <a :href="StatePageUrl" style="color:#C0C4CC;text-decoration: none;font-size: 10px;letter-spacing: 0.3em;">了解更多关于我们的信息&nbsp<i class="el-icon-arrow-right"></i></a>
@@ -94,7 +94,7 @@
       <div style="width: 1500px;height: auto;margin: 0 auto 0;margin-top: 60px;padding: 20px 0px 20px 0px;">
       <el-timeline>
         <h3 style="font-size: 1.5em;letter-spacing: 0.25em;line-height: 1.4;">时间轴</h3>
-        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.date" placement="top" v-bind:key="timeline.id">
+        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.eventdate" placement="top" v-bind:key="timeline.id">
           <el-card style="width: 1370px;">
             <h3 style="font-size: 1.2em;letter-spacing: 0.075em;">{{timeline.title}}</h3>
             <p style="font-size: .9em;letter-spacing: 0.025em;color: #909399;">{{timeline.msg}}</p>
@@ -110,7 +110,7 @@
         <div style="width: 470px;margin:0px;float: right;">
           <h2 style="letter-spacing: 0.1em;">加入我们</h2>
           <div style="margin:0px 0px 168px 0px;">
-            <font style="font-size: 20px;">加入我们一起学习、开发、完善蜂巢系统。一起打造商业级的开源深度学习神经网络架构，和优化算法工具包。</font>
+            <font style="font-size: 20px;">加入我们一起学习、开发、完善蜂巢系统。一起打造更多有趣的应用或者服务。</font>
           </div>
           <p></p>
           <a :href="JoinPageUrl" style="text-decoration: none;color:#C0C4CC;text-decoration: none;font-size: 13.3px;letter-spacing: 0.3em;">
@@ -201,7 +201,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -226,9 +226,7 @@ export default {
       about1:'../../static/about1.jpg',
       about2:'../../static/about2.jpg',
       //时间轴相关数据
-      Timelines:[
-        {id:1,date:'2019-01-16',title:'蜂巢系统项目立项',msg:'开始构建系统的架构及相关技术整理'},
-        {id:2,date:'2019-05-28',title:'开始官网前台页面的开发',msg:'开始整理vue,js相关架构信息，并开始开发官网前台页面'},
+      Timelines:[      
       ],
       //加入我们展示图
       Joinimg1:'../../static/join_us_img1.jpg',
@@ -258,6 +256,48 @@ export default {
       //github
       GitHubPagerl:'https://github.com/congfeng12'
     }
+  },
+  methods: {  
+      //获取最新的里程碑信息
+      getTimeAxisAtHome(){
+        //设置必要参数
+        var c_Timelines = [];
+        var that = this;
+        //请求时间轴信息
+         this.$Axios.post('/TimeAxis/getTimeAxisAtHome',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            that.Timelines = res.data.RTDATA;
+            //that.success_Message(res.data.RTMSG);
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }, 
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
+  created(){
+    //页面加载时执行
+   //获取时间轴信息
+    this.getTimeAxisAtHome();
+  },
+  mounted(){
+    //页面加载后执行
+     
   }
 }
 </script>

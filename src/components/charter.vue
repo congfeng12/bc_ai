@@ -50,7 +50,9 @@
           <!-- 标题及文字 -->
           <div style="width: 730px;height: 593px;float: right;">
             <h1 style="font-size: 40px;margin: 0px 0px 15px 0px;">蜂巢系统·宪章</h1>
-            <b style="color: #606266;letter-spacing: 0.2em;font-size: 16px;">我们发布了蜂巢系统纲领，并在其中描述了我们履行蜂巢系统使命的原则。这份宣言包含了许多我们实践的重要原则，它是蜂巢系统内外许多人在两年里不断完善人工智能发展战略的努力的结晶。达成通用人工智能的时间表仍具有很大的不确定性，但这份纲领将指导我们在整个开发过程中致力于为人类的最佳利益行事。</b>
+            <b style="color: #606266;letter-spacing: 0.2em;font-size: 16px;">
+            我们发布了蜂巢系统宪章，并在其中描述了我们履行蜂巢系统使命的原则。这份宪章包含了许多我们实践的重要原则，它是蜂巢系统内外许多人不断完善蜂巢系统能发展战略的努力的结晶。我们的所有开发的相关服务都将遵从这一宪章。
+            </b>
             <p></p>
             <div style="margin-top: 390px;color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;">2019年7月26日</div>
             <div style="color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;">6分钟阅读</div>
@@ -179,7 +181,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -204,20 +206,24 @@ export default {
       //标签初始化位置
       tabPosition: 'cn',
       //宪章内容
-      chartermsg:[
-        'OpenAI的使命是确保通用人工智能 (Artificial General Intelligence, AGI)，即一种高度自主且在大多数具有经济价值的工作上超越人类的系统，将为全人类带来福祉。我们不仅希望直接建造出安全的、符合共同利益的通用人工智能，而且愿意帮助其它研究机构共同建造出这样的通用人工智能以达成我们的使命。为了达到这个目标，我们制订了如下原则：',
+      chartermsg:
+      [
+        '蜂巢系统是个人服务网站，主要用于开发有趣的相关服务程序，或者有助程序开发的优化工具。 我们希望能开发出符合需求的服务或者工具，并且帮助其他个人或组织机构优化程序。位列达到这个目标，我们制定了如下原则：',
         '广泛造福社会',
-        '我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。',
-        '我们的首要任务是对人类文明负责。我们预计需要调用大量资源来完成这一使命。同时，我们会积极行动以减少雇员和利益相关者间的利益冲突，确保大多数人可以受益。',
+        '我们承诺在通用服务和工具的开发过程中，保证程序是用于帮助个人或组织机构优化程序，并且服务及工具的应用都无损人类。',
+        '我们的首要任务是对人类文明负责。我们预计需要调用大量资源来完成这一使命。同时，我们会积极行动以减少开发者和利益相关者间的利益冲突，确保大多数人可以受益。',
+
         '关注长远安全问题',
-        'OpenAI致力于进行能够确保通用人工智能安全的研究。我们力求在整个人工智能研究领域内推动这类研究项目的广泛应用。',
-        '我们担心通用人工智能在发展后期将演变成一场激烈的竞赛，导致缺乏充足的时间进行安全防范。因此，如果一个与人类价值观相符、注重安全的项目领先于我们将近达成通用人工智能，我们承诺将停止竞赛，幷转而协助这个项目。我们会针对个别情况设计具体的合作方案。不过，一个典型的触发条件可能会是「这个项目在未来两年内能够成功研发通用人工智能的概率超过一半」。',
+        '蜂巢系统致力于确保服务和工具，我们力求将所有服务和工具研究项目的广泛应用。',
+        '我们担心在开发的过程中将会产生激烈的竞争，导致缺乏充足时间验证程序的安全性。因此，如果有人附和有益于人类价值的项目启动，并注重安全的项目领先我们，我们将协助其完成这个项目，我们会针对个别情况设计具体的合作方案。',
+
         '引领技术研究',
-        '为了能有效地促进通用人工智能对社会的正面影响，OpenAI必须站在人工智能技术研究的前沿。我们认为仅做政策和安全性的倡导是过于单薄的。',
-        '我们相信人工智能在达成通用人工智能之前便会产生广泛的社会影响。OpenAI希望在符合我们的使命和专长的领域中努力保持领先地位。',
+        '为了能有效的促进通用程序对社会的正面影响。蜂巢系统将权力开发程序，并且致力于站在技术研究的前沿。',
+        '我们相信程序对社会的正面影响，蜂巢系统希望在附和我们的使命和专长的同时可以努力保持领先地位。',
+
         '保持合作意愿',
-        '我们会和其它研究机构以及政策制定机构积极合作。我们希望可以建立一个国际化的社区，共同应对通用人工智能的全球性挑战。',
-        '我们致力于研发公共物品，以帮助社会走向与通用人工智能共处的时代。目前这包括公开发表大多数的人工智能研究成果。OpenAI预料未来对安全和安保的考虑将会使我们减少发表传统的研究成果，而更注重分享安全、政策和标准化相关的研究。'
+        '我们会和其它研究机构以及政策制定机构积极合作。我们希望可以建立一个国际化的社区。',
+        '我们将会将确认安全的程序进行开源，让全球所有的相关工作人员受益，并且我们希望可以和全球的任何程序研发人员合作一起开发安全、高效、易于使用的程序。'
       ],
       //宪章表格内容
       synopsis:[
@@ -256,40 +262,45 @@ export default {
   },methods: {
     //切换语言类型
     switchs() {
-        console.log(1111111);
         if ('cn' == this.tabPosition ) {
           this.chartermsg = 
           [
-            'OpenAI的使命是确保通用人工智能 (Artificial General Intelligence, AGI)，即一种高度自主且在大多数具有经济价值的工作上超越人类的系统，将为全人类带来福祉。我们不仅希望直接建造出安全的、符合共同利益的通用人工智能，而且愿意帮助其它研究机构共同建造出这样的通用人工智能以达成我们的使命。为了达到这个目标，我们制订了如下原则：',
+            '蜂巢系统是个人服务网站，主要用于开发有趣的相关服务程序，或者有助程序开发的优化工具。 我们希望能开发出符合需求的服务或者工具，并且帮助其他个人或组织机构优化程序。位列达到这个目标，我们制定了如下原则：',
             '广泛造福社会',
-            '我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。',
-            '我们的首要任务是对人类文明负责。我们预计需要调用大量资源来完成这一使命。同时，我们会积极行动以减少雇员和利益相关者间的利益冲突，确保大多数人可以受益。',
+            '我们承诺在通用服务和工具的开发过程中，保证程序是用于帮助个人或组织机构优化程序，并且服务及工具的应用都无损人类。',
+            '我们的首要任务是对人类文明负责。我们预计需要调用大量资源来完成这一使命。同时，我们会积极行动以减少开发者和利益相关者间的利益冲突，确保大多数人可以受益。',
+
             '关注长远安全问题',
-            'OpenAI致力于进行能够确保通用人工智能安全的研究。我们力求在整个人工智能研究领域内推动这类研究项目的广泛应用。',
-            '我们担心通用人工智能在发展后期将演变成一场激烈的竞赛，导致缺乏充足的时间进行安全防范。因此，如果一个与人类价值观相符、注重安全的项目领先于我们将近达成通用人工智能，我们承诺将停止竞赛，幷转而协助这个项目。我们会针对个别情况设计具体的合作方案。不过，一个典型的触发条件可能会是「这个项目在未来两年内能够成功研发通用人工智能的概率超过一半」。',
+            '蜂巢系统致力于确保服务和工具，我们力求将所有服务和工具研究项目的广泛应用。',
+            '我们担心在开发的过程中将会产生激烈的竞争，导致缺乏充足时间验证程序的安全性。因此，如果有人附和有益于人类价值的项目启动，并注重安全的项目领先我们，我们将协助其完成这个项目，我们会针对个别情况设计具体的合作方案。',
+
             '引领技术研究',
-            '为了能有效地促进通用人工智能对社会的正面影响，OpenAI必须站在人工智能技术研究的前沿。我们认为仅做政策和安全性的倡导是过于单薄的。',
-            '我们相信人工智能在达成通用人工智能之前便会产生广泛的社会影响。OpenAI希望在符合我们的使命和专长的领域中努力保持领先地位。',
+            '为了能有效的促进通用程序对社会的正面影响。蜂巢系统将权力开发程序，并且致力于站在技术研究的前沿。',
+            '我们相信程序对社会的正面影响，蜂巢系统希望在附和我们的使命和专长的同时可以努力保持领先地位。',
+
             '保持合作意愿',
-            '我们会和其它研究机构以及政策制定机构积极合作。我们希望可以建立一个国际化的社区，共同应对通用人工智能的全球性挑战。',
-            '我们致力于研发公共物品，以帮助社会走向与通用人工智能共处的时代。目前这包括公开发表大多数的人工智能研究成果。OpenAI预料未来对安全和安保的考虑将会使我们减少发表传统的研究成果，而更注重分享安全、政策和标准化相关的研究。'
+            '我们会和其它研究机构以及政策制定机构积极合作。我们希望可以建立一个国际化的社区。',
+            '我们将会将确认安全的程序进行开源，让全球所有的相关工作人员受益，并且我们希望可以和全球的任何程序研发人员合作一起开发安全、高效、易于使用的程序。'
           ]
         }else{
           this.chartermsg = 
           [
-            'OpenAI’s mission is to ensure that artificial general intelligence (AGI)—by which we mean highly autonomous systems that outperform humans at most economically valuable work—benefits all of humanity. We will attempt to directly build safe and beneficial AGI, but will also consider our mission fulfilled if our work aids others to achieve this outcome. To that end, we commit to the following principles:',
-            'Broadly Distributed Benefits',
-            'We commit to use any influence we obtain over AGI’s deployment to ensure it is used for the benefit of all, and to avoid enabling uses of AI or AGI that harm humanity or unduly concentrate power.',
-            'Our primary fiduciary duty is to humanity. We anticipate needing to marshal substantial resources to fulfill our mission, but will always diligently act to minimize conflicts of interest among our employees and stakeholders that could compromise broad benefit.',
-            'Long-Term Safety',
-            'We are committed to doing the research required to make AGI safe, and to driving the broad adoption of such research across the AI community.',
-            'We are concerned about late-stage AGI development becoming a competitive race without time for adequate safety precautions. Therefore, if a value-aligned, safety-conscious project comes close to building AGI before we do, we commit to stop competing with and start assisting this project. We will work out specifics in case-by-case agreements, but a typical triggering condition might be “a better-than-even chance of success in the next two years.”',
-            'Technical Leadership',
-            'To be effective at addressing AGI’s impact on society, OpenAI must be on the cutting edge of AI capabilities—policy and safety advocacy alone would be insufficient.',
-            'We believe that AI will have broad societal impact before AGI, and we’ll strive to lead in those areas that are directly aligned with our mission and expertise.',
-            'Cooperative Orientation',
-            'We will actively cooperate with other research and policy institutions; we seek to create a global community working together to address AGI’s global challenges.',
-            'We are committed to providing public goods that help society navigate the path to AGI. Today this includes publishing most of our AI research, but we expect that safety and security concerns will reduce our traditional publishing in the future, while increasing the importance of sharing safety, policy, and standards research.'
+            'Honeycomb system is a personal service website, which is mainly used to develop interesting related service programs or optimization tools that help program development. We want to develop services or tools that meet your needs and help other individuals or organizations optimize their processes. To achieve this goal, we have formulated the following principles:',
+            'Broadly benefit society',
+            'We promise that in the development of general services and tools, the program is used to help individuals or organizations optimize the program, and the application of services and tools is not harmful to humans.',
+            'Our priority is to be responsible for human civilization. We anticipate that significant resources will be required to accomplish this mission. At the same time, we will proactively reduce conflicts of interest between developers and stakeholders, and ensure that most people can benefit.',
+
+            'Focus on long-term security issues',
+            'Honeycomb System is committed to ensuring services and tools, and we strive to apply a wide range of services and tools research projects.',
+            'We are concerned that fierce competition will occur during the development process, resulting in a lack of sufficient time to verify the security of the program. Therefore, if someone echoes the start of a project that is good for human value, and the safety-oriented project leads us, we will assist them to complete this project, and we will design specific cooperation programs for individual cases.',
+
+            'Leading technology research',
+            'In order to effectively promote the positive impact of common procedures on society. The hive system will develop programs and is committed to staying at the forefront of technological research.',
+            'We believe that the process has a positive impact on society, and the hive system hopes to complement our mission and expertise while trying to stay ahead.',
+            
+            'Keep the willingness to cooperate',
+            'We work actively with other research institutions and policy-makers. We hope to build an international community.',
+            'We will open source the programs that are safe to benefit all relevant staff around the world, and we hope to work with any program developer worldwide to develop safe, efficient and easy-to-use programs.'
           ]
         }
       }

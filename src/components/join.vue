@@ -57,7 +57,7 @@
           <font>加入蜂巢系统</font>
         </h3>
         <font style="color: #606266;font-size: 1.2em;letter-spacing: 0.15em;">
-          我们聘请了各种技术和非技术人才加入我们的团队。
+          我们希望各种技术和非技术人才加入我们的团队。
         </font>
       </div>
       <!-- 图片 -->
@@ -69,13 +69,13 @@
     <div style="width: 1500px;height: auto;margin: 0 auto 0;border-top:1px solid #DCDFE6;clear: both;margin-top: 70px;">
       <div style="width: 750px;height: auto;margin: 0 auto 0;">
         <h3 style="margin: 40px 0px 0px 0px;">
-          <font style="color: #606266;font-size: 1.15em;letter-spacing: 0.1em;font-weight: normal;">我们相信，一个高度创造性，多元化的人类一致工作，最好的结果是不合理的。</font>
+          <font style="color: #606266;font-size: 1.15em;letter-spacing: 0.1em;font-weight: normal;">我们相信，一个高度创造性，多元化的团队，将会发挥出巨大的能量。</font>
         </h3>
         <h3>
-          <font style="color: #606266;font-size: 1em;letter-spacing: 0em;font-weight: normal;">蜂巢系统的使命是建立有利于人类的安全AGI，我们希望我们的团队能够代表世界。我们的团队包括不同国籍，年龄和社会经济背景的人。</font>
+          <font style="color: #606266;font-size: 1em;letter-spacing: 0em;font-weight: normal;">蜂巢系统的使命是创造对社会有帮助的程序，我们希望我们的团队能够代表世界。我们的团队包括不同国籍，年龄和社会经济背景的人。</font>
         </h3>
         <h3>
-          <font style="color: #606266;font-size: 1em;letter-spacing: 0em;font-weight: normal;">我们非常重视潜在的经验。在蜂巢系统之前，我们的许多顶级贡献者都没有深入的学习经验 - 人们在学习所需的技能的同时还在执行有用的工作。深度学习是一项团队运动，我们感谢那些非常体贴和善良的人。</font>
+          <font style="color: #606266;font-size: 1em;letter-spacing: 0em;font-weight: normal;">我们非常重视潜在的经验。在蜂巢系统之前，我们的许多顶级贡献者都没有深入的学习经验 - 人们在学习所需的技能的同时还在执行各自的工作。共同开发程序是一件有趣的事情，我们感谢那些参加进来的人。</font>
         </h3>
       </div>
     </div>
@@ -84,19 +84,19 @@
       <div style="width: 466px;height: 450px;margin: 20px 50px 0px 0px;float: left;">
         <img :src="joinimgurl2" style="width: 466px;clear: both;">
         <h3 style="margin: 10px 0px 0px 0px;">
-          <font style="color: #606266;font-size: 1em;font-weight: normal;">如果您想进行软件工程，例如构建我们的基础架构，改进机器人界面或编写Dota管道，则无需任何机器学习经验。申请我们的技术职位。</font>
+          <font style="color: #606266;font-size: 1em;font-weight: normal;">如果您想进行软件工程，例如构建我们的基础架构，只需要懂得基础就可以申请我们的技术职位，我们将分享我们的学习经验，可以让你早日进入到开发行列。</font>
         </h3>
       </div>
       <div style="width: 466px;height: 450px;margin: 20px 50px 0px 0px;float: left;">
         <img :src="joinimgurl3" style="width: 466px;clear: both;">
         <h3 style="margin: 10px 0px 0px 0px;">
-          <font style="color: #606266;font-size: 1em;font-weight: normal;">如果您想深入学习，请查看我们的研究员，实习生和学者计划。我们正在寻找想要在6-18个月内学会成为核心ML贡献者的人，并且我们构建您的工作，以便您在ML中成长的每一步都做有用的工作。</font>
+          <font style="color: #606266;font-size: 1em;font-weight: normal;">如果您想深入学习，请查看我们的学习计划。我们正在寻找想要在6-18个月内学会成为核心贡献者的人，并且我们将提供给您相关目标，以便您在开发过程中每一步都可以是有意义的。</font>
         </h3>
       </div>
       <div style="width: 466px;height: 450px;margin: 20px 0px 0px 0px;float: right;">
         <img :src="joinimgurl4" style="width: 466px;clear: both;">
         <h3 style="margin: 10px 0px 0px 0px;">
-          <font style="color: #606266;font-size: 1em;font-weight: normal;">如果您已经深入学习，请申请我们的研究工程师或研究科学家  职位。</font>
+          <font style="color: #606266;font-size: 1em;font-weight: normal;">如果您已经深入学习，请申请我们的研究员职位，我们将共同解决有难度的相关目标。</font>
         </h3>
       </div>
     </div>
@@ -109,19 +109,19 @@
         <font>我们的文化始终在不断发展，我们相信新人能够而且应该改变我们的运营方式和价值。一些反复出现的主题脱颖而出：</font>
         <h3>
           <font>任务驱动:</font>
-          <font style="font-weight: normal;">OpenAI的人们非常关心以有益于人类的方式建立人工智能。</font>
+          <font style="font-weight: normal;">蜂巢系统的参与者特别关心有益于对社会有正面影响的程序开发</font>
         </h3>
         <h3>
           <font>目标导向:</font>
-          <font style="font-weight: normal;">我们快速而有意地采取行动，以平衡研究和工程目标。</font>
+          <font style="font-weight: normal;">我们将快速的针对目标采取行动，以在最短的时间内完成我们的开发目标。</font>
         </h3>
         <h3>
           <font>协作:</font>
-          <font style="font-weight: normal;">我们的许多最大进步源于多个团队的工作。</font>
+          <font style="font-weight: normal;">我们将与很多个人和团队达成合作。</font>
         </h3>
         <h3>
           <font>反思:</font>
-          <font style="font-weight: normal;">建立具有影响社会潜力的强大技术需要深入思考和讨论。</font>
+          <font style="font-weight: normal;">我们将对我们的工作进行反复的检查和反思，这样有助于我们在新的工作开展的时候吸取经验。</font>
         </h3>
         <h3>
           <font>成长心态:</font>
@@ -134,19 +134,16 @@
           <font style="font-size: 1.7em;">优点</font>
         </h3>
         <h3>
-          <font style="font-weight: normal;">为您和您的家人提供全面的健康，牙科和视力保障</font>
+          <font style="font-weight: normal;">我们将为参与者提供完整的学习计划和目标</font>
         </h3>
         <h3>
-          <font style="font-weight: normal;">无限时间休假（我们鼓励4周以上的假期）</font>
+          <font style="font-weight: normal;">你们的所有贡献将会署上你们自己的名字，但是请保持程序开源</font>
         </h3>
         <h3>
-          <font style="font-weight: normal;">新父母的竞争假</font>
+          <font style="font-weight: normal;">我们不会占用你们的工作时间，只需要在工作之余进行即可</font>
         </h3>
         <h3>
-          <font style="font-weight: normal;">每天午餐和晚餐</font>
-        </h3>
-        <h3>
-          <font style="font-weight: normal;">灵活的工作时间</font>
+          <font style="font-weight: normal;">参与进来也将让你在工作和兴趣上有更大的进步</font>
         </h3>
       </div>
     </div>
@@ -236,7 +233,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">@2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
