@@ -59,26 +59,28 @@
                         <div>
                           <b style="color: #303133;font-size: 1em;letter-spacing: 0;line-height: 1.4;margin: 0px;font-weight:900;">{{ notice.title }}</b>
                           <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.date }}</b>
-                          <p style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 1000px;">{{notice.text}}</p>
+                          <p style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 1000px;">{{notice.synopsis}}</p>
                         </div>
                       </div>
                     </div>
                   
                   <p></p>
                   <div style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;">
-                    {{notice.readtime}}
+                    {{notice.readtime}}分钟阅读
                   </div>
                   </a>
                 </li>
             </div>
           </ol>
           <!-- 分页按钮 -->
-          <div style="margin: 0 auto 0;width: 535px;margin-top: 20px;">
+          <div style="margin-top: 20px;">
              <el-pagination
             :page-size="20"
             :pager-count="11"
+            @current-change="pageChange"
+            :current-page="pagenum"
             layout="prev, pager, next"
-            :total="1000">
+            :total="total">
             </el-pagination>
           </div>
     </div>
@@ -162,77 +164,9 @@ export default {
       WeChartVisible: false,
       //公告列表
       Notices: [
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '/Announcement',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '/Announcement',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '/Announcement',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '/Announcement',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '/Announcement',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '',
-        },
-        { 
-          date:'2019-07-21',
-          title:'为什么负责人工智能开发需要安全合作',
-          text: '我们训练了一个大规模的无监督语言模型，该模型生成连贯的文本段落，在许多语言建模基准上实现了最先进的表现，并执行基本的阅读理解，机器翻译，问答和总结。',
-          readtime:'24分钟阅读',
-          url: '',
-        },
       ],
+      total:0,
+      pagenum:1,
       //加入我们展示图
       HomePageImgUrl:'/',
       HomePageTextUrl:'/',
@@ -257,13 +191,64 @@ export default {
       showtext:false
     }
   },
+  methods: {  
+      //获取最新的公告信息
+      getAnnouncementDescOrderBy(){
+        //设置必要参数
+        var that = this;
+        //初始化参数
+        that.Notices = [];
+        that.total = 0;
+        //请求公告信息
+         this.$Axios.post('/Announcement/getAnnouncementDescOrderBy?page='+this.pagenum,{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理公告信息
+            for (var i = 0; i < res.data.RTDATA.data.length; ++i) {
+              var c_Notices = new Object();
+              c_Notices.id=res.data.RTDATA.data[i].id;
+              c_Notices.title=res.data.RTDATA.data[i].title;
+              c_Notices.synopsis=res.data.RTDATA.data[i].synopsis;
+              c_Notices.date=res.data.RTDATA.data[i].creattime;
+              c_Notices.readtime=res.data.RTDATA.data[i].readtime;
+              c_Notices.url='/Announcement?id='+res.data.RTDATA.data[i].id;
+              that.Notices.push(c_Notices);
+            }
+            that.total = res.data.RTDATA.total;
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+        this.Notices = that.Notices;
+      }, 
+      pageChange(val){
+       this.pagenum = val;
+       this.getAnnouncementDescOrderBy();
+      },
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
   created(){
     //页面加载时执行
-
+    //获取公告信息
+    this.getAnnouncementDescOrderBy();
   },
   mounted(){
     //页面加载后执行
-   
+     
   }
 }
 </script>

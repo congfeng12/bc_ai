@@ -261,7 +261,6 @@ export default {
       //获取最新的里程碑信息
       getTimeAxisAtHome(){
         //设置必要参数
-        var c_Timelines = [];
         var that = this;
         //请求时间轴信息
          this.$Axios.post('/TimeAxis/getTimeAxisAtHome',{})

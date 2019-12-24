@@ -63,13 +63,13 @@
       </h3>
       <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
-            <div v-for="notice in Notices">
+            <div v-for="backgroundService in BackgroundServices">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
-                  <a :href="notice.url" style="text-decoration:none;" target="view_window">
+                  <a :href="backgroundService.url" style="text-decoration:none;" target="view_window">
                     <div style="width: 100%;height: auto;">
                       <div>
-                        <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ notice.title }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{notice.date}}</b>
+                        <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ backgroundService.title }}</b>
+                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{backgroundService.date}}</b>
                       </div>
                     </div>
                   </a> 
@@ -173,12 +173,8 @@ export default {
     return {
       //微信弹窗属性
       WeChartVisible: false,
-      //职位展示
-      Notices: [
-        { date:'2019-07-21',title:'优化算法工具包',url: ''},
-        { date:'2019-07-21',title:'BBTI-1',url: ''},
-        { date:'2019-07-21',title:'IMGTI-1',url: ''},
-        { date:'2019-07-21',title:'人工神经网络框架',url: ''},
+      //后台服务列表
+      BackgroundServices: [
       ],
       //首页导航url
       HomePageImgUrl:'/',
@@ -204,13 +200,53 @@ export default {
       showtext:false
     }
   },
+  methods: {  
+      //获取最新的后台服务信息
+      getBackgroundServicesDescOrderBy(){
+        //设置必要参数
+        var that = this;
+        //请求后台服务信息
+         this.$Axios.post('/BackgroundService/getBackgroundServicesDescOrderBy',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理后台服务信息
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_BackgroundServices = new Object();
+              c_BackgroundServices.id=res.data.RTDATA[i].id;
+              c_BackgroundServices.url='/backgroundService?id='+res.data.RTDATA[i].id;
+              c_BackgroundServices.title=res.data.RTDATA[i].name;
+              c_BackgroundServices.date=res.data.RTDATA[i].createdate;
+              that.BackgroundServices.push(c_BackgroundServices);
+            }
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }, 
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
   created(){
     //页面加载时执行
-
+    //获取主页后台服务信息
+    this.getBackgroundServicesDescOrderBy();
   },
   mounted(){
     //页面加载后执行
-   
+     
   }
 }
 </script>

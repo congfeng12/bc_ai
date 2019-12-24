@@ -59,7 +59,7 @@
           <el-col v-for="progres in Progress" v-bind:key="progres.id" :span="6" >
             <a :href="progres.url" style="text-decoration: none;" target="view_window">
               <el-card :body-style="{ padding: '12px' }" shadow="always" style="margin-top: 10px;">
-                <p style="margin: 5px 0px 30px 0px;font-weight: 700;">{{progres.text}}</p>
+                <p style="margin: 5px 0px 30px 0px;font-weight: 700;">{{progres.title}}</p>
                 <img style="width: 100%;" :src="progres.jpgurl">
             </el-card>
             </a>
@@ -73,12 +73,12 @@
       </h6>
           <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
-            <div v-for="notice in Notices">
+            <div v-for="report in Report">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
-                  <a :href="notice.url" style="text-decoration:none;" target="view_window">
-                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 175px;">{{ notice.date }}</b>
-                    <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ notice.text }}</b>
-                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;float: right;">{{ notice.type }}</b>
+                  <a :href="report.url" style="text-decoration:none;" target="view_window">
+                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 175px;">{{ report.date }}</b>
+                    <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ report.title }}</b>
+                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;float: right;">{{ report.type }}</b>
                   </a> 
                 </li>
             </div>
@@ -164,29 +164,11 @@ export default {
       WeChartVisible: false,
       //公告展示
       Progress:[
-        { id:1, url:'/milestone',text:'了解蜂巢',jpgurl:'../../static/notistest2.jpg'},
-        { id:2, url:'',text:'蜂巢系统页面开发流程',jpgurl:'../../static/notistest3.jpg'},
-        { id:3, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest4.jpg'},
-        { id:4, url:'',text:'蜂巢系统后台使用的相关技术',jpgurl:'../../static/notistest5.jpg'},
-        { id:5, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest2.jpg'},
-        { id:6, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest2.jpg'},
-        { id:7, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest2.jpg'},
-        { id:8, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest2.jpg'},
-        { id:9, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest2.jpg'},
-        { id:10, url:'',text:'蜂巢系统宪章',jpgurl:'../../static/notistest2.jpg'},
+        //{ id:1, url:'/milestone',text:'了解蜂巢',jpgurl:'../../static/notistest2.jpg'},
       ],
       //公告列表
-      Notices: [
-        { date:'2019-07-21',text: '为什么负责人工智能开发需要安全合作',type:'强化学习',url: '/investigationreport'},
-        { date:'2019-07-20',text: '只能学习研讨会2019',type:'机器人',url: '/investigationreport' },
-        { date:'2019-07-19',text: '机械学系学者大会' ,type:'强化学习',url: '/investigationreport'},
-        { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
-        { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
-        { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
-        { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
-        { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
-        { date:'2019-07-18',text: '优化算法' ,type:'强化学习',url: "http://127.0.0.4"},
-        { date:'2019-07-17',text: '深度学习网络' ,type:'机器人',url:''}
+      Report: [
+        //{ date:'2019-07-21',title: '为什么负责人工智能开发需要安全合作',type:'强化学习',url: '/investigationreport'},
       ],
       //加入我们展示图
       HomePageImgUrl:'/',
@@ -210,6 +192,85 @@ export default {
       //github
       GitHubPagerl:'https://github.com/congfeng12'
     }
+  },
+  methods: {  
+      //获取最新的里程碑信息
+      getMilestoneDescOrderBy(){
+        //设置必要参数
+        var that = this;
+        //请求里程碑信息
+         this.$Axios.post('/Milestone/getMilestoneDescOrderBy',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理里程碑信息
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_Progress = new Object();
+              c_Progress.id=res.data.RTDATA.id;
+              c_Progress.url='/milestone?id='+res.data.RTDATA[i].id;
+              c_Progress.title=res.data.RTDATA[i].title;
+              var c_imgurl = res.data.RTDATA[i].imgurl.split("/");
+              var imgnum = c_imgurl.length-1;
+              c_Progress.jpgurl='../../static/'+c_imgurl[imgnum];
+              that.Progress.push(c_Progress);
+            }
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }, 
+      //获取调查报告信息
+      getReportDescOrderBy(){
+        //设置必要参数
+        var that = this;
+        //请求调查报告
+         this.$Axios.post('/Report/getReportDescOrderBy',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理调查报告信息
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_Report = new Object();
+              c_Report.id=res.data.RTDATA.id;
+              c_Report.url='/investigationreport?id='+res.data.RTDATA[i].id;
+              c_Report.title=res.data.RTDATA[i].title;
+              c_Report.date=res.data.RTDATA[i].creatdate;
+              c_Report.type=res.data.RTDATA[i].reporttype;
+              that.Report.push(c_Report);
+            }
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      },
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
+  created(){
+    //页面加载时执行
+   //获取程碑信息
+    this.getMilestoneDescOrderBy();
+    //获取调查报告信息
+    this.getReportDescOrderBy();
+  },
+  mounted(){
+    //页面加载后执行
+     
   }
 }
 </script>

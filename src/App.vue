@@ -16,19 +16,12 @@ export default {
   
     methods:{
     getPageHeight(){
-      //this.pageheight = document.documentElement.scrollHeight;
       this.pageheight = window.innerHeight;
-      // console.log("1"+this.pageheight)
-      // console.log("2"+document.documentElement.scrollHeight)
-      // console.log("3"+window.innerHeight)
-
     }
   },
- created(){
-    // window.addEventListener('resize', this.getPageHeight());
+  created(){
   },
   destroyed(){
-    // window.removeEventListener('resize', this.getPageHeight())
   },
   mounted(){
     window.onresize = () =>{

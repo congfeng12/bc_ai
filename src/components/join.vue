@@ -157,17 +157,20 @@
         <!-- 遍历职位 -->
         <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
-            <div v-for="notice in Notices">
+            <div v-for="work in Works">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
-                  <a :href="notice.url" style="text-decoration:none;" target="view_window">
+                  <a :href="work.url" style="text-decoration:none;" target="view_window">
                     <div style="width: 100%;height: auto;">
                       <div>
-                        <b style="color: #303133;font-size: 0.85em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;">{{ notice.title }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{notice.date}} & {{ notice.place }}</b>
+                        <b style="color: #303133;font-size: 0.85em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;">{{ work.title }}</b>
+                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{work.date}} & {{ work.place }}</b>
                       </div>
                       <div>
                         <font style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;">
-                          {{ notice.text }}
+                          {{ work.type }}&{{ work.nature }}
+                        </font>
+                        <font style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">
+                          需要 {{ work.need }} 人
                         </font>
                       </div>
                     </div>
@@ -262,16 +265,8 @@ export default {
       joinimgurl4:'../../static/join_us_img4.jpg',
       joinimgurl5:'../../static/join_us_img5.jpg',
       //职位展示
-      Notices: [
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '/jobdescription',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '/jobdescription',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
-        { date:'2019-07-21',title:'java工程师',text: '技术人员',url: '',place:'不限制地区'},
+      Works: [
+        //{ date:'2019-07-21',title:'java工程师',type: '技术人员',nature: '研究员' ,need:10 ,url: '/jobdescription',place:'不限制地区'},
       ],
       HomePageImgUrl:'/',
       HomePageTextUrl:'/',
@@ -294,6 +289,58 @@ export default {
       //github
       GitHubPagerl:'https://github.com/congfeng12'
     }
+  },
+  methods: {  
+      //获取最新的岗位信息
+      getWorkDescOrderBy(){
+        //设置必要参数
+        var that = this;
+        //请求岗位信息
+         this.$Axios.post('/Work/getWorkDescOrderBy',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理岗位信息
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_Works = new Object();
+              c_Works.id=res.data.RTDATA[i].id;
+              c_Works.url='/jobdescription?id='+res.data.RTDATA[i].id;
+              c_Works.title=res.data.RTDATA[i].title;
+              c_Works.place=res.data.RTDATA[i].place;
+              c_Works.type=res.data.RTDATA[i].type;
+              c_Works.nature=res.data.RTDATA[i].nature;
+              c_Works.date=res.data.RTDATA[i].creatdate;
+              c_Works.need=res.data.RTDATA[i].need;
+              that.Works.push(c_Works);
+            }
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }, 
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
+  created(){
+    //页面加载时执行
+    //获取岗位信息
+    this.getWorkDescOrderBy();
+  },
+  mounted(){
+    //页面加载后执行
+     
   }
 }
 </script>
