@@ -140,7 +140,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;padding-top: 6px;">{{Record_Number}} &nbsp {{Run_Time_Range}}&nbsp{{Domain_Name}}</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -170,27 +170,31 @@ export default {
       Report: [
         //{ date:'2019-07-21',title: '为什么负责人工智能开发需要安全合作',type:'强化学习',url: '/investigationreport'},
       ],
-      //加入我们展示图
-      HomePageImgUrl:'/',
-      HomePageTextUrl:'/',
+      //主页
+      HomePageImgUrl:'',
+      HomePageTextUrl:'',
       //关于
-      AboutPageUrl:'/about',
+      AboutPageUrl:'',
       //进展
-      ProgressPageUrl:'/progress',
+      ProgressPageUrl:'',
       //资源
-      ResourcesPagerl:'/resources',
+      ResourcesPagerl:'',
       //公告
-      NoticesPageUrl:'/notices',
+      NoticesPageUrl:'',
       //加入我们
-      JoinPageUrl:'/join',
+      JoinPageUrl:'',
       //宪章
-      CharterPageUrl:'/charter',
+      CharterPageUrl:'',
       //声明
-      StatePageUrl:'/state',
-      //微信
-      WeChartPageUrl:'',
+      StatePageUrl:'',
       //github
-      GitHubPagerl:'https://github.com/congfeng12'
+      GitHubPagerl:'',
+      //备案号
+      Record_Number:'',
+      //运行时间
+      Run_Time_Range:'',
+      //域名
+      Domain_Name:'',
     }
   },
   methods: {  
@@ -199,7 +203,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求里程碑信息
-         this.$Axios.post('/Milestone/getMilestoneDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+'/Milestone/getMilestoneDescOrderBy',{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理里程碑信息
@@ -227,7 +231,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求调查报告
-         this.$Axios.post('/Report/getReportDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+'/Report/getReportDescOrderBy',{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理调查报告信息
@@ -263,7 +267,21 @@ export default {
     },
   created(){
     //页面加载时执行
-   //获取程碑信息
+    //设置公共属性
+    this.HomePageImgUrl = this.$Global.HomePageUrl;
+    this.HomePageTextUrl = this.$Global.HomePageUrl;
+    this.AboutPageUrl = this.$Global.AboutPageUrl;
+    this.ProgressPageUrl = this.$Global.ProgressPageUrl;
+    this.ResourcesPagerl = this.$Global.ResourcesPagerl;
+    this.NoticesPageUrl = this.$Global.NoticesPageUrl;
+    this.JoinPageUrl = this.$Global.JoinPageUrl;
+    this.CharterPageUrl = this.$Global.CharterPageUrl;
+    this.StatePageUrl = this.$Global.StatePageUrl;
+    this.GitHubPagerl = this.$Global.GitHubURL;
+    this.Record_Number = this.$Global.Record_Number;
+    this.Run_Time_Range = this.$Global.Run_Time_Range;
+    this.Domain_Name = this.$Global.Domain_Name;
+    //获取程碑信息
     this.getMilestoneDescOrderBy();
     //获取调查报告信息
     this.getReportDescOrderBy();

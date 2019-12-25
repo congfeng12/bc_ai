@@ -151,7 +151,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;padding-top: 6px;">{{Record_Number}} &nbsp {{Run_Time_Range}}&nbsp{{Domain_Name}}</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -176,28 +176,30 @@ export default {
       //后台服务列表
       BackgroundServices: [
       ],
-      //首页导航url
-      HomePageImgUrl:'/',
-      HomePageTextUrl:'/',
+      //主页
+      HomePageImgUrl:'',
       //关于
-      AboutPageUrl:'/about',
+      AboutPageUrl:'',
       //进展
-      ProgressPageUrl:'/progress',
+      ProgressPageUrl:'',
       //资源
-      ResourcesPagerl:'/resources',
+      ResourcesPagerl:'',
       //公告
-      NoticesPageUrl:'/notices',
+      NoticesPageUrl:'',
       //加入我们
-      JoinPageUrl:'/join',
+      JoinPageUrl:'',
       //宪章
-      CharterPageUrl:'/charter',
+      CharterPageUrl:'',
       //声明
-      StatePageUrl:'/state',
-      //微信
-      WeChartPageUrl:'',
+      StatePageUrl:'',
       //github
-      GitHubPagerl:'https://github.com/congfeng12',
-      showtext:false
+      GitHubPagerl:'',
+      //备案号
+      Record_Number:'',
+      //运行时间
+      Run_Time_Range:'',
+      //域名
+      Domain_Name:'',
     }
   },
   methods: {  
@@ -206,7 +208,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求后台服务信息
-         this.$Axios.post('/BackgroundService/getBackgroundServicesDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+'/BackgroundService/getBackgroundServicesDescOrderBy',{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理后台服务信息
@@ -241,6 +243,19 @@ export default {
     },
   created(){
     //页面加载时执行
+    //设置公共属性
+    this.HomePageImgUrl = this.$Global.HomePageUrl;
+    this.AboutPageUrl = this.$Global.AboutPageUrl;
+    this.ProgressPageUrl = this.$Global.ProgressPageUrl;
+    this.ResourcesPagerl = this.$Global.ResourcesPagerl;
+    this.NoticesPageUrl = this.$Global.NoticesPageUrl;
+    this.JoinPageUrl = this.$Global.JoinPageUrl;
+    this.CharterPageUrl = this.$Global.CharterPageUrl;
+    this.StatePageUrl = this.$Global.StatePageUrl;
+    this.GitHubPagerl = this.$Global.GitHubURL;
+    this.Record_Number = this.$Global.Record_Number;
+    this.Run_Time_Range = this.$Global.Run_Time_Range;
+    this.Domain_Name = this.$Global.Domain_Name;
     //获取主页后台服务信息
     this.getBackgroundServicesDescOrderBy();
   },

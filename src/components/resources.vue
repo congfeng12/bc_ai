@@ -108,14 +108,14 @@
       </h3>
       <!-- 循环列表 -->
           <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
-            <div v-for="notice in Notices">
+            <div v-for="backgroundService in BackgroundServices">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
-                  <a :href="notice.url" style="text-decoration:none;" target="view_window">
+                  <a :href="backgroundService.url" style="text-decoration:none;" target="view_window">
                     <div style="width: 100%;height: auto;">
                       <div style="position: relative;">
-                        <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ notice.title }}</b>
-                        <b style="color: #909399;font-size: 0.8em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;position: absolute;left: 400px;">{{ notice.msg }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0;font-weight: normal;float: right;">{{notice.date}}</b>
+                        <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ backgroundService.title }}</b>
+                        <b style="color: #909399;font-size: 0.8em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;position: absolute;left: 400px;">{{ backgroundService.synopsis }}</b>
+                        <b style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0;font-weight: normal;float: right;">{{backgroundService.date}}</b>
                       </div>
                     </div>
                   </a> 
@@ -185,7 +185,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;padding-top: 6px;">{{Record_Number}} &nbsp {{Run_Time_Range}}&nbsp{{Domain_Name}}</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -207,10 +207,6 @@ export default {
     return {
       //微信弹窗属性
       WeChartVisible: false,
-      
-      //加入我们展示图
-      HomePageImgUrl:'/',
-      HomePageTextUrl:'/',
       //资源页标题图片
       resourcesLogoImgUrl:'../../static/resourselogoimg.jpg',
       //平台资源列表title/msg/imgurl/url
@@ -221,42 +217,97 @@ export default {
         '/platform_login'
       ],
       //职位展示
-      Notices: [
-        { date:'2019-07-21',title:'优化算法工具包',msg:'用于程序的算法优化',url: ''},
-        { date:'2019-07-21',title:'BBTI-1',msg:'用于文本类深度学习框架',url: ''},
-        { date:'2019-07-21',title:'IMGTI-1',msg:'用于图片类深度学习框架',url: ''},
-        { date:'2019-07-21',title:'人工神经网络框架',msg:'用于学习深度学习的基本框架',url: ''},
+      BackgroundServices: [
       ],
-      //在线平台
-      // CmpalePlatform:'/platform',
+      //主页
+      HomePageImgUrl:'',
+      HomePageTextUrl:'',
       //关于
-      AboutPageUrl:'/about',
+      AboutPageUrl:'',
       //进展
-      ProgressPageUrl:'/progress',
+      ProgressPageUrl:'',
       //资源
-      ResourcesPagerl:'/resources',
+      ResourcesPagerl:'',
       //公告
-      NoticesPageUrl:'/notices',
+      NoticesPageUrl:'',
       //加入我们
-      JoinPageUrl:'/join',
+      JoinPageUrl:'',
       //宪章
-      CharterPageUrl:'/charter',
+      CharterPageUrl:'',
       //声明
-      StatePageUrl:'/state',
-      //微信
-      WeChartPageUrl:'',
+      StatePageUrl:'',
       //github
-      GitHubPagerl:'https://github.com/congfeng12',
-      showtext:false
+      GitHubPagerl:'',
+      //备案号
+      Record_Number:'',
+      //运行时间
+      Run_Time_Range:'',
+      //域名
+      Domain_Name:'',
     }
   },
+  methods: {  
+      //获取最新的后台服务信息
+      getBackgroundServicesDescOrderBy(){
+        //设置必要参数
+        var that = this;
+        //请求后台服务信息
+         this.$Axios.post(this.$Global.Back_End_Service+'/BackgroundService/getBackgroundServicesDescOrderBy',{})
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理后台服务信息
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_BackgroundServices = new Object();
+              c_BackgroundServices.id=res.data.RTDATA[i].id;
+              c_BackgroundServices.url='/backgroundService?id='+res.data.RTDATA[i].id;
+              c_BackgroundServices.title=res.data.RTDATA[i].name;
+              c_BackgroundServices.synopsis=res.data.RTDATA[i].synopsis;
+              c_BackgroundServices.date=res.data.RTDATA[i].createdate;
+              that.BackgroundServices.push(c_BackgroundServices);
+            }
+          }else{
+            //异常结果显示
+            that.error_Message(res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }, 
+      //报错弹窗提示
+      error_Message(c_message) {
+        this.$message.error(c_message);
+      },
+      //成功弹窗提示
+      success_Message(c_message) {
+        this.$message({
+          message: c_message,
+          type: 'success'
+        });
+      }
+    },
   created(){
     //页面加载时执行
-
+    //设置公共属性
+    this.HomePageImgUrl = this.$Global.HomePageUrl;
+    this.HomePageTextUrl = this.$Global.HomePageUrl;
+    this.AboutPageUrl = this.$Global.AboutPageUrl;
+    this.ProgressPageUrl = this.$Global.ProgressPageUrl;
+    this.ResourcesPagerl = this.$Global.ResourcesPagerl;
+    this.NoticesPageUrl = this.$Global.NoticesPageUrl;
+    this.JoinPageUrl = this.$Global.JoinPageUrl;
+    this.CharterPageUrl = this.$Global.CharterPageUrl;
+    this.StatePageUrl = this.$Global.StatePageUrl;
+    this.GitHubPagerl = this.$Global.GitHubURL;
+    this.Record_Number = this.$Global.Record_Number;
+    this.Run_Time_Range = this.$Global.Run_Time_Range;
+    this.Domain_Name = this.$Global.Domain_Name;
+    //获取主页后台服务信息
+    this.getBackgroundServicesDescOrderBy();
   },
   mounted(){
     //页面加载后执行
-   
+    
   }
 }
 </script>

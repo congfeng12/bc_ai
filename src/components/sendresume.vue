@@ -157,7 +157,7 @@
         <div style="width: 100%;margin-bottom: 50px;">
           <h3 style="margin: 10px 0px 0px 0px;">
             <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.7em;letter-spacing: 0.1em;">
-              @2019-2019 CMAPLE.CN
+              {{Run_Time_Range}} {{Domain_Name}}
             </font>
           </h3>
         </div>
@@ -197,7 +197,10 @@ export default {
             url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
           },
         ],
-      
+        //运行时间
+        Run_Time_Range:'',
+        //域名
+        Domain_Name:'',
   
     }
   },
@@ -214,7 +217,8 @@ export default {
   },
   created(){
     //页面加载时执行
-
+    this.Run_Time_Range = this.$Global.Run_Time_Range;
+    this.Domain_Name = this.$Global.Domain_Name;
   },
   mounted(){
     //页面加载后执行

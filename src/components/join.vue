@@ -12,12 +12,6 @@
             <img src="../../static/logo_black.png" style="width: 70px;margin: 15px 0px 0px 0px;float: left;">
           </a>
         </div>
-        <!-- 主题文字 -->
-        <!-- <div style="width: 240px;float: left;margin: 0px;padding: 12px 0px 0px 0px;text-align: left;">
-          <a :href="HomePageTextUrl" style="text-decoration: none;">
-            <h3 style="color: #FFFFFF;font-size: 22px;">神经网络框架·蜂巢系统</h3>
-          </a>
-        </div> -->
         <!-- 标题栏按钮按钮 -->
         <div style="float: right;width: 307px;height: 30px;margin: 32px 0px 0px 0px;">
           <!-- 公告 -->
@@ -236,7 +230,7 @@
               <font style="color: #909399;font-size: 13.33px;font-weight: bold;text-transform: uppercase;letter-spacing: 0.2em;">声明</font>
             </a>
           </div>
-          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;padding-top: 6px;">浙ICP备19041141号 &nbsp @2019-2019 cmaple.cn</b>
+          <b style="float: right;color: #C0C4CC;font-size: 0.4em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;padding-top: 6px;">{{Record_Number}} &nbsp {{Run_Time_Range}}&nbsp{{Domain_Name}}</b>
       </div>
     </div>
     <!-- 微信公众号展示页面 -->
@@ -268,26 +262,31 @@ export default {
       Works: [
         //{ date:'2019-07-21',title:'java工程师',type: '技术人员',nature: '研究员' ,need:10 ,url: '/jobdescription',place:'不限制地区'},
       ],
-      HomePageImgUrl:'/',
-      HomePageTextUrl:'/',
+      //主页
+      HomePageImgUrl:'',
+      HomePageTextUrl:'',
       //关于
-      AboutPageUrl:'/about',
+      AboutPageUrl:'',
       //进展
-      ProgressPageUrl:'/progress',
+      ProgressPageUrl:'',
       //资源
-      ResourcesPagerl:'/resources',
+      ResourcesPagerl:'',
       //公告
-      NoticesPageUrl:'/notices',
+      NoticesPageUrl:'',
       //加入我们
-      JoinPageUrl:'/join',
+      JoinPageUrl:'',
       //宪章
-      CharterPageUrl:'/charter',
+      CharterPageUrl:'',
       //声明
-      StatePageUrl:'/state',
-      //微信
-      WeChartPageUrl:'',
+      StatePageUrl:'',
       //github
-      GitHubPagerl:'https://github.com/congfeng12'
+      GitHubPagerl:'',
+      //备案号
+      Record_Number:'',
+      //运行时间
+      Run_Time_Range:'',
+      //域名
+      Domain_Name:'',
     }
   },
   methods: {  
@@ -296,7 +295,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求岗位信息
-         this.$Axios.post('/Work/getWorkDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+'/Work/getWorkDescOrderBy',{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理岗位信息
@@ -335,6 +334,20 @@ export default {
     },
   created(){
     //页面加载时执行
+    //设置公共属性
+    this.HomePageImgUrl = this.$Global.HomePageUrl;
+    this.HomePageTextUrl = this.$Global.HomePageUrl;
+    this.AboutPageUrl = this.$Global.AboutPageUrl;
+    this.ProgressPageUrl = this.$Global.ProgressPageUrl;
+    this.ResourcesPagerl = this.$Global.ResourcesPagerl;
+    this.NoticesPageUrl = this.$Global.NoticesPageUrl;
+    this.JoinPageUrl = this.$Global.JoinPageUrl;
+    this.CharterPageUrl = this.$Global.CharterPageUrl;
+    this.StatePageUrl = this.$Global.StatePageUrl;
+    this.GitHubPagerl = this.$Global.GitHubURL;
+    this.Record_Number = this.$Global.Record_Number;
+    this.Run_Time_Range = this.$Global.Run_Time_Range;
+    this.Domain_Name = this.$Global.Domain_Name;
     //获取岗位信息
     this.getWorkDescOrderBy();
   },
