@@ -30,22 +30,18 @@
     const CharterPageUrl = '/charter'
     //声明
     const StatePageUrl = '/state'
+    
+    //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
       importThis.$message.error(c_message)
     }
-      //成功弹窗提示
+    //成功弹窗提示
     function success_Message(importThis,c_message) {
       importThis.$message({
         message: c_message,
         type: 'success'
       })
-    }
-
-    //公共方法
-    //初始化页面参数
-    function commonFun() {
-        console.log("公共方法")
     }
     // 暴露出这些属性和方法
     export default {
@@ -64,7 +60,6 @@
       JoinPageUrl,
       CharterPageUrl,
       StatePageUrl,
-      commonFun,
       error_Message,
       success_Message,
     }

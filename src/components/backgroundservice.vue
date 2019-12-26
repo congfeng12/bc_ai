@@ -1,9 +1,9 @@
 <template>
-  <div style="width: 100%;height: auto;">
+  <div style="height: 100%;">
     <!-- 上半部分 -->
-    <div style="width: 100%;">
+    <div style="width: 100%;background-color: #cee5f0;">
      <!--  <img src="../jpg/background.png">  -->
-    <div style="width: 1500px;height: auto;margin: 0 auto 0;">
+    <div style="width: 1500px;height: auto;margin: 0 auto 0;margin-bottom: 10px;">
       <!-- 标题头 -->
       <div style="width: 100%;height: 98px;border-bottom:2px solid #000000;margin: 0px 0px 30px 0px;">
         <!-- 图标 -->
@@ -41,62 +41,52 @@
         </div>
       </div>
       <!-- 网页主要内容 -->
+      <!-- 宪章标题记住要内容 -->
+      <div style="width: 1500px;height: auto;">
+        <div style="width: 750px;height: 600px;margin: 0 auto 0;">
+          <!-- 标题及文字 -->
+          <div style="width: 750px;height: 600px;margin: 0 auto 0;position: relative;float: left;">
+            <div style="position: relative;height: 60px;">
+              <img src="../../static/code.png" style="width: 60px;position: absolute;">
+              <h1 style="font-size: 40px;margin: 0px 0px 0px 0px;position: absolute;left: 70px;bottom: 0px;">{{name}}</h1>
+              <h1 style="font-size: 30px;margin: 0px 0px 8px 0px;padding: 0px;position: absolute;right: 80px;bottom: 0px;color: #2aa515;" v-if="servicestate === 'run'">线上服务正常</h1>
+              <h1 style="font-size: 30px;margin: 0px 0px 5px 0px;padding: 0px;position: absolute;right: 80px;bottom: 0px;color: #ea9518;" v-else-if="servicestate ==='lock'">线上服务锁定</h1>
+              <h1 style="font-size: 30px;margin: 0px 0px 8px 0px;padding: 0px;position: absolute;right: 80px;bottom: 0px;color: #d81e06;" v-else>线上服务异常</h1>
+              <img src="../../static/service_run.png" v-if="servicestate === 'run'" style="width: 60px;position: absolute;right: 0px;bottom: 0px;">
+              <img src="../../static/service_lock.png" v-else-if="servicestate ==='lock'" style="width: 60px;position: absolute;right: 0px;bottom: 0px;">
+              <img src="../../static/service_error.png" v-else style="width: 60px;position: absolute;right: 0px;bottom: 0px;">
+            </div>
+            <h1 style="color: #303133;font-size: 25px;margin: 10px 0px 15px 0px;font-weight: normal;">服务编号：{{serviceid}}</h1>
+            <b style="color: #606266;letter-spacing: 0.2em;font-size: 16px;font-weight: bolder;">{{synopsis}}</b>
+            <p></p>
+            <div style="position: absolute;bottom: 80px;">
+              <p style="color:#303133;text-decoration: none;font-size: 14px;letter-spacing: 0.2em;font-weight: bolder;margin:0px 0px 6px 0px;">版本：{{version}}</p>
+              <p style="color:#303133;text-decoration: none;font-size: 14px;letter-spacing: 0.2em;font-weight: bolder;margin:0px 0px 6px 0px;">编程语言：{{proglanguage}}</p>
+              <p style="color:#303133;text-decoration: none;font-size: 14px;letter-spacing: 0.2em;font-weight: bolder;margin:0px 0px 6px 0px;">服务大小：{{size}}</p>
+              <p style="color:#303133;text-decoration: none;font-size: 14px;letter-spacing: 0.2em;font-weight: bolder;margin:0px 0px 6px 0px;">接口类型：{{receivetype}}</p>
+              <p style="color:#303133;text-decoration: none;font-size: 14px;letter-spacing: 0.2em;font-weight: bolder;margin:0px 0px 6px 0px;">请求接口：{{route}}</p>
+              <p style="color:#303133;text-decoration: none;font-size: 14px;letter-spacing: 0.2em;font-weight: bolder;margin:0px 0px 6px 0px;">所在服务器：{{serverid}}</p>
+            </div>
+            <div style="position: absolute;bottom: 10px;">
+              <p style="color:#606266;text-decoration: none;font-size: 14px;font-weight: bolder;margin:0px 0px 6px 0px;">
+                <el-link type="primary">{{author}}</el-link>
+              &nbsp&nbsp提供服务</p>
+              <p style="color:#606266;text-decoration: none;font-size: 14px;font-weight: bolder;margin:0px 0px 6px 0px;">服务创建日期：{{createdate}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
-    <!-- 说明内容 -->
-    <div style="width: 750px;height: auto;margin:0 auto 0;clear: both;">
-      <h1 style="margin: 40px 0px 0px 0px;">
-        <font style="font-size: 1.4em;">声明</font>
-      </h1>
-      <h3 style="margin: 25px 0px 30px 0px;">
-        <font style="color: #606266;font-weight: normal;letter-spacing: 0.14em;">蜂巢系统的使命是确保程序都是对社会有正面影响，并且我们的团队是来自五湖四海的线上工作者，我们在开发应用和程序的时候都在执行我们的执行标准。</font>
-      </h3>
-      <el-button type="info" plain style="letter-spacing: 0.14em;">查看宪章&nbsp<i class="el-icon-arrow-right"></i></el-button>
-      <h3 style="margin: 50px 0px 0px 0px;">
-        <font style="font-size: 1.6em;">我们所做的</font>
-      </h3>
-      <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们致力于有趣的应用和算法进行开发。</font>
-      </h3>
-      <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">我们最近的一些成果包括：</font>
-      </h3>
-      <!-- 循环列表 -->
-          <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
-            <div v-for="backgroundService in BackgroundServices">
-                <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
-                  <a :href="backgroundService.url" style="text-decoration:none;" target="view_window">
-                    <div style="width: 100%;height: auto;">
-                      <div>
-                        <b style="color: #303133;font-size: 0.95em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">{{ backgroundService.title }}</b>
-                        <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0;font-weight: normal;float: right;">{{backgroundService.date}}</b>
-                      </div>
-                    </div>
-                  </a> 
-                </li>
-            </div>
-          </ol>
-    <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">访问我们的进度页面了解更多关于蜂巢系统的信息。</font>
-    </h3>
-    <el-button type="info" plain style="letter-spacing: 0.14em;">查看进度&nbsp<i class="el-icon-arrow-right"></i></el-button>
-    <h3 style="margin: 50px 0px 0px 0px;">
-      <font style="font-size: 1.6em;">参与者</font>
-    </h3>
-    <h3 style="margin: 30px 0px 0px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">蜂巢系统由 CMAPLE、EMMA 提供核心支持，由吴KangLi（前端技术支持）、颜ChengJie（前端技术支持）提供技术支持。
-        </font>
-    </h3>
-    <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;font-weight: normal;letter-spacing: 0.05em;font-weight: bolder;">页面参照OPEN AI官网进行制作。</font>
-    </h3>
-    <el-button type="info" plain style="letter-spacing: 0.14em;">访问OPEN AI&nbsp<i class="el-icon-arrow-right"></i></el-button>
-    <h3 style="margin: 30px 0px 20px 0px;">
-        <font style="font-size: 1.1em;color: #606266;font-weight: normal;letter-spacing: 0.05em;">任何问题？电子邮件：congfeng12@163.com。</font>
-    </h3>
+    <!-- 内容 -->
+    <div v-html="content"></div>
+    <!-- 按钮 -->
+    <div style="width: 260px;margin: 0px auto 0px;margin: 0px auto 0px;padding-bottom: 80px">
+      <el-button type="primary" plain>下载文档</el-button>
+      <el-button type="info" plain>在GitHub上查看</el-button>
     </div>
-    <!-- 页尾 -->
-    <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 60px;">
+    <!-- 页脚 -->
+    <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;">
       <div style="height: 30px;width: 220px;float: left;margin-top: 10px;">
         <!-- github -->
         <a :href="GitHubPagerl" target="view_window">
@@ -167,15 +157,39 @@
     </el-dialog>
   </div>
 </template>
+
 <script>
 export default {
   data () {
     return {
+      //服务编号
+      serviceid:'',
+      //服务名称
+      name:'',
+      //服务简介
+      synopsis:'',
+      //服务版本
+      version:'',
+      //请求路径
+      route:'',
+      //服务大小
+      size:'',
+      //编程语言
+      proglanguage:'',
+      //服务提供者
+      author:'',
+      //接口类型
+      receivetype:'',
+      //服务创建时间
+      createdate:'',
+      //所在服务器编号
+      serverid:'',
+      //服务状态
+      servicestate:'',
+      //页面填充内容
+      content:``,
       //微信弹窗属性
       WeChartVisible: false,
-      //后台服务列表
-      BackgroundServices: [
-      ],
       //主页
       HomePageImgUrl:'',
       //关于
@@ -199,49 +213,45 @@ export default {
       //运行时间
       Run_Time_Range:'',
       //域名
-      Domain_Name:'',
+      Domain_Name:'',   
     }
   },
-  methods: {  
-      //获取最新的后台服务信息
-      getBackgroundServicesDescOrderBy(){
+   methods: {  
+      getBackgroundServicesById(){
         //设置必要参数
         var that = this;
-        //请求后台服务信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/BackgroundService/getBackgroundServicesDescOrderBy',{})
+        //请求里程碑信息
+         this.$Axios.post(this.$Global.Back_End_Service+'/BackgroundService/getBackgroundServicesById',this.$qs.stringify({
+           id:this.$route.query.id,
+        }))
         .then(function(res){
           if (res.data.RTCODE == 'success') {
-            //处理后台服务信息
-            for (var i = 0; i < res.data.RTDATA.length; ++i) {
-              var c_BackgroundServices = new Object();
-              c_BackgroundServices.id=res.data.RTDATA[i].id;
-              c_BackgroundServices.url='/backgroundservice?id='+res.data.RTDATA[i].id;
-              c_BackgroundServices.title=res.data.RTDATA[i].name;
-              c_BackgroundServices.date=res.data.RTDATA[i].createdate;
-              that.BackgroundServices.push(c_BackgroundServices);
-            }
+            //处理里程碑信息
+            that.name = res.data.RTDATA.data.name;
+            that.synopsis = res.data.RTDATA.data.synopsis;
+            that.author = res.data.RTDATA.data.author;
+            var c_creattime = res.data.RTDATA.data.createdate.split("-");
+            that.createdate = c_creattime[0]+'年'+c_creattime[1]+'月'+c_creattime[2]+'日';
+            that.serviceid = res.data.RTDATA.data.serviceid;
+            that.version = res.data.RTDATA.data.version;
+            that.route = res.data.RTDATA.data.route;
+            that.size = res.data.RTDATA.data.size;
+            that.proglanguage = res.data.RTDATA.data.proglanguage;
+            that.receivetype = res.data.RTDATA.data.receivetype;
+            that.serverid = res.data.RTDATA.data.serverid;
+            that.servicestate = res.data.RTDATA.data.servicestate;
+            that.content = res.data.RTDATA.content;
           }else{
             //异常结果显示
-            that.error_Message(res.data.RTMSG);
+            that.$Global.error_Message(that,res.data.RTMSG);
           }
         })
         .catch(function(err){
-          console.log(err);
+          that.$Global.error_Message(that,err);
         });
       }, 
-      //报错弹窗提示
-      error_Message(c_message) {
-        this.$message.error(c_message);
-      },
-      //成功弹窗提示
-      success_Message(c_message) {
-        this.$message({
-          message: c_message,
-          type: 'success'
-        });
-      }
-    },
-  created(){
+   },
+   created(){
     //页面加载时执行
     //设置公共属性
     this.HomePageImgUrl = this.$Global.HomePageUrl;
@@ -256,14 +266,13 @@ export default {
     this.Record_Number = this.$Global.Record_Number;
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
-    //获取主页后台服务信息
-    this.getBackgroundServicesDescOrderBy();
+    this.getBackgroundServicesById();
   },
-  mounted(){
+   mounted(){
     //页面加载后执行
-     
+    
   }
+
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -155,16 +155,6 @@ export default {
       readtime:'',
       //按钮信息
       milestonebutton:[
-        // {
-        //   icon:'el-icon-document',
-        //   title:'阅读论文',
-        //   url:'https://www.sogou.com/'
-        // },
-        // {
-        //   icon:'el-icon-paperclip',
-        //   title:'查看源码',
-        //   url:'https://www.baidu.com/'
-        // },
       ],
       //里程碑内容
       content:``,
@@ -199,7 +189,7 @@ export default {
   },
   methods: {
       //获取最新的里程碑信息
-      getMilestoneAtHome1(){
+      getMilestoneById(){
         //设置必要参数
         var that = this;
         //请求里程碑信息
@@ -261,7 +251,7 @@ export default {
     this.Record_Number = this.$Global.Record_Number;
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
-    this.getMilestoneAtHome1();
+    this.getMilestoneById();
   },
   mounted(){
     //页面加载后执行

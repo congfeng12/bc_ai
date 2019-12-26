@@ -86,12 +86,12 @@ export default new Router({
       component: () => import('@/components/investigationreport'),
     },
     {
-      path: '/Announcement',
-      name: 'Announcement',
+      path: '/announcement',
+      name: 'announcement',
       meta:{
         title:'公告内容',
       },
-      component: () => import('@/components/Announcement'),
+      component: () => import('@/components/announcement'),
     },
     {
       path: '/jobdescription',
@@ -116,6 +116,14 @@ export default new Router({
         title:'里程碑内容显示',
       },
       component: () => import('@/components/milestone'),
+    },
+    {
+      path: '/backgroundservice',
+      name: 'backgroundservice',
+      meta:{
+        title:'后台服务介绍页',
+      },
+      component: () => import('@/components/backgroundservice'),
     },
     {
       path: '/platform_menu',

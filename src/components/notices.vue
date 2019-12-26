@@ -216,7 +216,7 @@ export default {
               c_Notices.synopsis=res.data.RTDATA.data[i].synopsis;
               c_Notices.date=res.data.RTDATA.data[i].creattime;
               c_Notices.readtime=res.data.RTDATA.data[i].readtime;
-              c_Notices.url='/Announcement?id='+res.data.RTDATA.data[i].id;
+              c_Notices.url='/announcement?id='+res.data.RTDATA.data[i].id;
               that.Notices.push(c_Notices);
             }
             that.total = res.data.RTDATA.total;

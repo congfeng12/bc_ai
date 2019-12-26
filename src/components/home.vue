@@ -327,7 +327,7 @@ export default {
               c_Notices.id = res.data.RTDATA[i].id;
               c_Notices.date = res.data.RTDATA[i].creattime;
               c_Notices.title = res.data.RTDATA[i].title;
-              c_Notices.url = '/Announcement?id='+res.data.RTDATA[i].id;
+              c_Notices.url = '/announcement?id='+res.data.RTDATA[i].id;
               that.Notices.push(c_Notices);
             }
           }else{

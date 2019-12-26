@@ -1,7 +1,7 @@
 <template>
   <div style="height: 100%;">
     <!-- 上半部分 -->
-    <div style="width: 100%;background-color: #eeedee;">
+    <div style="width: 100%;background-color: #eeedee;margin-bottom: 50px;">
      <!--  <img src="../jpg/background.png">  -->
     <div style="width: 1500px;height: auto;margin: 0 auto 0;">
       <!-- 标题头 -->
@@ -45,45 +45,23 @@
       <div style="width: 1500px;height: auto;">
         <div style="width: 1200px;height: 300px;margin: 0 auto 0;">
           <!-- 标题及文字 -->
-          <div style="width: 730px;height: 593px;margin: 0 auto 0;">
+          <div style="width: 730px;height: 300px;margin: 0 auto 0;position: relative;">
             <h1 style="font-size: 40px;margin: 0px 0px 15px 0px;">{{title}}</h1>
             <b style="color: #606266;letter-spacing: 0.2em;font-size: 16px;">{{synopsis}}</b>
             <p></p>
-            <div style="margin-top: 90px;color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;">{{author}}</div>
-            <div style="color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;">{{time}}</div>
-            <div style="color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;">{{readtime}}</div>
+            <div style="margin-top: 90px;color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;position: absolute;bottom: 0;">
+              <p style="color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;margin:0px 0px 6px 0px;">{{author}}</p>
+              <p style="color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;margin:0px 0px 6px 0px;">{{time}}</p>
+              <p style="color:#909399;text-decoration: none;font-size: 12px;letter-spacing: 0.2em;margin:0px 0px 2px 0px;">{{readtime}}分钟阅读</p>
+            </div>
           </div>
         </div>
       </div>
       </div>
     </div>
-    <div style="width: 720px;height: auto;margin: 0 auto 0;margin-top: 100px;">
-        <div v-for="con in content">
-          <!-- 标题 -->
-          <div style="font-size: 1.2em;letter-spacing: 0.02em;font-weight: bolder;margin-top: 40px;">
-            {{con.title}}
-          </div>
-          <!-- 公告内容 -->
-          <div style="color: #606266;letter-spacing: 0.1em;font-size: 16px;margin-top: 10px;">
-            {{con.msg}}
-          </div>
-        </div>
-      </div>
-      <!-- 页尾 -->
-      <div style="width: 1200px;height: auto;margin: 0 auto 0;padding: 100px 0px 10px 0px;">
-            <ol style="padding-left: 0px;margin:30px 0px 0px 0px;">
-              <div v-for="synopsi in footer">
-                  <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%;position: relative;overflow: hidden;clear: both;">
-                      <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2em;font-weight: normal;text-transform: uppercase;margin-right: 165px;position: absolute;left: 0px;">{{ synopsi.title }}</b>
-                      <div style="float: right;width: 960px;float: right;display: flex;flex-direction: column;justify-content:space-between;">
-                          <b style="color: #C0C4CC;font-size: 0.9em;letter-spacing: 0.2;font-weight: normal;line-height: 1.4;">{{ synopsi.msg }}</b>
-                      </div>
-                      
-                  </li>
-              </div>
-            </ol>
-      </div>
-    
+    <!-- 内容 -->
+    <div v-html="content"></div>    
+    <!-- 页脚 -->
     <div style="border-top:1px solid #DCDFE6;width: 1500px;margin:0 auto 0;height: 70px;margin-top: 60px;">
       <div style="height: 30px;width: 220px;float: left;margin-top: 10px;">
         <!-- github -->
@@ -161,41 +139,17 @@ export default {
   data () {
     return {
       //公告标题
-      title:' 为什么负责人工智能开发需要安全合作',
+      title:'',
       //公告作者
-      author:'CMAPLE',
+      author:'',
       //公告简介
-      synopsis:'我们发布了蜂巢系统纲领，并在其中描述了我们履行蜂巢系统使命的原则。这份宣言包含了许多我们实践的重要原则，它是蜂巢系统内外许多人在两年里不断完善人工智能发展战略的努力的结晶。达成通',
+      synopsis:'',
       //时间
-      time:'2019年7月21日',
+      time:'',
       //阅读时间
-      readtime:'16分钟阅读',
+      readtime:'',
       //公告内容
-      content:[
-        {
-          title:'广泛造福社会',
-          msg:'我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。'
-        },
-        {
-          title:'广泛造福社会',
-          msg:'我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。'
-        },
-        {
-          title:'广泛造福社会',
-          msg:'我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。'
-        },
-      ],
-      footer:[
-        {
-          title:'致谢',
-          msg:'感谢Rewon Child和Scott Gray在稀疏变压器上的工作，以及Jeff Wu和Alec Radford在GPT-2上的工作。我们还感谢以下关于这篇文章草稿的反馈：Greg Brockman，Ilya Sutskever，Durk Kingma，Arvind Neelakantan，Tim Salimans，Rob Laidlow，Judith Finell，Moni Simeonov，Ray Iwazumi，Sam McCandlish，Miles Brundage，Jack Clark，Jonas施奈德，克里斯奥拉'
-        },
-        {
-          title:'脚注',
-          msg:'感谢Rewon Child和Scott Gray在稀疏变压器上的工作，以及Jeff Wu和Alec Radford在GPT-2上的工作。我们还感谢以下关于这篇文章草稿的反馈：Greg Brockman，Ilya Sutskever，Durk Kingma，'
-        }
-
-      ],
+      content:``,
       //微信弹窗属性
       WeChartVisible: false,
       //主页
@@ -224,6 +178,34 @@ export default {
       Domain_Name:'',   
     }
   },
+   methods: {  
+      getAnnouncementById(){
+        //设置必要参数
+        var that = this;
+        //请求里程碑信息
+         this.$Axios.post(this.$Global.Back_End_Service+'/Announcement/getAnnouncementById',this.$qs.stringify({
+           id:this.$route.query.id,
+        }))
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理里程碑信息
+            that.title = res.data.RTDATA.data.title;
+            that.synopsis = res.data.RTDATA.data.synopsis;
+            var c_creattime = res.data.RTDATA.data.creattime.split("-");
+            that.time = c_creattime[0]+'年'+c_creattime[1]+'月'+c_creattime[2]+'日';
+            that.author = res.data.RTDATA.data.author;
+            that.readtime = res.data.RTDATA.data.readtime;
+            that.content = res.data.RTDATA.content;
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err);
+        });
+      }, 
+   },
    created(){
     //页面加载时执行
     //设置公共属性
@@ -239,6 +221,7 @@ export default {
     this.Record_Number = this.$Global.Record_Number;
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
+    this.getAnnouncementById();
   },
    mounted(){
     //页面加载后执行

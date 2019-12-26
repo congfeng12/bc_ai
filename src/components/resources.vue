@@ -259,7 +259,7 @@ export default {
             for (var i = 0; i < res.data.RTDATA.length; ++i) {
               var c_BackgroundServices = new Object();
               c_BackgroundServices.id=res.data.RTDATA[i].id;
-              c_BackgroundServices.url='/backgroundService?id='+res.data.RTDATA[i].id;
+              c_BackgroundServices.url='/backgroundservice?id='+res.data.RTDATA[i].id;
               c_BackgroundServices.title=res.data.RTDATA[i].name;
               c_BackgroundServices.synopsis=res.data.RTDATA[i].synopsis;
               c_BackgroundServices.date=res.data.RTDATA[i].createdate;
