@@ -252,7 +252,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求后台服务信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/BackgroundService/getBackgroundServicesDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getBackgroundServicesDescOrderBy,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理后台服务信息

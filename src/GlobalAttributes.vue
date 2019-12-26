@@ -30,7 +30,31 @@
     const CharterPageUrl = '/charter'
     //声明
     const StatePageUrl = '/state'
-    
+    //主页获取最新的时间轴信息
+    const getTimeAxisAtHome = '/TimeAxis/getTimeAxisAtHome'
+    //根据id查询公告信息
+    const getAnnouncementById = '/Announcement/getAnnouncementById'
+    //根据id查询服务信息
+    const getBackgroundServicesById = '/BackgroundService/getBackgroundServicesById'
+    //主页获取最新的里程碑信息
+    const getMilestoneAtHome = '/Milestone/getMilestoneAtHome'
+    //主页获取公告列表
+    const getAnnouncementAtHome = '/Announcement/getAnnouncementAtHome'
+    //请求调查报告流文件路径
+    const getRequestById = '/Report/getRequestById?id='
+    //获取最新的岗位信息
+    const getWorkDescOrderBy = '/Work/getWorkDescOrderBy'
+    //根据id获取里程碑信息
+    const getMilestoneById = '/Milestone/getMilestoneById'
+    //分页获取公告列表
+    const getAnnouncementDescOrderBy = '/Announcement/getAnnouncementDescOrderBy'
+    //获取里程碑列表
+    const getMilestoneDescOrderBy = '/Milestone/getMilestoneDescOrderBy'
+    //获取调查报告列表
+    const getReportDescOrderBy = '/Report/getReportDescOrderBy'
+    //获取最新的后台服务信息
+    const getBackgroundServicesDescOrderBy = '/BackgroundService/getBackgroundServicesDescOrderBy'
+
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -62,5 +86,18 @@
       StatePageUrl,
       error_Message,
       success_Message,
+      getTimeAxisAtHome,
+      getAnnouncementById,
+      getBackgroundServicesById,
+      getMilestoneAtHome,
+      getAnnouncementAtHome,
+      getRequestById,
+      getWorkDescOrderBy,
+      getMilestoneById,
+      getAnnouncementDescOrderBy,
+      getMilestoneDescOrderBy,
+      getReportDescOrderBy,
+      getBackgroundServicesDescOrderBy,
+
     }
 </script>

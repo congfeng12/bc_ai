@@ -203,7 +203,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求里程碑信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/Milestone/getMilestoneDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getMilestoneDescOrderBy,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理里程碑信息
@@ -231,7 +231,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求调查报告
-         this.$Axios.post(this.$Global.Back_End_Service+'/Report/getReportDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getReportDescOrderBy,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理调查报告信息

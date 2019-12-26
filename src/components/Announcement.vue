@@ -179,11 +179,12 @@ export default {
     }
   },
    methods: {  
+    //查询公告
       getAnnouncementById(){
         //设置必要参数
         var that = this;
         //请求里程碑信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/Announcement/getAnnouncementById',this.$qs.stringify({
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getAnnouncementById,this.$qs.stringify({
            id:this.$route.query.id,
         }))
         .then(function(res){

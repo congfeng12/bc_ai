@@ -295,7 +295,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求岗位信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/Work/getWorkDescOrderBy',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getWorkDescOrderBy,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理岗位信息

@@ -290,7 +290,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求里程碑信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/Milestone/getMilestoneAtHome',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getMilestoneAtHome,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理里程碑信息
@@ -313,12 +313,12 @@ export default {
           that.$Global.error_Message(that,err);
         });
       }, 
-      //获取公告文章
+      //主页获取公告列表
       getAnnouncementAtHome(){
         //设置必要参数
         var that = this;
         //请求公告信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/Announcement/getAnnouncementAtHome',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getAnnouncementAtHome,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理公告信息

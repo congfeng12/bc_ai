@@ -255,12 +255,12 @@ export default {
     }
   },
   methods: {  
-      //获取最新的里程碑信息
+      //获取最新的时间轴信息
       getTimeAxisAtHome(){
         //设置必要参数
         var that = this;
         //请求时间轴信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/TimeAxis/getTimeAxisAtHome',{})
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getTimeAxisAtHome,{})
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             that.Timelines = res.data.RTDATA;

@@ -221,7 +221,7 @@ export default {
         //设置必要参数
         var that = this;
         //请求里程碑信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/BackgroundService/getBackgroundServicesById',this.$qs.stringify({
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getBackgroundServicesById,this.$qs.stringify({
            id:this.$route.query.id,
         }))
         .then(function(res){

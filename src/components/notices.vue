@@ -203,7 +203,7 @@ export default {
         that.Notices = [];
         that.total = 0;
         //请求公告信息
-         this.$Axios.post(this.$Global.Back_End_Service+'/Announcement/getAnnouncementDescOrderBy',this.$qs.stringify({
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getAnnouncementDescOrderBy,this.$qs.stringify({
            page:this.pagenum
         }))
         .then(function(res){
