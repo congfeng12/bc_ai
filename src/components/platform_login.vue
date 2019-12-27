@@ -68,7 +68,7 @@ export default {
 
   },
   methods: {
-  onSubmit() {
+    onSubmit() {
         //console.log(this.ruleForm.username);
         ///platform_login
         if (''!=this.ruleForm.username && ''!=this.ruleForm.password) {
@@ -76,21 +76,24 @@ export default {
         }else{
           this.$message.error('账户名或密码错误！');
         }
-      }
+    },
+
   },
   created(){
     //页面加载时执行
     //console.log(document.documentElement.scrollHeight)
-    console.log(window.navigator);
-    var ua = navigator.userAgent;
+
+    //console.log(window.navigator);
+    // var ua = navigator.userAgent;
 
   },
   mounted(){
     //页面加载后执行
-    //
-    // console.log(localStorage.hasOwnProperty('returnCitySN'));
+    console.log(localStorage.hasOwnProperty('returnCitySN'));
     console.log(localStorage.getItem('cip'));
     console.log(localStorage.getItem('cname'));
+    this.$Global.warning_notify(this,'通知','我们将使用您的cookie和ip地址，用于保证账户的安全性。我们将不会在其他位置使用这些信息，您的这些信息将完全保密！');
+    //this.$Global.success_Message(this,navigator.userAgent);
   }
 }
 </script>

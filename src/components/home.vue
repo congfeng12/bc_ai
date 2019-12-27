@@ -310,7 +310,7 @@ export default {
           }
         })
         .catch(function(err){
-          that.$Global.error_Message(that,err);
+          that.$Global.error_Message(that,err+'');
         });
       }, 
       //主页获取公告列表
@@ -336,7 +336,7 @@ export default {
           }
         })
         .catch(function(err){
-          that.$Global.error_Message(that,err);
+          that.$Global.error_Message(that,err+'');
         });
       },
     

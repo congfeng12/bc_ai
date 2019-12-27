@@ -222,11 +222,11 @@ export default {
             that.total = res.data.RTDATA.total;
           }else{
             //异常结果显示
-            that.error_Message(res.data.RTMSG);
+            that.$Global.error_Message(that,res.data.RTMSG);
           }
         })
         .catch(function(err){
-          console.log(err);
+          that.$Global.error_Message(that,err+'');
         });
         this.Notices = that.Notices;
       }, 
@@ -234,17 +234,6 @@ export default {
        this.pagenum = val;
        this.getAnnouncementDescOrderBy();
       },
-      //报错弹窗提示
-      error_Message(c_message) {
-        this.$message.error(c_message);
-      },
-      //成功弹窗提示
-      success_Message(c_message) {
-        this.$message({
-          message: c_message,
-          type: 'success'
-        });
-      }
     },
   created(){
     //页面加载时执行

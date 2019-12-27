@@ -42,7 +42,7 @@
     const getAnnouncementAtHome = '/Announcement/getAnnouncementAtHome'
     //请求调查报告流文件路径
     const getRequestById = '/Report/getRequestById?id='
-    //获取最新的岗位信息
+    //获取最新的岗位信息列表
     const getWorkDescOrderBy = '/Work/getWorkDescOrderBy'
     //根据id获取里程碑信息
     const getMilestoneById = '/Milestone/getMilestoneById'
@@ -54,7 +54,8 @@
     const getReportDescOrderBy = '/Report/getReportDescOrderBy'
     //获取最新的后台服务信息
     const getBackgroundServicesDescOrderBy = '/BackgroundService/getBackgroundServicesDescOrderBy'
-
+    //根据id获取岗位信息
+    const getWorkById = '/Work/getWorkById'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -66,6 +67,42 @@
         message: c_message,
         type: 'success'
       })
+    }
+    //成功通知提示
+    function success_notify(importThis,c_title,c_message,c_time){
+      importThis.$notify({
+          title: c_title,
+          message: c_message,
+          type: 'success',
+          duration: c_time
+        });
+    }
+    //警告通知提示
+    function warning_notify(importThis,c_title,c_message,c_time){
+      importThis.$notify({
+          title: c_title,
+          message: c_message,
+          type: 'warning',
+          duration: c_time
+        });
+    }
+    //错误通知提示
+    function error_notify(importThis,c_title,c_message,c_time){
+      importThis.$notify.error({
+          title: c_title,
+          message: c_message,
+          duration: c_time
+        });
+    }
+    //重要信息页面弹窗提示
+    function main_message(importThis,c_title,c_message){
+      importThis.$alert(c_message, c_title, {
+        confirmButtonText: '确定',
+        callback: action => {
+          //回调信息
+
+        }
+      });
     }
     // 暴露出这些属性和方法
     export default {
@@ -98,6 +135,10 @@
       getMilestoneDescOrderBy,
       getReportDescOrderBy,
       getBackgroundServicesDescOrderBy,
-
+      getWorkById,
+      success_notify,
+      warning_notify,
+      error_notify,
+      main_message,
     }
 </script>

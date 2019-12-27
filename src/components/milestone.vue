@@ -228,7 +228,7 @@ export default {
           }
         })
         .catch(function(err){
-          that.$Global.error_Message(that,err);
+          that.$Global.error_Message(that,err+'');
         });
       }, 
       open(url){

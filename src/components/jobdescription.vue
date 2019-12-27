@@ -15,12 +15,28 @@
             <h3 style="margin: 0px 0px 0px 0px;">
               <font style="font-weight: normal;font-size: 2em;letter-spacing: 0.1em;">{{title}}</font>
             </h3>
-            <el-button type="primary" style="position: absolute;right: 0px;top: 8px;letter-spacing: 0.1em;" @click="application()">申请这份工作</el-button>
+            <el-button type="primary" style="position: absolute;right: 0px;top: 8px;letter-spacing: 0.1em;" @click="applyJob()">申请这份工作</el-button>
             <!-- 地点&类型 -->
-            <h3 style="margin: 10px 0px 0px 0px;">
-              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">{{place}}&nbsp&nbsp{{type}}&nbsp&nbsp{{ask}}</font>
+             <h3 style="margin: 50px 0px 0px 0px;">
+              <el-link style="font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;" type="primary">{{createuser}}</el-link>
             </h3>
-            <div style="height: 30px;"></div>
+            <h3 style="margin: 0px 0px 0px 0px;">
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">{{createdate}}</font>
+            </h3>
+            <h3 style="margin: 10px 0px 0px 0px;">
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">{{place}}</font>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">&nbsp&nbsp{{type}}</font>
+              <el-tooltip class="item" effect="dark" content="贡献者-网站的普通参与者，不具备网站管理权限；研究员-网站的核心参与人员，具备相应的网站管理权限；" placement="top">
+                <el-link style="font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;" :underline="false" type="primary">&nbsp&nbsp{{nature}}</el-link>
+              </el-tooltip>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;margin-left: 5px;">需求
+                <font style="color: #67C23A">{{need}}</font>
+              人</font>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;margin-left: 5px;">目前
+                <font style="color: #F56C6C">{{application}}</font>
+              人申请</font>
+            </h3>
+            <div style="height: 10px;"></div>
           </div>
         </div>
       </div>
@@ -28,14 +44,14 @@
       <div style="clear: both;width: 100%;height: auto;margin: 40px 0px 0px 0px;">
         <div style="width: 760px;margin: 0 auto 0;">
           <h3 style="margin: 0px 0px 0px 0px;">
-            <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">我们正在寻找安全负责人来领导整个组织的安全工程。在这个独特的角色中，您将为您的团队设定愿景和方向，并将其与OpenAI的更大任务联系起来。
+            <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">我们正在寻找更多志同道合的伙伴，一起完善蜂巢系统，一起开发有趣、高效、具有对社会正面影响的应用或者服务
             </font>
           </h3>
           <!-- 动态内容 -->
           <ol style="margin:0px 0px 0px 0px;padding: 0px;">
-            <li v-for="req in requirement" style="list-style-type: none;padding: 30px 0px 20px 0px;width: 100%;">
+            <li v-for="req in content" style="list-style-type: none;padding: 30px 0px 20px 0px;width: 100%;">
               <h3 style="margin: 20px 0px 0px 0px;">
-                <font style="color: #606266;font-weight: bolder;font-size: 0.9em;letter-spacing: 0.1em;">{{req.title}}</font>
+                <font style="color: #303133;font-weight: bolder;font-size: 1.1em;letter-spacing: 0.1em;">{{req.title}}</font>
               </h3>
               <ol style="margin:20px 0px 0px 0px;padding: 0px 0px 0px 0px;">
                 <li v-for="con in req.conditions" style="list-style-type: none;padding: 2px 0px 2px 0px;width: 100%;">
@@ -48,42 +64,27 @@
           </ol>
           <!-- 页尾 -->
           <h3 style="margin: 20px 0px 0px 0px;">
-            <font style="color: #606266;font-weight: bolder;font-size: 0.8em;letter-spacing: 0.1em;">关于OpenAI</font>
+            <font style="color: #303133;font-weight: bolder;font-size: 1.1em;letter-spacing: 0.1em;">关于蜂巢系统</font>
           </h3>
           <h3 style="margin: 20px 0px 0px 0px;">
             <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">
-              我们正在建立安全的人工智能（AGI），并确保它为人类带来良好的结果。我们相信，一个高度创造性的团队合作，最好的结果是不合理的
+              我们正在创建一个资源丰富的开源服务网站。我们相信，一个高度创造性的团队合作，最好的结果是不合理的
             </font>
           </h3>
           <h3 style="margin: 20px 0px 0px 0px;">
             <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">
-              我们是公司的平等机会雇主和价值多元化。我们不会基于种族，宗教，肤色，国籍，性别，性取向，年龄，婚姻状况，退伍军人身份或残疾状况进行歧视。
-            </font>
-          </h3>
-          <h3 style="margin: 20px 0px 0px 0px;">
-            <font style="color: #606266;font-weight: bolder;font-size: 0.8em;letter-spacing: 0.1em;">
-              优点
-            </font>
-          </h3>
-          <h3 style="margin: 2px 0px 0px 0px;">
-            <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">
-              无限时间休息（我们鼓励每年4周以上）
-            </font>
-          </h3>
-          <h3 style="margin: 2px 0px 0px 0px;">
-            <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">
-              灵活的工作时间
+              我们正在寻找志同道合的伙伴，我们所有的工作都是在工作时间之余进行，所以不会占用很多时间。我们没有时间的限制，也没有绩效考核，所以你只需要参与进来即可。
             </font>
           </h3>
         </div>
       </div>
       <!-- 按钮 -->
-      <div style="clear: both;width: 100%;text-align: center;margin: 150px 0px 150px 0px;">
-        <el-button type="primary" style="letter-spacing: 0.1em;" @click="application()">申请这份工作</el-button>
+      <div style="clear: both;width: 100%;text-align: center;margin: 80px 0px 100px 0px;">
+        <el-button type="primary" style="letter-spacing: 0.1em;" @click="applyJob()">申请这份工作</el-button>
       </div>
       <!-- 页尾 -->
       <div style="width: 100%;clear: both;margin: 0px 0px 0px 0px;text-align: center;padding: 50px 0px 20px 0px;background-color: #F2F6FC">
-        <el-link type="primary">蜂巢系统主页</el-link>
+        <el-link type="primary" :href="HomePageUrl">蜂巢系统主页</el-link>
         <!-- 合作 -->
         <div style="width: 100%;margin-bottom: 50px;">
           <h3 style="margin: 10px 0px 0px 0px;">
@@ -101,67 +102,25 @@ export default {
   data () {
     return {
         //标题
-        title:'JAVA工程师',
+        title:'',
         //地区
-        place:'不限制地区',
+        place:'',
         //职位类型
-        type:'技术人员',
-        //职位要求
-        ask:'无需在职',
-        //要求
-        requirement:[
-          {
-            //标题
-            title:'你会',
-            //内容
-            conditions:[
-              {
-                condition:'在推动内部安全计划方面发挥领导作用'
-              },
-              {
-                condition:'构建并传播安全策略和最佳实践'
-              },
-              {
-                condition:'为不断的研究需求提供安全指导'
-              },
-              {
-                condition:'与我们的研究团队直接合作，以提高我们系统的安全性'
-              },
-              {
-                condition:'领导我们内部安全策略的合规性审计'
-              },
-              {
-                condition:'负责聘请世界级的安全团队'
-              },
-            ]
-          },
-          {
-            //标题
-            title:'如果你有这个角色，你可能适合这个角色',
-            //内容
-            conditions:[
-              {
-                condition:'在快节奏的环境中拥有8年以上的安全经验和3年以上的领导和管理团队'
-              },
-              {
-                condition:'了解企业系统和服务的攻击面'
-              },
-              {
-                condition:'为小型或中型组织定义威胁模型的经验'
-              },
-              {
-                condition:'通过与多个业务利益相关者一起规划和执行大型安全项目，取得了成功'
-              },
-              {
-                condition:'卓越的解决问题，战略思考以及与跨职能团队的协作'
-              },
-              {
-                condition:'防御国家级演员的经验是一个加分'
-              },
-            ]
-          }
-
-        ],
+        type:'',
+        //岗位性质
+        nature:'',
+        //岗位内容
+        content:[],
+        //岗位发布人员
+        createuser:'',
+        //岗位发布日期
+        createdate:'',
+        //岗位需求人数
+        need:'',
+        //岗位申报人数
+        application:'',
+        //跳转到主页
+        HomePageUrl:'',
         //运行时间
         Run_Time_Range:'',
         //域名
@@ -169,14 +128,60 @@ export default {
     }
   },
   methods: {
-    application(){
-      this.$router.push('/sendresume');
+    //获取岗位详细信息
+    getWorkById(){
+      //设置必要参数
+        var that = this;
+        //请求里程碑信息
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getWorkById,this.$qs.stringify({
+           id:this.$route.query.id,
+        }))
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理里程碑信息
+            that.title = res.data.RTDATA.title;
+            that.place = res.data.RTDATA.place;
+            that.type = res.data.RTDATA.type;
+            that.nature = res.data.RTDATA.nature;
+            var a_num = res.data.RTDATA.content.split("&");
+            for (var i = 0; i < a_num.length; ++i) {
+              var c_content = new Object();
+              var b_num = a_num[i].split("|");
+              c_content.title = b_num[0];
+              c_content.conditions = [];
+              for (var k = 1; k < b_num.length; ++k) {
+                var c_condition = new Object();
+                c_condition.condition = b_num[k];
+                c_content.conditions.push(c_condition);
+              }
+              that.content.push(c_content);
+            }
+            that.createuser = res.data.RTDATA.createuser;
+            var c_creatdate = res.data.RTDATA.createdate.split("-");
+            that.createdate = c_creatdate[0]+'年'+c_creatdate[1]+'月'+c_creatdate[2]+'日';
+            that.need = res.data.RTDATA.need;
+            that.application = res.data.RTDATA.application;
+           
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
+    },
+    //跳转到申请页面
+    applyJob(){
+      this.$router.push('/sendresume?id='+this.$route.query.id);
     }
   },
   created(){
     //页面加载时执行
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
+    this.HomePageUrl = this.$Global.HomePageUrl;
+    this.getWorkById();
   },
   mounted(){
     //页面加载后执行

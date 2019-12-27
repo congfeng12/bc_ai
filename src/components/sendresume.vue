@@ -1,6 +1,5 @@
 <template>
   <div style="width: 100%;height: 100%;height: 100%;">
-    
       <!-- 页头标题 -->
       <div style="clear: both;background-color: #F2F6FC">
         <div style="width: 760px;margin: 0 auto 0;">
@@ -15,10 +14,25 @@
             <h3 style="margin: 0px 0px 0px 0px;">
               <font style="font-weight: normal;font-size: 2em;letter-spacing: 0.1em;">{{title}}</font>
             </h3>
-            <!-- <el-button type="primary" style="position: absolute;right: 0px;top: 8px;letter-spacing: 0.1em;">申请这份工作</el-button> -->
             <!-- 地点&类型 -->
+             <h3 style="margin: 50px 0px 0px 0px;">
+              <el-link style="font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;" type="primary">{{createuser}}</el-link>
+            </h3>
+            <h3 style="margin: 0px 0px 0px 0px;">
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">{{createdate}}</font>
+            </h3>
             <h3 style="margin: 10px 0px 0px 0px;">
-              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">{{place}}&nbsp&nbsp{{type}}&nbsp&nbsp{{ask}}</font>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">{{place}}</font>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;">&nbsp&nbsp{{type}}</font>
+              <el-tooltip class="item" effect="dark" content="贡献者-网站的普通参与者，不具备网站管理权限；研究员-网站的核心参与人员，具备相应的网站管理权限；" placement="top">
+                <el-link style="font-weight: bolder;font-size: 0.6em;letter-spacing: 0.1em;" :underline="false" type="primary">&nbsp&nbsp{{nature}}</el-link>
+              </el-tooltip>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;margin-left: 5px;">需求
+                <font style="color: #67C23A">{{need}}</font>
+              人</font>
+              <font style="color: #C0C4CC;font-weight: bolder;font-size: 0.6em;margin-left: 5px;">目前
+                <font style="color: #F56C6C">{{application}}</font>
+              人申请</font>
             </h3>
             <div style="height: 30px;"></div>
           </div>
@@ -60,19 +74,19 @@
             <!-- 输入框 -->
             <div style="width: 600px;height: 350px;float: right;">
               <div>
-                <el-input placeholder="请输入内容"></el-input>
+                <el-input v-model="name" placeholder="请填写真实姓名"></el-input>
               </div>
               <div style="margin-top: 28px">
-                <el-input v-model="input" placeholder="请输入真实姓名"></el-input>
+                <el-input v-model="phonenumber" maxlength="11" placeholder="请填写电话号码"></el-input>
               </div>
               <div style="margin-top: 28px">
-                <el-input v-model="input" placeholder="请输入电子邮件"></el-input>
+                <el-input v-model="emaile" placeholder="请填写电子邮件"></el-input>
               </div>
               <div style="margin-top: 28px">
-                <el-input v-model="input" placeholder="请输入电话"></el-input>
+                <el-input v-model="address" placeholder="请填写联系地址"></el-input>
               </div>
               <div style="margin-top: 28px">
-                <el-input v-model="input" placeholder="请输入内容"></el-input>
+                <el-input v-model="company" placeholder="请填写目前就职的公司"></el-input>
               </div>
 
             </div>
@@ -85,7 +99,7 @@
             <!-- 标题 -->
             <div style="width: 150px;height: 150px;float: left;">
               <h3 style="margin: 5px 0px 0px 0px;">
-                <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">GitHub网址</font>
+                <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">GitHub域名</font>
               </h3>
               <h3 style="margin: 40px 0px 0px 0px;">
                 <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">个人网站URL</font>
@@ -94,10 +108,10 @@
             <!-- 输入框 -->
             <div style="width: 600px;height: 150px;float: right;">
               <div>
-                <el-input placeholder="请输入内容"></el-input>
+                <el-input v-model="githuburl" placeholder="请填写个人GitHub域名"></el-input>
               </div>
               <div style="margin-top: 25px">
-                <el-input v-model="input" placeholder="请输入真实姓名"></el-input>
+                <el-input v-model="personelurl" placeholder="请填写个人网站的域名"></el-input>
               </div>
             </div>
           </div>
@@ -108,47 +122,28 @@
           <el-input
             type="textarea"
             :autosize="{ minRows: 6}"
-            placeholder="输入附加内容"
-            v-model="textarea2"
-            maxlength="200"
+            placeholder="请填写个人简介及个人掌握的相关技术"
+            v-model="information"
+            maxlength="400"
             show-word-limit>
           </el-input>
-          <!-- 上传附件 -->
-          <h3 style="margin: 80px 0px 40px 0px;">
-            <font style="color: #606266;font-weight: bolder;font-size: 0.9em;letter-spacing: 0.1em;">上传附件</font>
-          </h3>
-          <div style="margin-bottom: 60px">
-            <el-upload
-              class="upload-demo"
-              ref="upload"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :on-preview="handlePreview"
-              :on-remove="handleRemove"
-              :file-list="fileList"
-              :auto-upload="false"
-              >
-              <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-              <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-              <div slot="tip" class="el-upload__tip">只能上传PDF/DOCX 的简历文件，且不超过30M</div>
-            </el-upload>
-          </div>
           <!-- 分割线 -->
           <el-divider></el-divider>
            <!-- 链接 -->
           <h3 style="margin: 40px 0px 0px 0px;">
-            <font style="color: #606266;font-weight: bolder;font-size: 0.9em;letter-spacing: 0.1em;">美国平等就业机会信息</font>
-            <font style="color: #606266;font-weight: normal;font-size: 0.9em;letter-spacing: 0.1em;">（完成是自愿的，不会对您造成不利待遇）</font>
+            <font style="color: #606266;font-weight: bolder;font-size: 0.9em;letter-spacing: 0.1em;">非全职性质的工作</font>
+            <font style="color: #606266;font-weight: normal;font-size: 0.9em;letter-spacing: 0.1em;">（完全是自愿的，不会对您造成不利待遇）</font>
           </h3>
-           <h3 style="margin: 50px 0px 0px 0px;">
+           <h3 style="margin: 20px 0px 0px 0px;">
             <font style="color: #606266;font-weight: normal;font-size: 0.8em;letter-spacing: 0.1em;">
-              我们公司重视多元化。为确保我们遵守报告要求并了解有关如何增加候选人群体多样性的更多信息，我们邀请您在本申请表的最后通过保密调查自愿提供人口统计信息。提供此信息是可选的。它不会在招聘过程中被访问或使用，也不会影响您的就业机会。
+              我们是一个完全自发的个人服务网站，我们在寻找志同道合的小伙伴一起来完善和丰富蜂巢个人服务网站，蜂巢系统是一个针对各种有趣或者有用的服务进行开发的个人服务网站，你只要对我们所做的事情表示认同并且想要进一步的参与进来都可以来加入我们，我们不会占用你的工作时间，我们的开发时间完全自由。
             </font>
           </h3>
         </div>
       </div>
       <!-- 按钮 -->
-      <div style="clear: both;width: 100%;text-align: center;margin: 150px 0px 150px 0px;">
-        <el-button type="primary" style="letter-spacing: 0.2em;">提交简历</el-button>
+      <div style="clear: both;width: 100%;text-align: center;margin: 80px 0px 100px 0px;">
+        <el-button type="primary" style="letter-spacing: 0.2em;" @click="JobApplication()">提交简历</el-button>
       </div>
       <!-- 页尾 -->
       <div style="width: 100%;clear: both;margin: 0px 0px 0px 0px;text-align: center;padding: 50px 0px 20px 0px;background-color: #F2F6FC">
@@ -169,34 +164,40 @@
 export default {
   data () {
     return {
+        //岗位id
+        workid:'',
         //标题
-        title:'JAVA工程师',
+        title:'',
         //地区
-        place:'不限制地区',
+        place:'',
         //职位类型
-        type:'技术人员',
-        //职位要求
-        ask:'无需在职',
-        //表单
-        textarea2:'',
-        fileList: [
-          {
-            name: 'food.jpeg', 
-            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-          },
-          {
-            name: 'food2.jpeg', 
-            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-          },
-          {
-            name: 'food2.jpeg', 
-            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-          },
-          {
-            name: 'food2.jpeg', 
-            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-          },
-        ],
+        type:'',
+        //岗位性质
+        nature:'',
+        //岗位发布人员
+        createuser:'',
+        //岗位发布日期
+        createdate:'',
+        //岗位需求人数
+        need:'',
+        //岗位申报人数
+        application:'',
+        //真实姓名
+        name:'',
+        //电话号码
+        phonenumber:'',
+        //电子邮件
+        emaile:'',
+        //地址
+        address:'',
+        //公司
+        company:'',
+        //githuburl
+        githuburl:'',
+        //个人网站
+        personelurl:'',
+        //附加信息
+        information:'',
         //运行时间
         Run_Time_Range:'',
         //域名
@@ -205,20 +206,48 @@ export default {
     }
   },
   methods: {
-    submitUpload() {
-        this.$refs.upload.submit();
-      },
-      handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      }
+    //获取岗位详细信息
+    getWorkById(){
+      //设置必要参数
+        var that = this;
+        //请求里程碑信息
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getWorkById,this.$qs.stringify({
+           id:this.$route.query.id,
+        }))
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理岗位信息
+            that.workid = res.data.RTDATA.id;
+            that.title = res.data.RTDATA.title;
+            that.place = res.data.RTDATA.place;
+            that.type = res.data.RTDATA.type;
+            that.nature = res.data.RTDATA.nature;
+            that.createuser = res.data.RTDATA.createuser;
+            var c_creatdate = res.data.RTDATA.createdate.split("-");
+            that.createdate = c_creatdate[0]+'年'+c_creatdate[1]+'月'+c_creatdate[2]+'日';
+            that.need = res.data.RTDATA.need;
+            that.application = res.data.RTDATA.application;
+           
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
+    },
+    //提交岗位申请
+    JobApplication(){
+      this.$Global.success_notify(this,'申请成功！','我们将会以短信和邮件的形式通知您申请结果！',5000);
+    },
   },
   created(){
     //页面加载时执行
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
+    //获取岗位信息
+    this.getWorkById();
   },
   mounted(){
     //页面加载后执行
