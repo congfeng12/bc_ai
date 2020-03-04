@@ -223,7 +223,7 @@ export default {
             that.type = res.data.RTDATA.type;
             that.nature = res.data.RTDATA.nature;
             that.createuser = res.data.RTDATA.createuser;
-            var c_creatdate = res.data.RTDATA.createdate.split("-");
+            var c_creatdate = res.data.RTDATA.createtime.split("-");
             that.createdate = c_creatdate[0]+'年'+c_creatdate[1]+'月'+c_creatdate[2]+'日';
             that.need = res.data.RTDATA.need;
             that.application = res.data.RTDATA.application;

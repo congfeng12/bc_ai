@@ -88,7 +88,7 @@
       <div style="width: 1500px;height: auto;margin: 0 auto 0;margin-top: 60px;padding: 20px 0px 20px 0px;">
       <el-timeline>
         <h3 style="font-size: 1.5em;letter-spacing: 0.25em;line-height: 1.4;">时间轴</h3>
-        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.eventdate" placement="top" v-bind:key="timeline.id">
+        <el-timeline-item v-for="timeline in Timelines" :timestamp="timeline.eventtime" placement="top" v-bind:key="timeline.id">
           <el-card style="width: 1370px;">
             <h3 style="font-size: 1.2em;letter-spacing: 0.075em;">{{timeline.title}}</h3>
             <p style="font-size: .9em;letter-spacing: 0.025em;color: #909399;">{{timeline.content}}</p>

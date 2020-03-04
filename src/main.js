@@ -10,6 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
 //引入QS
 import qs from 'qs';
+//引入cookie组建
+import Cookies from 'js-cookie'
 //导入全局属性组建
 import global from './GlobalAttributes.vue';
 
@@ -19,8 +21,11 @@ Vue.use(ElementUI);
 Vue.prototype.$Axios = axios;
 //注册qs
 Vue.prototype.$qs = qs;
+//注册cookie组件
+Vue.prototype.Cookies = Cookies;
 //注册全局属性组件
 Vue.prototype.$Global = global;
+
 
 /* eslint-disable no-new */
 new Vue({

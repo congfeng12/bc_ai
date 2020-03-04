@@ -202,7 +202,7 @@ export default {
             that.content = res.data.RTDATA.content;
             that.title = res.data.RTDATA.data.title;
             that.synopsis = res.data.RTDATA.data.synopsis;
-            var c_creattime = res.data.RTDATA.data.creattime.split("-");
+            var c_creattime = res.data.RTDATA.data.createtime.split("-");
             that.date = c_creattime[0]+'年'+c_creattime[1]+'月'+c_creattime[2]+'日';
             that.readtime = res.data.RTDATA.data.readtime;
             var c_imgurl = res.data.RTDATA.data.imgurl.split("/");

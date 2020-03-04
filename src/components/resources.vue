@@ -262,7 +262,7 @@ export default {
               c_BackgroundServices.url='/backgroundservice?id='+res.data.RTDATA[i].id;
               c_BackgroundServices.title=res.data.RTDATA[i].name;
               c_BackgroundServices.synopsis=res.data.RTDATA[i].synopsis;
-              c_BackgroundServices.date=res.data.RTDATA[i].createdate;
+              c_BackgroundServices.date=res.data.RTDATA[i].createtime;
               that.BackgroundServices.push(c_BackgroundServices);
             }
           }else{

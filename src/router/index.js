@@ -78,6 +78,14 @@ export default new Router({
       component: () => import('@/components/platform_login'),
     },
     {
+      path: '/platform_registered',
+      name: 'platform_registered',
+      meta:{
+        title:'平台主页-注册账户页面',
+      },
+      component: () => import('@/components/platform_registered'),
+    },
+    {
       path: '/investigationreport',
       name: 'investigationreport',
       meta:{

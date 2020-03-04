@@ -113,7 +113,7 @@
             <div v-for="notice in Notices">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
                   <a :href="notice.url" style="text-decoration:none;" target="_blank">
-                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 175px;">{{ notice.date }}</b>
+                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 115px;">{{ notice.date }}</b>
                     <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ notice.title }}</b>
                   </a> 
                 </li>
@@ -325,7 +325,7 @@ export default {
             for (var i = 0; i < res.data.RTDATA.length; ++i) {
               var c_Notices = new Object();
               c_Notices.id = res.data.RTDATA[i].id;
-              c_Notices.date = res.data.RTDATA[i].creattime;
+              c_Notices.date = res.data.RTDATA[i].createtime;
               c_Notices.title = res.data.RTDATA[i].title;
               c_Notices.url = '/announcement?id='+res.data.RTDATA[i].id;
               that.Notices.push(c_Notices);
@@ -357,7 +357,7 @@ export default {
     this.Record_Number = this.$Global.Record_Number;
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
-   //获取主页里程碑信息
+    //获取主页里程碑信息
     this.getMilestoneAtHome();
     //获取公告信息
     this.getAnnouncementAtHome();

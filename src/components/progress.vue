@@ -76,7 +76,7 @@
             <div v-for="report in Report">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 20px 0px 20px 0px;width: 100%">
                   <a :href="report.url" style="text-decoration:none;" target="view_window">
-                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 175px;">{{ report.date }}</b>
+                    <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;margin-right: 75px;">{{ report.date }}</b>
                     <b style="color: #303133;font-size: 0.85em;letter-spacing: 0;font-weight: normal;line-height: 1.4;">{{ report.title }}</b>
                     <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;;text-transform: uppercase;float: right;">{{ report.type }}</b>
                   </a> 
@@ -240,7 +240,7 @@ export default {
               c_Report.id=res.data.RTDATA.id;
               c_Report.url='/investigationreport?id='+res.data.RTDATA[i].id;
               c_Report.title=res.data.RTDATA[i].title;
-              c_Report.date=res.data.RTDATA[i].creatdate;
+              c_Report.date=res.data.RTDATA[i].createtime;
               c_Report.type=res.data.RTDATA[i].reporttype;
               that.Report.push(c_Report);
             }

@@ -7,29 +7,29 @@
         <div style="width: 370px;height: 400px;">
           <div style="width: 370px;height: 70px;position: relative;">
             <a :href="HomePageImgUrl"><img :src="FormPageLogo" style="height: 50px;margin: 20px 0px 0px 30px;"></a>
-            <font style="position: absolute;top: 35px;left: 100px;font-size: 1.2em;font-weight: bolder;">蜂巢系统深度学习平台</font>
+            <font style="position: absolute;top: 35px;left: 100px;font-size: 1.2em;font-weight: bolder;">蜂巢系统资源平台</font>
           </div>
           <h3 style="margin: 0px;padding: 40px 0px 20px 145px;">
             <font>欢迎登录</font>
           </h3>
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="20px">
             <el-form-item prop="username">
-              <el-input v-model="ruleForm.username" style="width: 330px;" prefix-icon="el-icon-user"></el-input>
+              <el-input v-model="ruleForm.username" style="width: 330px;" prefix-icon="el-icon-user" maxlength="11"></el-input>
             </el-form-item>
             <el-form-item prop="password">
               <el-input v-model="ruleForm.password" type="password" style="width: 330px;" prefix-icon="el-icon-lock"></el-input>
             </el-form-item>
             <el-checkbox v-model="ruleForm.remberlogin" style="margin: 0px 30px 30px 20px;">记住登录状态</el-checkbox>
             <el-link type="info" style="margin-right: 20px;">忘记密码？</el-link>
-            <el-link type="primary" >注册平台账号</el-link>
+            <el-link type="primary" href="/platform_registered">注册平台账号</el-link>
             <el-form-item>
-              <el-button type="primary" @click="onSubmit" style="width: 200px;margin-left: 65px;border-radius: 50px;"><font style="letter-spacing: 0.8em;">登录</font></el-button>
+              <el-button type="primary" @click="platform_login" style="width: 200px;margin-left: 65px;border-radius: 50px;"><font style="letter-spacing: 0.8em;">登录</font></el-button>
             </el-form-item>
           </el-form>
         </div>
       </div>
-      <div style="width: 360px;height: auto;margin: 0 auto 0;clear: both;position: fixed;top: 620px;left: 0;right: 0;">
-        <font style="color: #C0C4CC;font-size: 0.5em;">蜂巢系统版权归CMAPLE拥有 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp @2019-2019 CMAPLE.CN</font>
+      <div style="width: 360px;height: auto;margin: 0 auto 0;clear: both;position: fixed;top: 620px;left: 0;right: 0;text-align: center;">
+        <font style="color: #C0C4CC;font-size: 0.5em;">{{Record_Number}} &nbsp&nbsp&nbsp {{Run_Time_Range}}&nbsp&nbsp{{Domain_Name}}</font>
       </div>
     </div>
   </div>
@@ -39,8 +39,6 @@
 export default {
   data () {
     return {
-      //加入我们展示图
-      
       //logo图
       FormPageLogo:'../../static/logo_black.png',
       //背景图
@@ -48,6 +46,12 @@ export default {
       //表单背景图
       FormBackgroundImg:'../../static/FormBackgroundImg.png',
       HomePageImgUrl:'/',
+      //备案号
+      Record_Number:'',
+      //运行时间
+      Run_Time_Range:'',
+       //域名
+      Domain_Name:'',
       ruleForm: {
           username: '',
           password:'',
@@ -68,31 +72,50 @@ export default {
 
   },
   methods: {
-    onSubmit() {
+    platform_login() {
         //console.log(this.ruleForm.username);
-        ///platform_login
-        if (''!=this.ruleForm.username && ''!=this.ruleForm.password) {
-          this.$router.push('/platform_menu/');
-        }else{
-          this.$message.error('账户名或密码错误！');
-        }
+        var that = this;
+        //请求公告信息
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.login,this.$qs.stringify({
+           telephonenumber:this.ruleForm.username,
+           password:this.ruleForm.password,
+        }))
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理公告信息
+            //console.log(res.data);
+            localStorage.setItem("token",res.data.RTDATA);
+            // that.$Global.setCookie('token',res.data.RTDATA);
+            // that.$Global.setCookie('username',res.data.RTDATA.telephonenumber);
+            //that.updateUserLoginInfo(that.ruleForm.username,localStorage.getItem('cip'),localStorage.getItem('cname'))
+            that.$router.push('/platform_menu/');
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
     },
-
   },
   created(){
     //页面加载时执行
     //console.log(document.documentElement.scrollHeight)
-
     //console.log(window.navigator);
     // var ua = navigator.userAgent;
-
+    this.Record_Number = this.$Global.Record_Number;
+    this.Run_Time_Range = this.$Global.Run_Time_Range;
+    this.Domain_Name = this.$Global.Domain_Name;
   },
   mounted(){
     //页面加载后执行
-    console.log(localStorage.hasOwnProperty('returnCitySN'));
-    console.log(localStorage.getItem('cip'));
-    console.log(localStorage.getItem('cname'));
-    this.$Global.warning_notify(this,'通知','我们将使用您的cookie和ip地址，用于保证账户的安全性。我们将不会在其他位置使用这些信息，您的这些信息将完全保密！');
+    // console.log(localStorage.hasOwnProperty('returnCitySN'));
+    // console.log(localStorage.getItem('cip'));
+    // console.log(localStorage.getItem('cname'));
+    // console.log(unescape(this.$Global.getCookie('pcname'))+'1111');
+
+    this.$Global.warning_notify(this,'通知','为了能够提供更好的浏览体验，我们将使用您的cookie和ip地址，用于保证账户的安全性。我们将不会在其他位置使用这些信息，您的这些信息将完全保密！',3000);
     //this.$Global.success_Message(this,navigator.userAgent);
   }
 }
@@ -102,5 +125,10 @@ export default {
   border-radius: 50px !important;
 }
 </style>
-
+<!-- that.$Global.setCookie('userinfo', res.data.RTDATA.telephonenumber);
+            var userinfo = that.$Global.getCookie('userinfo');
+            console.log(userinfo);
+            that.$Global.delCookie('userinfo');
+            var userinfo1 = that.$Global.delCookie('userinfo');
+            console.log(userinfo1); -->
 <!-- Add "scoped" attribute to limit CSS to this component only -->

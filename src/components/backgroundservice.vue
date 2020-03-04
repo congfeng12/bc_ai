@@ -230,7 +230,7 @@ export default {
             that.name = res.data.RTDATA.data.name;
             that.synopsis = res.data.RTDATA.data.synopsis;
             that.author = res.data.RTDATA.data.author;
-            var c_creattime = res.data.RTDATA.data.createdate.split("-");
+            var c_creattime = res.data.RTDATA.data.createtime.split("-");
             that.createdate = c_creattime[0]+'年'+c_creattime[1]+'月'+c_creattime[2]+'日';
             that.serviceid = res.data.RTDATA.data.serviceid;
             that.version = res.data.RTDATA.data.version;

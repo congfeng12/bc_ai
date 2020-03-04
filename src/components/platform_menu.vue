@@ -125,12 +125,15 @@
         <!-- 名称 -->
         <div style="clear: both;width: 150px;height: auto;margin: 0 auto 0;">
           <h3 style="margin: 5px 0px 0px 0px;text-align: center;">
-            <font style="font-size: 0.8em;font-weight: normal;">congfeng</font>
+            <font style="font-size: 0.8em;font-weight: normal;">{{petname}}</font>
           </h3>
         </div>
         <!-- 身份标识 -->
         <div style="clear: both;width: 300px;height: auto;margin: 0 auto 0;margin-top: 8px;text-align: center;">
-          <el-tag size="small" :type="PCType">平台管理员</el-tag>
+          <el-tag v-if="'superadmin' === usertype" type="danger" size="mini">超级管理员</el-tag>
+          <el-tag v-else-if="'admin' === usertype" size="mini">平台管理员</el-tag>
+          <el-tag v-else-if="'member' === usertype" type="success" size="mini">普通会员</el-tag>
+          <el-tag v-else type="warning" size="mini" >异常类型</el-tag>
         </div>
         <!-- 个人信息卡片 -->
         <div style="width: 400px;height: auto;margin: 0 auto 0;margin-top: 20px;">
@@ -140,7 +143,7 @@
             <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">电子邮箱</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">congfeng12@163.com</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{useremail}}</b>
                   <el-tooltip class="item" effect="dark" content="更改绑定的电子邮箱" placement="top-start">
                     <el-link type="primary" style="float: right;padding: 3px 0px 0px 0px;font-size: 0.5em;">设置</el-link>
                   </el-tooltip>
@@ -150,7 +153,7 @@
             <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%;">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">电话</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">183****0269</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{telephonenumber}}</b>
                   <el-tooltip class="item" effect="dark" content="更改绑定的手机号码" placement="top-start">
                     <el-link type="primary" style="float: right;padding: 3px 0px 0px 0px;font-size: 0.5em;">设置</el-link>
                   </el-tooltip>
@@ -160,28 +163,28 @@
             <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">姓名</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">丛枫</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{name}}</b>
                 </li>
             </div>
             <!-- 身份信息 -->
             <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">身份证号码</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">152223********0014</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{idcard}}</b>
                 </li>
             </div>
             <!-- 注册日期 -->
             <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">注册日期</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">2019年8月9日</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{createtime}}</b>
                 </li>
             </div>
             <!-- 账户余额 -->
              <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">账户余额（¥）</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">999.99</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{userbalance}}</b>
                   <el-tooltip class="item" effect="dark" content="目前充值只做测试和平台开发者的打赏" placement="top-start">
                     <el-link type="primary" style="float: right;padding: 3px 0px 0px 0px;font-size: 0.5em;">充值</el-link>
                   </el-tooltip>
@@ -191,7 +194,7 @@
             <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
                   <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">上次登录位置</b>
-                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">浙江省·杭州市</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{lastplace}}</b>
                 </li>
             </div>
           </ol>
@@ -229,6 +232,24 @@ export default {
       userimg:'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       //个人身份标签类型
       PCType:'',
+      //用户名
+      petname:'',
+      //用户类型
+      usertype:'',
+      //用户电子邮箱
+      useremail:'',
+      //用户电话好吗
+      telephonenumber:'',
+      //用户真名
+      name:'',
+      //用户身份证号码
+      idcard:'',
+      //注册日期
+      createtime:'',
+      //余额
+      userbalance:0.0,
+      //上吃登录位置
+      lastplace:'',
     }
   },
   methods: {
@@ -252,14 +273,82 @@ export default {
       //个人中心
       this.drawer = true;
       this.PCType='';
-      }
     },
+  //获取用户信息
+    getUserSession(){
+      //设置必要参数
+      var that = this;
+      //请求登录用户信息
+      this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getUserSession,{},
+        {
+        headers: {
+            'token': localStorage.getItem('token'),
+        }
+      })
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理公告信息
+            //展示返回信息
+            that.petname = res.data.RTDATA.petname;
+            that.usertype = res.data.RTDATA.usertype;
+            that.useremail = res.data.RTDATA.useremail;
+            that.telephonenumber = res.data.RTDATA.telephonenumber;
+            that.name = res.data.RTDATA.name;
+            that.idcard = res.data.RTDATA.idcard;
+            that.createtime = res.data.RTDATA.createtime;
+            console.log(res.data.RTDATA.userbalance);
+            that.userbalance = res.data.RTDATA.userbalance;
+            that.lastplace = res.data.RTDATA.lastplace;
+            //that.$Global.success_Message(that,res.data.RTMSG);
+            that.updateUserLoginInfo(localStorage.getItem('cip'),localStorage.getItem('cname'));
+          }else{
+            //异常结果显示
+            that.$Global.login_message_box(that,'通知',res.data.RTMSG,'/platform_login/');
+            // that.$Global.error_Message(that,'通知',res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
+    },
+    //更新用户登录位置
+    updateUserLoginInfo(v_commonip,v_lastplace) {
+        //console.log(this.ruleForm.username);
+        var that = this;
+        //请求公告信息
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.updateUserLoginInfo,this.$qs.stringify({
+            commonip:v_commonip,
+            lastplace:v_lastplace,
+        }),
+        {
+          headers: {
+            'token': localStorage.getItem('token'),
+          }
+        })
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            //处理公告信息
+            //console.log(res.data);
+            //that.$Global.success_Message(that,res.data.RTMSG);
+          
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
+    },
+  },
   created(){
     //页面加载时执行
-  
+    
   },
   mounted(){
     //页面加载后执行
+    //获取登录用户信息
+    this.getUserSession();
   }
 }
 </script>

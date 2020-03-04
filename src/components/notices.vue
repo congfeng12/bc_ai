@@ -58,7 +58,7 @@
                       <div  style="width: 1500px;float: left;display: flex;flex-direction: column;justify-content:space-between;">
                         <div>
                           <b style="color: #303133;font-size: 1em;letter-spacing: 0;line-height: 1.4;margin: 0px;font-weight:900;">{{ notice.title }}</b>
-                          <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.date }}</b>
+                          <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;float: right;">{{ notice.createtime }}</b>
                           <p style="color: #303133;font-size: 0.9em;letter-spacing: 0.15em;font-family:Hiragino Sans GB;width: 1000px;">{{notice.synopsis}}</p>
                         </div>
                       </div>
@@ -214,7 +214,7 @@ export default {
               c_Notices.id=res.data.RTDATA.data[i].id;
               c_Notices.title=res.data.RTDATA.data[i].title;
               c_Notices.synopsis=res.data.RTDATA.data[i].synopsis;
-              c_Notices.date=res.data.RTDATA.data[i].creattime;
+              c_Notices.createtime=res.data.RTDATA.data[i].createtime;
               c_Notices.readtime=res.data.RTDATA.data[i].readtime;
               c_Notices.url='/announcement?id='+res.data.RTDATA.data[i].id;
               that.Notices.push(c_Notices);

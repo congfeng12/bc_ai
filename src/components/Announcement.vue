@@ -192,7 +192,7 @@ export default {
             //处理里程碑信息
             that.title = res.data.RTDATA.data.title;
             that.synopsis = res.data.RTDATA.data.synopsis;
-            var c_creattime = res.data.RTDATA.data.creattime.split("-");
+            var c_creattime = res.data.RTDATA.data.createtime.split("-");
             that.time = c_creattime[0]+'年'+c_creattime[1]+'月'+c_creattime[2]+'日';
             that.author = res.data.RTDATA.data.author;
             that.readtime = res.data.RTDATA.data.readtime;
