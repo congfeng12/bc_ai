@@ -66,16 +66,33 @@
     const updateUserLoginInfo = '/user/updateUserLoginInfo'
     //注册新的账号
     const userinsert = '/user/insert'
+    //操作日志
+    const selectByCriteria = '/operationlog/selectByCriteria'
+    //个人操作日志
+    const selectUserOperationLogByCriteria = '/operationlog/selectUserOperationLogByCriteria'
+    //个人导出日志为excel
+    const getOperationLogByParamsToExcel = '/operationlog/getOperationLogByParamsToExcel'
+    //管理员导出excel
+    const getOperationLogToExcel = '/operationlog/getOperationLogToExcel'
+    //发送验证码
+    const sendSMS = '/user/sendSMS'
+    //查询用户列表
+    const selectUsers = '/user/selectByCriteria'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
-      importThis.$message.error(c_message)
+      importThis.$message.error(
+        {
+        message: c_message,
+        duration:5000
+      })
     }
     //成功弹窗提示
     function success_Message(importThis,c_message) {
       importThis.$message({
         message: c_message,
-        type: 'success'
+        type: 'success',
+        duration:5000
       })
     }
     //成功通知提示
@@ -219,5 +236,11 @@
       setUserSession,
       updateUserLoginInfo,
       userinsert,
+      selectUserOperationLogByCriteria,
+      getOperationLogByParamsToExcel,
+      selectByCriteria,
+      getOperationLogToExcel,
+      sendSMS,
+      selectUsers,
     }
 </script>

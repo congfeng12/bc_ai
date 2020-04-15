@@ -23,16 +23,6 @@
             <el-option label="正常类型" value="normal"></el-option>
             <el-option label="异常类型" value="exception"></el-option>
           </el-select>
-          <!-- 操作类型 -->
-          <h3 style="position: absolute;top: 40px;left: 320px;">
-            <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">操作类型:</font>
-          </h3>
-          <el-select v-model="operatetype" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 400px;width: 150px;" size="mini">
-            <el-option label="不限制" value="all"></el-option>
-            <el-option label="账号操作类型" value="account"></el-option>
-            <el-option label="资源操作类型" value="resources"></el-option>
-            <!-- <el-option label="日志操作类型" value="log"></el-option> -->
-          </el-select>
           <!-- 日期范围 -->
            <h3 style="position: absolute;top: 0px;left: 550px;">
               <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">日期范围:</font>
@@ -51,8 +41,8 @@
             </el-date-picker>
           </div>
           <!-- <el-button style="position: absolute;right: 20px;" type="primary" size="mini"round plain>添加时间轴</el-button> -->
-          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round @click="open">搜索</el-button>
-          <el-button style="position: absolute;right: 20px;top: 60px;" type="success" size="mini" round plain>导出EXCEL</el-button>
+          <el-button style="position: absolute;right: 20px;" type="primary" size="mini" round @click="selectByCriteria">搜索</el-button>
+          <el-button style="position: absolute;right: 20px;top: 60px;" type="success" size="mini" @click="getOperationLogToExcel" round plain>导出EXCEL</el-button>
           <!-- <el-button style="position: absolute;right: 120px;top: 60px;" type="info" size="mini" round plain>将3月之前的日志存为文件</el-button>
           <el-button style="position: absolute;right: 300px;top: 60px;" type="info" size="mini" round plain>读取文件日志</el-button> -->
           <!-- 循环列表 -->
@@ -60,6 +50,7 @@
             <el-table
                 :data="tableData"
                 style="width: 100%"
+                :row-class-name="tableRowClassName">
                 >
               <el-table-column
                 prop="serialNumber"
@@ -86,23 +77,13 @@
                   </template>
               </el-table-column>
               <el-table-column
-                prop="operatetype"
-                label="操作类型"
-                width="110">
-                  <template slot-scope="types">
-                    <el-tag v-if="'accounttype' === types.row.operatetype" type="primary" size="mini">账号操作类型</el-tag>
-                    <el-tag v-else-if="'resourcestype' === types.row.operatetype" type="info" size="mini">资源操作类型</el-tag>
-                    <el-tag v-else type="warning" size="mini">日志操作类型</el-tag>
-                  </template>
-              </el-table-column>
-              <el-table-column
                 prop="msg"
                 label="日志信息详情">
               </el-table-column>
             </el-table>
           </div>
           <!-- 分页按钮 -->
-          <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000" style="width: 535px;margin: 0 auto 0;margin-top: 50px;margin-bottom: 20px;"></el-pagination>
+          <el-pagination :page-size="num" :pager-count="11"  @current-change="handleCurrentChange" layout="prev, pager, next ,total" :total="total" style="width: 535px;margin: 0 auto 0;margin-top: 50px;margin-bottom: 20px;"></el-pagination>
        </el-card>
     </div>
   </div>
@@ -112,245 +93,109 @@
 export default {
   data () {
     return {
-      logstype:'',
+      logstype:'all',
       search:'',
-      timeaxisdate:'',
-      operatetype:'',
-      tableData: [
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0002',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'danger',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0003',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'resourcestype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0004',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'logstype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },{
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },{
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },{
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },{
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-          {
-            //流水号
-            serialNumber:'HC20190821-0001',
-            //操作日期
-            date:'2019-08-21',
-            //操作人
-            operator:'CMAPLE',
-            //日志类型-正常类型、异常类型
-            logstype:'normal',
-            //操作类型-账号操作类型、资源操作类型、日志&信息操作类型
-            operatetype:'accounttype',
-            //日志信息详情
-            msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上 CMAPLE 将账号 xiaogao 提升为管理员',
-          },
-
-
-
-        ],
+      timeaxisdate:null,
+      v_timeaxisdate:'',
+      type:'',
+      tableData:[],
+      page:1,
+      num:20,
+      total:0,
+      responsedata:null,
       }
   },
   methods: {  
-      open(){
-        // console.log(new Date());
-        //console.log(this.timeaxisdate);
-        console.log(this.timeaxisdate);
-        this.$Axios.post('http://localhost:8081/operationlog/getUsersByParams',{
-          'logstype':this.logstype,
-          'search':this.search,
-          'timeaxisdate':this.timeaxisdate,
-          'operatetype':this.operatetype
+     selectByCriteria() {
+        var that = this;
+        if (null != this.timeaxisdate) {
+          this.v_timeaxisdate = this.timeaxisdate[0]+','+this.timeaxisdate[1];
+        }else{
+          this.v_timeaxisdate = null;
+        }
+        //请求公告信息
+         this.$Axios.post(this.$Global.Back_End_Service+this.$Global.selectByCriteria,this.$qs.stringify({
+          search:this.search,
+          timeaxisdate:this.v_timeaxisdate,
+          logstype:this.logstype,
+          page:this.page,
+          num:this.num,
+        }),
+        {
+          headers: {
+            'token': localStorage.getItem('token'),
+          }
         })
         .then(function(res){
-          console.log(res);
+          that.responsedata = res;
+          if (res.data.RTCODE == 'success') {
+            //时间
+            if (null != res.data.RTDATA.data) {
+              that.tableData = [];
+              that.total = res.data.RTDATA.total;
+              if (0 < res.data.RTDATA.total && 0 == res.data.RTDATA.data.length) {
+                that.page = 1;
+                that.selectByCriteria();
+              }
+              for (var i = 0; i < res.data.RTDATA.data.length; ++i) {
+                var c_tableData = new Object();
+                c_tableData.serialNumber = res.data.RTDATA.data[i].serialnumber;
+                c_tableData.date = res.data.RTDATA.data[i].createtime;
+                c_tableData.operator = res.data.RTDATA.data[i].operator;
+                c_tableData.logstype = res.data.RTDATA.data[i].logstype;
+                c_tableData.msg = res.data.RTDATA.data[i].content;
+                that.tableData.push(c_tableData);
+              }
+            }
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG + res.data.RTDATA);
+          }
         })
         .catch(function(err){
-          console.log(err);
+          that.$Global.error_Message(that,err+'');
         });
-      }, 
-      // dataFormat(time){
-      //   return `${time.getFullYear()}-${time.getMonth() + 1 >= 10 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1)}-${time.getDate() >= 10 ? time.getDate() : '0' + time.getDate()}
-      //           ${time.getHours() >= 10 ? time.getHours() : '0' + time.getHours()} : ${time.getMinutes()>=10?time.getMinutes():'0'+time.getMinutes()} : ${time.getSeconds() >= 10 ? time.getSeconds() : '0' + time.getSeconds()}`;
-      //        }
+    },
+    //导出excel
+    getOperationLogToExcel(){
+      var that = this;
+      this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getOperationLogToExcel,this.$qs.stringify({
+          search:this.search,
+          timeaxisdate:this.v_timeaxisdate,
+          logstype:this.logstype,
+          num:this.total,
+        }),
+        {
+          headers: {
+            'token': localStorage.getItem('token'),
+          },
+          responseType: "blob"
+        })
+         .then(function (res) {
+          const blob = new Blob(
+          [res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8' })
+                    const aEle = document.createElement('a');     // 创建a标签
+                    const href = window.URL.createObjectURL(blob);       // 创建下载的链接
+                    aEle.href = href;
+                    aEle.download = 'All_OperationLog_'+Math.floor(Math.random()*10000000 + 1)+'.xlsx';  // 下载后文件名
+                    document.body.appendChild(aEle);
+                    aEle.click();     // 点击下载
+                    document.body.removeChild(aEle); // 下载完成移除元素
+                    window.URL.revokeObjectURL(href) // 释放掉blob对象
+      })
+       .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
+    },
+      handleCurrentChange(val){
+      this.page = val;
+      this.selectByCriteria();
+    },
+    tableRowClassName({row, rowIndex}){
+        if ('exception' == this.responsedata.data.RTDATA.data[rowIndex].logstype) {
+          return 'warning-row';
+        }
+    } 
     },
   created(){
     //页面加载时执行
@@ -358,11 +203,13 @@ export default {
   },
   mounted(){
     //页面加载后执行
-    
+    this.selectByCriteria();
   }
 }
 </script>
 <style>
-
+   .el-table .warning-row {
+    background: #FF9696;
+  }
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

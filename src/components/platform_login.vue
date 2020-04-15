@@ -17,13 +17,15 @@
               <el-input v-model="ruleForm.username" style="width: 330px;" prefix-icon="el-icon-user" maxlength="11"></el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input v-model="ruleForm.password" type="password" style="width: 330px;" prefix-icon="el-icon-lock"></el-input>
+              <el-input v-model="ruleForm.password" type="password" @keyup.enter.native="platform_login" style="width: 330px;" prefix-icon="el-icon-lock"></el-input>
             </el-form-item>
-            <el-checkbox v-model="ruleForm.remberlogin" style="margin: 0px 30px 30px 20px;">记住登录状态</el-checkbox>
-            <el-link type="info" style="margin-right: 20px;">忘记密码？</el-link>
-            <el-link type="primary" href="/platform_registered">注册平台账号</el-link>
+            <!-- <el-checkbox v-model="ruleForm.remberlogin" style="margin: 0px 30px 30px 20px;"></el-checkbox> -->
+            <div style="margin:0 auto 0;width: 184px;">
+              <el-link type="info" style="margin:0px 20px 0px 0px;" href="//">忘记密码？</el-link>
+              <el-link type="primary" href="/platform_registered">注册平台账号</el-link>
+            </div>
             <el-form-item>
-              <el-button type="primary" @click="platform_login" style="width: 200px;margin-left: 65px;border-radius: 50px;"><font style="letter-spacing: 0.8em;">登录</font></el-button>
+              <el-button type="primary" @click="platform_login"  style="width: 200px;margin:20px 0px 0px 65px;border-radius: 50px;"><font style="letter-spacing: 0.8em;">登录</font></el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -34,7 +36,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   data () {
@@ -69,54 +70,46 @@ export default {
           // ]
         }
     }
-
   },
   methods: {
+    //登录
     platform_login() {
-        //console.log(this.ruleForm.username);
         var that = this;
+        let sha256 = require("js-sha256").sha256//这里用的是require方法
+        var shapassword = sha256(this.ruleForm.password)
         //请求公告信息
          this.$Axios.post(this.$Global.Back_End_Service+this.$Global.login,this.$qs.stringify({
            telephonenumber:this.ruleForm.username,
-           password:this.ruleForm.password,
+           password:shapassword,
+           uip:localStorage.getItem('cip'),
+           lastplace:localStorage.getItem('cname'),
         }))
         .then(function(res){
           if (res.data.RTCODE == 'success') {
             //处理公告信息
-            //console.log(res.data);
             localStorage.setItem("token",res.data.RTDATA);
-            // that.$Global.setCookie('token',res.data.RTDATA);
-            // that.$Global.setCookie('username',res.data.RTDATA.telephonenumber);
-            //that.updateUserLoginInfo(that.ruleForm.username,localStorage.getItem('cip'),localStorage.getItem('cname'))
             that.$router.push('/platform_menu/');
           }else{
             //异常结果显示
-            that.$Global.error_Message(that,res.data.RTMSG);
+            that.$Global.error_Message(that,res.data.RTMSG + res.data.RTDATA);
           }
         })
         .catch(function(err){
           that.$Global.error_Message(that,err+'');
         });
     },
+    //跳转到修改密码页面
+
   },
   created(){
     //页面加载时执行
-    //console.log(document.documentElement.scrollHeight)
-    //console.log(window.navigator);
-    // var ua = navigator.userAgent;
     this.Record_Number = this.$Global.Record_Number;
     this.Run_Time_Range = this.$Global.Run_Time_Range;
     this.Domain_Name = this.$Global.Domain_Name;
   },
   mounted(){
     //页面加载后执行
-    // console.log(localStorage.hasOwnProperty('returnCitySN'));
-    // console.log(localStorage.getItem('cip'));
-    // console.log(localStorage.getItem('cname'));
-    // console.log(unescape(this.$Global.getCookie('pcname'))+'1111');
-
-    this.$Global.warning_notify(this,'通知','为了能够提供更好的浏览体验，我们将使用您的cookie和ip地址，用于保证账户的安全性。我们将不会在其他位置使用这些信息，您的这些信息将完全保密！',3000);
-    //this.$Global.success_Message(this,navigator.userAgent);
+    this.$Global.warning_notify(this,'通知','为了能够提供更好的浏览体验请使用IE8以上的浏览器或者chrome浏览器等。我们将使用您的ip地址，用于保证账户的安全性。我们将不会在其他位置使用这些信息，您的这些信息将完全保密！',3000);
   }
 }
 </script>

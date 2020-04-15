@@ -180,6 +180,13 @@
                   <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{createtime}}</b>
                 </li>
             </div>
+            <!-- 注册日期 -->
+            <div style="position: relative;">
+                <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 50px 0px;width: 100%;height: auto;">
+                  <b style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bolder;text-transform: uppercase;">地址</b>
+                  <b style="color: #303133;font-size: 0.5em;letter-spacing: 0;font-weight: bolder;position: absolute;left: 130px;top: 13px;">{{useraddress}}</b>
+                </li>
+            </div>
             <!-- 账户余额 -->
              <div style="position: relative;">
                 <li style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%">
@@ -208,7 +215,7 @@
           <!-- 修改密码 -->
           <el-button type="warning" round>修改密码</el-button>
           <!-- 注销登录 -->
-          <el-button type="danger" round>注销登录</el-button>
+          <el-button type="danger" round @click="cancel_login">注销登录</el-button>
         </div>
       </div>
     </span>
@@ -238,6 +245,8 @@ export default {
       usertype:'',
       //用户电子邮箱
       useremail:'',
+      //地址
+      useraddress:'',
       //用户电话好吗
       telephonenumber:'',
       //用户真名
@@ -271,8 +280,8 @@ export default {
     //打开抽屉
     openeldrawer(){
       //个人中心
-      this.drawer = true;
-      this.PCType='';
+        this.drawer = true;
+        this.PCType='';
     },
   //获取用户信息
     getUserSession(){
@@ -283,6 +292,7 @@ export default {
         {
         headers: {
             'token': localStorage.getItem('token'),
+            'uip':localStorage.getItem('cip'),
         }
       })
         .then(function(res){
@@ -295,8 +305,8 @@ export default {
             that.telephonenumber = res.data.RTDATA.telephonenumber;
             that.name = res.data.RTDATA.name;
             that.idcard = res.data.RTDATA.idcard;
+            that.useraddress = res.data.RTDATA.useraddress;
             that.createtime = res.data.RTDATA.createtime;
-            console.log(res.data.RTDATA.userbalance);
             that.userbalance = res.data.RTDATA.userbalance;
             that.lastplace = res.data.RTDATA.lastplace;
             //that.$Global.success_Message(that,res.data.RTMSG);
@@ -340,10 +350,28 @@ export default {
           that.$Global.error_Message(that,err+'');
         });
     },
+    //注销登录
+    cancel_login(){
+      //清除localStorage
+      localStorage.removeItem('token');
+      //注销提示
+      this.$Global.success_Message(this,'账户注销成功！');
+      //跳转到登录页面
+      this.$router.push('/platform_login/');
+
+    },
+    //修改密码
+    
+    //修改电子邮件
+
+    //修改绑定电话
+    
+    //充值
+  
   },
   created(){
     //页面加载时执行
-    
+    this.$router.path = window.location.pathname;
   },
   mounted(){
     //页面加载后执行

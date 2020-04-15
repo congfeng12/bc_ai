@@ -22,7 +22,7 @@
             </el-form-item>
             <el-form-item label="验证码">
               <el-input v-model="ruleForm.securitycode" style="width: 100px;margin-right: 5px;"></el-input>
-              <el-button type="primary" round>获取验证码</el-button>
+              <el-button type="primary" @click="platform_securitycode" round>获取验证码</el-button>
             </el-form-item>
             <el-form-item label="姓名">
               <el-input v-model="ruleForm.name" style="width: 230px;"></el-input>
@@ -92,13 +92,16 @@ export default {
     platform_insert() {
         //console.log(this.ruleForm.username);
         var that = this;
+        let sha256 = require("js-sha256").sha256//这里用的是require方法
+        var shapassword = sha256(this.ruleForm.password)
         //请求公告信息 localStorage.getItem('cip'),localStorage.getItem('cname')
          this.$Axios.post(this.$Global.Back_End_Service+this.$Global.userinsert,this.$qs.stringify({
            petname:that.ruleForm.petname,
            telephonenumber:that.ruleForm.telephonenumber,
-           name:that.ruleForm.petname,
+           name:that.ruleForm.name,
+           securitycode:that.ruleForm.securitycode,
            idcard:that.ruleForm.idcard,
-           password:that.ruleForm.password,
+           password:shapassword,
            commonip:localStorage.getItem('cip'),
            lastplace:localStorage.getItem('cname'),
         }))
@@ -117,7 +120,21 @@ export default {
     //验证验证码
     platform_securitycode(){
       var that = this;
-
+      //sendSMS
+      this.$Axios.post(this.$Global.Back_End_Service+this.$Global.sendSMS,this.$qs.stringify({
+           telephonenumber:that.ruleForm.telephonenumber,
+        }))
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            that.$Global.success_Message(that,res.data.RTMSG);
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
     }
   },
   created(){

@@ -19,10 +19,11 @@
             <font style="color: #C0C4CC;font-size: 0.8em;letter-spacing: 0.1em;font-weight: bold;">用户状态:</font>
           </h3>
           <el-select v-model="accounttype" placeholder="请选择活动区域" style="position: absolute;top: 60px;left: 100px;width: 150px;" size="mini">
-            <el-option label="不限制" value=""></el-option>
-            <el-option label="正常" value="1"></el-option>
-            <el-option label="锁定" value="2"></el-option>
-            <el-option label="错误状态" value="3"></el-option>
+            <el-option label="不限制" value="all"></el-option>
+            <el-option label="正常" value="normal"></el-option>
+            <el-option label="锁定" value="lock"></el-option>
+            <el-option label="删除" value="del"></el-option>
+            <el-option label="异常状态" value="abnormal"></el-option>
           </el-select>
           <!-- 日期范围 -->
            <h3 style="position: absolute;top: 0px;left: 550px;">
@@ -122,41 +123,16 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <!-- 按钮组 -->
-                <el-button size="mini" type="info" @click="viewlog(scope.row)" plain>日志</el-button>
                 <el-button style="margin-left: 2px;" size="mini" type="primary" @click="handleEdit(scope.$index, scope.row)" plain>编辑</el-button>
                 <el-button style="margin-left: 2px;" size="mini" type="warning" @click="handleEdit(scope.$index, scope.row)" plain>锁定</el-button>
                 <el-button style="margin-left: 2px;" size="mini" type="success" @click="handleEdit(scope.$index, scope.row)" plain>解锁</el-button>
                 <el-button style="margin-left: 2px;" size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)" plain>删除</el-button>
-                 <!-- 版本历史表格 -->
-              <el-dialog title="日志" :visible.sync="dialogTableVisible" >
-                <el-table 
-                  :data="personallogs.filter(data => !searchlogs || data.msg.toLowerCase().includes(searchlogs.toLowerCase()))"
-                  max-height="550"
-                  >
-                  <el-table-column 
-                    property="time" 
-                    label="操作日期" 
-                    width="200"
-                    :filters="accountlogstime"
-                    :filter-method="filterHandler"
-                  ></el-table-column>
-                  <el-table-column property="name" label="操作人员" width="160"></el-table-column>
-                  <el-table-column property="msg" label="操作内容">
-                    <template slot="header" slot-scope="scope">
-                      <el-input
-                        v-model="searchlogs"
-                        size="mini"
-                        placeholder="输入关键字搜索日志详情"/>
-                      </template>
-                  </el-table-column>
-                </el-table>
-              </el-dialog>
               </template>
             </el-table-column>
           </el-table>
           </div>
-          <!-- 分页按钮 -->
-          <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000" style="width: 535px;margin: 0 auto 0;margin-top: 50px;margin-bottom: 20px;"></el-pagination>
+         <!-- 分页按钮 -->
+           <el-pagination :page-size="num" :pager-count="11"  @current-change="handleCurrentChange" layout="prev, pager, next ,total" :total="total" style="width: 535px;margin: 0 auto 0;margin-top: 50px;margin-bottom: 20px;"></el-pagination>
        </el-card>
       
     </div>
@@ -167,135 +143,14 @@
 export default {
   data () {
     return {
-      accounttype:'',
+      accounttype:'all',
       search:'',
-      timeaxisdate:'',
-      dialogTableVisible:false,
-      searchlogs:'',
-      personallogs:[],
-      accountlogstime:
-        [
-          {text: '2019-08-12 09:23:17', value: '2019-08-12 09:23:17'}, 
-          {text: '2019-08-12 09:23:18', value: '2019-08-12 09:23:18'}, 
-        ],
+      timeaxisdate:null,
       //静态资源列表
-      accounts: [
-         {
-          //用户id
-          id:'1001003',
-          //用户名
-          username:'xiaogao',
-          //用户类型
-          type:'admin',
-          //用户状态
-          state:'normal',
-          //用户注册时间
-          createtime:'2019-08-21',
-          //电子邮箱
-          email:'xiaogao@163.com',
-          //电话
-          phonenumber:'18669081259',
-          //姓名
-          name:'高晨強 ',
-          //身份证
-          idcard:'37140219900104687X',
-          //余额
-          money:'80',
-          //最后登录地点
-          place:'浙江省 金华',
-          //账户日志
-          logs:[
-            {
-              time: '2019-08-12 09:23:17',
-              name: 'xiaogao',
-              msg:'在 浙江省 金华 的 00:0e:c6:b6:85:8c 终端上注册会员'
-            },
-            {
-              time: '2019-08-12 09:23:18',
-              name: 'xiaogao',
-              msg:'在 浙江省 金华 的 00:0e:c6:b6:85:8c 终端上修改密码'
-            },
-            {
-              time: '2019-08-12 09:23:18',
-              name: 'CMAPLE',
-              msg:'被 CMAPLE 提升为管理员'
-            },
-          ],
-          //权限目录
-          powers:[
-            {
-              key:'1',
-              val:'个人资源中心',
-            },
-            {
-              key:'2',
-              val:'个人操作日志',
-            },
-            {
-              key:'3',
-              val:'日志&信息',
-            },
-            {
-              key:'4',
-              val:'用户管理-平台账号',
-            },
-          ],
-        }, 
-        {
-          //用户id
-          id:'1001004',
-          //用户名
-          username:'xiaolu',
-          //用户类型
-          type:'admin',
-          //用户状态
-          state:'normal',
-          //用户注册时间
-          createtime:'2019-08-20',
-          //电子邮箱
-          email:'xiaolu@163.com',
-          //电话
-          phonenumber:'18369021659',
-          //姓名
-          name:'卢洪波',
-          //身份证
-          idcard:'371082198710035159',
-          //余额
-          money:'200',
-          //最后登录地点
-          place:'浙江省 杭州市',
-          //账户日志
-          logs:[
-            {
-              time: '2019-08-12 09:23:17',
-              name: 'xiaolu',
-              msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上注册会员'
-            },
-            {
-              time: '2019-08-12 09:23:18',
-              name: 'xiaolu',
-              msg:'在 浙江省 杭州市 的 00:0e:c6:b6:85:8c 终端上修改密码'
-            },
-          ],
-          //权限目录
-          powers:[
-            {
-              key:'1',
-              val:'个人资源中心',
-            },
-            {
-              key:'2',
-              val:'个人操作日志',
-            },
-             {
-              key:'3',
-              val:'日志&信息',
-            },
-          ],
-        }, 
-        
-
-        ],
+      accounts: [],
+      page:1,
+      num:20,
+      total:0,
     }
   },
   methods: {  
@@ -312,11 +167,69 @@ export default {
         const property = column['property'];
         return row[property] === value;
       },
-      //@click="dialogTableVisible = true"
       viewlog(row){
         this.personallogs = row.logs;
         this.dialogTableVisible = true
+      },
+      selectUsers(){
+      //设置必要参数
+      var that = this;
+      if (null != this.timeaxisdate) {
+          this.v_timeaxisdate = this.timeaxisdate[0]+','+this.timeaxisdate[1];
+        }else{
+          this.v_timeaxisdate = null;
+        }
+      //请求登录用户信息
+       this.$Axios.post(this.$Global.Back_End_Service+this.$Global.selectUsers,this.$qs.stringify({
+          "content":this.search,
+          'timeaxisdate':this.v_timeaxisdate,
+          "usertype":"admin",
+          'useraffairs':this.accounttype,
+          'page':this.page,
+          'num':this.num,
+        }),
+        {
+          headers: {
+            'token': localStorage.getItem('token'),
+          }
+        })
+        .then(function(res){
+          if (res.data.RTCODE == 'success') {
+            console.log(res.data);
+             if (null != res.data.RTDATA.data) {
+              that.accounts = [];
+              that.total = res.data.RTDATA.total;
+              if (0 < res.data.RTDATA.total && 0 == res.data.RTDATA.data.length) {
+                that.page = 1;
+                that.selectUsers();
+              }
+              console.log(res.data.RTDATA.data);
+              for (var i = 0; i < res.data.RTDATA.data.length; ++i) {
+                var c_tableData = new Object();
+                c_tableData.id = res.data.RTDATA.data[i].id;
+                c_tableData.username = res.data.RTDATA.data[i].petname;
+                c_tableData.type = res.data.RTDATA.data[i].usertype;
+                c_tableData.state = res.data.RTDATA.data[i].useraffairs;
+                c_tableData.createtime = res.data.RTDATA.data[i].createtime;
+                c_tableData.email = res.data.RTDATA.data[i].useremail;
+                c_tableData.phonenumber = res.data.RTDATA.data[i].telephonenumber;
+                c_tableData.name = res.data.RTDATA.data[i].name;
+                c_tableData.idcard = res.data.RTDATA.data[i].idcard;
+                c_tableData.place = res.data.RTDATA.data[i].useraddress;
+                c_tableData.money = res.data.RTDATA.data[i].userbalance;
+                that.accounts.push(c_tableData);
+              }
+            }
+          }else{
+            //异常结果显示
+            that.$Global.error_Message(that,res.data.RTMSG + res.data.RTDATA);
+          }
+        })
+        .catch(function(err){
+          that.$Global.error_Message(that,err+'');
+        });
       }
+
     },
   created(){
     //页面加载时执行
@@ -324,6 +237,7 @@ export default {
   },
   mounted(){
     //页面加载后执行
+    this.selectUsers();
   }
 }
 </script>
