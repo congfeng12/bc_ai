@@ -85,7 +85,11 @@
                    <el-button size="mini" type="success" plain>发送邮件</el-button>
                   </el-form-item>
                   <el-form-item label="权限列表">
-                    <el-tag v-for="(power,index) in detailed.row.powers" :key="index" type="info" size="mini" style="margin-right: 5px;">{{power.val}}</el-tag>
+                    <el-tag v-if="'0' !== detailed.row.permissions[0]" type="info" size="mini">资源管理</el-tag>
+                    <el-tag v-if="'0' !== detailed.row.permissions[1]" type="info" size="mini">用户管理</el-tag>
+                    <el-tag v-if="'0' !== detailed.row.permissions[2]" type="info" size="mini">日志&信息</el-tag>
+                    <el-tag v-if="'0' !== detailed.row.permissions[3]" type="info" size="mini">服务资源中心</el-tag>
+                    <el-tag v-if="'0' !== detailed.row.permissions[4]" type="info" size="mini">个人操作日志</el-tag>
                   </el-form-item>
                   <el-form-item label="功能列表">
                     <el-button size="mini" type="warning" plain>初始化密码</el-button>
@@ -217,6 +221,9 @@ export default {
                 c_tableData.idcard = res.data.RTDATA.data[i].idcard;
                 c_tableData.place = res.data.RTDATA.data[i].useraddress;
                 c_tableData.money = res.data.RTDATA.data[i].userbalance;
+                c_tableData.permissions = res.data.RTDATA.data[
+                  i
+                ].permissions.split(",");
                 that.accounts.push(c_tableData);
               }
             }

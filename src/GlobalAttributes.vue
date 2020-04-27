@@ -14,6 +14,8 @@
     const Domain_Name = 'CMAPLE.CN'
     //GitHubURL
     const GitHubURL = 'https://github.com/congfeng12'
+    //静态资源路径
+    const StaticResourcesPath = '/Users/congfeng/Downloads'
     //主页
     const HomePageUrl = '/'
     //关于
@@ -78,6 +80,10 @@
     const sendSMS = '/user/sendSMS'
     //查询用户列表
     const selectUsers = '/user/selectByCriteria'
+    //统计信息查询
+    const selectCountHomePage = '/Statistics/selectCountHomePage'
+    //访问静态资源
+    const selectStaticResources = '/staticresources/selectStaticResources'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -242,5 +248,8 @@
       getOperationLogToExcel,
       sendSMS,
       selectUsers,
+      selectCountHomePage,
+      selectStaticResources,
+      StaticResourcesPath,
     }
 </script>

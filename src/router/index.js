@@ -151,16 +151,6 @@ export default new Router({
           name: '官网静态资源',
           component: () => import('@/components/platform_StaticResources')
         },
-         {
-          path: '/platform_menu/server',
-          name: '服务器资源',
-          component: () => import('@/components/platform_Server')
-        },
-        {
-          path: '/platform_menu/backgroundService',
-          name: '后台服务资源',
-          component: () => import('@/components/platform_backgroundService')
-        },
         {
           path: '/platform_menu/notices',
           name: '官网公告资源',
