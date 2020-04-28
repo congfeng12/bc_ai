@@ -84,6 +84,9 @@
     const selectCountHomePage = '/Statistics/selectCountHomePage'
     //访问静态资源
     const selectStaticResources = '/staticresources/selectStaticResources'
+    //访问公告资源
+    const selectNotices = '/Announcement/selectByCriteria'
+
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -251,5 +254,6 @@
       selectCountHomePage,
       selectStaticResources,
       StaticResourcesPath,
+      selectNotices,
     }
 </script>

@@ -63,11 +63,7 @@
                         </div>
                       </div>
                     </div>
-                  
                   <p></p>
-                  <div style="color: #C0C4CC;font-size: 0.5em;letter-spacing: 0.2em;font-weight: bold;text-transform: uppercase;">
-                    {{notice.readtime}}分钟阅读
-                  </div>
                   </a>
                 </li>
             </div>
@@ -215,7 +211,6 @@ export default {
               c_Notices.title=res.data.RTDATA.data[i].title;
               c_Notices.synopsis=res.data.RTDATA.data[i].synopsis;
               c_Notices.createtime=res.data.RTDATA.data[i].createtime;
-              c_Notices.readtime=res.data.RTDATA.data[i].readtime;
               c_Notices.url='/announcement?id='+res.data.RTDATA.data[i].id;
               that.Notices.push(c_Notices);
             }
