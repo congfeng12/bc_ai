@@ -53,6 +53,7 @@
           <li
             v-for="resource in Resources"
             style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%;overflow: hidden;clear: both;position: relative;"
+            v-bind:key="resource"
           >
             <div style="height: 125px;">
               <!-- 调查报告标题 -->

@@ -86,7 +86,8 @@
     const selectStaticResources = '/staticresources/selectStaticResources'
     //访问公告资源
     const selectNotices = '/Announcement/selectByCriteria'
-
+    //查询里程碑列表
+    const selecttMilestonep = '/Milestone/selectByCriteria'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -255,5 +256,6 @@
       selectStaticResources,
       StaticResourcesPath,
       selectNotices,
+      selecttMilestonep,
     }
 </script>
