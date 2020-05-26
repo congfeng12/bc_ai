@@ -205,9 +205,9 @@ export default {
             var c_creattime = res.data.RTDATA.data.createtime.split("-");
             that.date = c_creattime[0]+'年'+c_creattime[1]+'月'+c_creattime[2]+'日';
             that.readtime = res.data.RTDATA.data.readtime;
-            var c_imgurl = res.data.RTDATA.data.imgurl.split("/");
-            var imgnum = c_imgurl.length-1;
-            that.milestoneimgurl = '../../static/'+c_imgurl[imgnum];
+            // var c_imgurl = res.data.RTDATA.data.imgurl.split("/");
+            // var imgnum = c_imgurl.length-1;
+            that.milestoneimgurl = res.data.RTDATA.data.imgurl;
             var c_buttongroup = res.data.RTDATA.data.buttongroup.split("|");
             var bglength = c_buttongroup.length/3;
             var recording_i = 0;

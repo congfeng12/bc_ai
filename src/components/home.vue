@@ -299,9 +299,9 @@ export default {
               c_Progress.id = res.data.RTDATA[i].id;
               c_Progress.title = res.data.RTDATA[i].title;
               c_Progress.url = '/milestone?id='+res.data.RTDATA[i].id;
-              var c_imgurl = res.data.RTDATA[i].imgurl.split("/");
-              var imgnum = c_imgurl.length-1;
-              c_Progress.jpgurl = '../../static/'+c_imgurl[imgnum];
+              // var c_imgurl = res.data.RTDATA[i].imgurl.split("/");
+              // var imgnum = c_imgurl.length-1;
+              c_Progress.jpgurl = res.data.RTDATA[i].imgurl;//c_imgurl[imgnum];
               that.Progress.push(c_Progress);
             }
           }else{

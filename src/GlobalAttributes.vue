@@ -88,6 +88,8 @@
     const selectNotices = '/Announcement/selectByCriteria'
     //查询里程碑列表
     const selecttMilestonep = '/Milestone/selectByCriteria'
+    //按照条件查询调查报告列表
+    const selectreports = '/Report/selectByCriteria'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -257,5 +259,6 @@
       StaticResourcesPath,
       selectNotices,
       selecttMilestonep,
+      selectreports,
     }
 </script>
