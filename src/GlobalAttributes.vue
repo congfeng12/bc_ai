@@ -89,7 +89,11 @@
     //查询里程碑列表
     const selecttMilestonep = '/Milestone/selectByCriteria'
     //按照条件查询调查报告列表
-    const selectreports = '/Report/selectByCriteria'
+    const selectReports = '/Report/selectByCriteria'
+    //按照条件查询岗位信息
+    const selectWorks = '/Work/selectByCriteria'
+    //按照条件搜索时间轴信息
+    const selectTimeAxis = '/TimeAxis/selectByCriteria'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -259,6 +263,8 @@
       StaticResourcesPath,
       selectNotices,
       selecttMilestonep,
-      selectreports,
+      selectReports,
+      selectWorks,
+      selectTimeAxis,
     }
 </script>

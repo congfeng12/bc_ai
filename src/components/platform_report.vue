@@ -25,12 +25,13 @@
         <div class="block" style="position: absolute;top: 60px;left: 100px;">
           <!--  <span class="demonstration">默认</span> -->
           <el-date-picker
-            v-model="reportdate"
+            v-model="timeaxisdate"
             size="mini"
             type="daterange"
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+            value-format="yyyy-MM-dd"
           ></el-date-picker>
         </div>
         <el-button
@@ -44,7 +45,8 @@
         <!-- 循环列表 -->
         <ol style="padding-left: 0px;margin:80px 0px 0px 0px;">
           <li
-            v-for="resource in Resources"
+            v-for="(resource,index) in Resources"
+            :key="index"
             style="list-style-type: none;border-top:1px solid #DCDFE6;padding: 10px 0px 10px 0px;width: 100%;overflow: hidden;clear: both;position: relative;"
           >
             <div style="height: 145px;">
@@ -166,7 +168,7 @@ export default {
     return {
       pagetype: "",
       search: "",
-      reportdate: "",
+      timeaxisdate: null,
       page: 1,
       num: 20,
       total: 0,
@@ -185,12 +187,12 @@ export default {
         this.v_timeaxisdate = null;
       }
       //初始化参数
-      that.Notices = [];
+      that.Resources = [];
       that.total = 0;
       //请求公告信息
       this.$Axios
         .post(
-          this.$Global.Back_End_Service + this.$Global.selectreports,
+          this.$Global.Back_End_Service + this.$Global.selectReports,
           this.$qs.stringify({
             page: this.page,
             num: 20,
