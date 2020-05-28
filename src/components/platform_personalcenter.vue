@@ -56,7 +56,13 @@
                     style="width: 160px;"
                     v-else-if="data.servicestate ==='abnormal'"
                   >异&nbsp常</el-tag>
-                  <el-tag type="warning" size="small" style="width: 160px;" v-else>未知类型</el-tag>
+                  <el-tag
+                    type="warning"
+                    size="small"
+                    style="width: 160px;"
+                    v-else-if="data.servicestate ==='lock'"
+                  >锁&nbsp定</el-tag>
+                  <el-tag type="info" size="small" style="width: 160px;" v-else>未知类型</el-tag>
                 </div>
                 <!-- 服务简介 -->
                 <el-button
@@ -68,25 +74,32 @@
                 <el-divider></el-divider>
                 <!-- 按钮组 -->
                 <el-row>
-                  <el-button type="primary" style="width: 175px;" size="mini" plain>在线使用</el-button>
+                  <el-button type="primary" style="width: 175px;" size="mini" plain>编辑服务</el-button>
                 </el-row>
                 <el-row style="margin: 10px 0px 0px 0px;">
-                  <el-button type="info" size="mini" @click="log(data.historical)" plain>版本历史</el-button>
+                  <el-button type="info" size="mini" @click="log(data.serviceid)" plain>版本历史</el-button>
                   <el-button type="warning" size="mini" plain>报错反馈</el-button>
                 </el-row>
               </el-card>
             </el-col>
+            <el-col :span="6" style="margin-top: 10px;">
+              <a href="javascript:void(0);" style="text-decoration : none;" title="" @click="test()">
+                <el-card shadow="hover" style="height: 300px;text-align: center;">
+                <img src="../../static/upbs.png" style="width:80px;padding-top: 30px;" alt="">
+                <p style="margin-top: 50px;font-size: 1.2em;font-weight: bolder;color: #909399;">上传新的服务</p>
+              </el-card>
+              </a>
+            </el-col>
           </el-row>
         </div>
       </div>
-      <!--  -->
       <!-- 版本历史表格 -->
       <el-dialog title="版本记录" :visible.sync="dialogTableVisible">
         <el-table :data="servicelogs" max-height="550" stripe>
-          <el-table-column property="version" label="版本号" width="150"></el-table-column>
-          <el-table-column property="date" label="修改日期" width="150"></el-table-column>
-          <el-table-column property="user" label="修改人" width="150"></el-table-column>
-          <el-table-column property="msg" label="修改内容"></el-table-column>
+          <el-table-column property="version" label="版本号" width="120"></el-table-column>
+          <el-table-column property="updatetime" label="修改日期" width="170"></el-table-column>
+          <el-table-column property="operator" label="修改人" width="150"></el-table-column>
+          <el-table-column property="content" label="修改内容"></el-table-column>
         </el-table>
       </el-dialog>
     </div>
@@ -102,323 +115,91 @@ export default {
       //日志显示标记
       dialogTableVisible: false,
       //服务列表
-      tableData: [
-        {
-          //服务标题
-          title: "ByteAi",
-          //服务编号
-          serviceid: "BS100-001",
-          //服务版本
-          version: "V01.00.01-TR",
-          //服务所在服务器
-          servicepath: "S100-001",
-          //服务状态
-          servicestate: "run",
-          //服务简介
-          synopsis:
-            "OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。",
-          //服务URL
-          url: "",
-          //日志
-          historical: [
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            }
-          ]
-        },
-        {
-          //服务标题
-          title: "ByteAi",
-          //服务编号
-          serviceid: "BS100-001",
-          //服务版本
-          version: "V01.00.01-TR",
-          //服务所在服务器
-          servicepath: "S100-001",
-          //服务状态
-          servicestate: "run",
-          //服务简介
-          synopsis:
-            "OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。",
-          //服务URL
-          url: "",
-          //日志
-          historical: [
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            }
-          ]
-        },
-        {
-          //服务标题
-          title: "ByteAi",
-          //服务编号
-          serviceid: "BS100-001",
-          //服务版本
-          version: "V01.00.01-TR",
-          //服务所在服务器
-          servicepath: "S100-001",
-          //服务状态
-          servicestate: "run",
-          //服务简介
-          synopsis:
-            "OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。",
-          //服务URL
-          url: "",
-          //日志
-          historical: [
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            }
-          ]
-        },
-        {
-          //服务标题
-          title: "ByteAi",
-          //服务编号
-          serviceid: "BS100-001",
-          //服务版本
-          version: "V01.00.01-TR",
-          //服务所在服务器
-          servicepath: "S100-001",
-          //服务状态
-          servicestate: "run",
-          //服务简介
-          synopsis:
-            "OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。",
-          //服务URL
-          url: "",
-          //日志
-          historical: [
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            }
-          ]
-        },
-        {
-          //服务标题
-          title: "ByteAi",
-          //服务编号
-          serviceid: "BS100-001",
-          //服务版本
-          version: "V01.00.01-TR",
-          //服务所在服务器
-          servicepath: "S100-001",
-          //服务状态
-          servicestate: "run",
-          //服务简介
-          synopsis:
-            "OpenAI的使命是确保人工智能（AGI-我们所说的高度自治系统，在最具经济价值的工作中胜过人类-使全人类受益。我们将尝试直接建立安全和有益的AGI，但如果我们的工作帮助其他人实现这一结果，我们也将考虑我们的使命。",
-          //服务URL
-          url: "",
-          //日志
-          historical: [
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            },
-            {
-              version: "V01.00.01-TR",
-              date: "2019-08-12",
-              user: "CMAPLE",
-              msg: "ByteAi 服务试运行版本上线"
-            }
-          ]
-        }
-      ]
+      tableData: []
     };
   },
   methods: {
+    //获取服务信息
+    selectByCriteria() {
+      //设置必要参数
+      var that = this;
+      //请求服务信息
+      this.$Axios.post(
+          this.$Global.Back_End_Service + this.$Global.selectBackgroundService,{}
+          ,{
+            headers: {
+              token: localStorage.getItem("token")
+            }
+          }
+        )
+        .then(function(res) {
+          if (res.data.RTCODE == "success") {
+            that.tableData = [];
+            that.total = res.data.RTDATA.total;
+            //处理服务信息
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_Data = new Object();
+              c_Data.id = res.data.RTDATA[i].id;
+              c_Data.title = res.data.RTDATA[i].name;
+              c_Data.serviceid = res.data.RTDATA[i].serviceid;
+              c_Data.version = res.data.RTDATA[i].version;
+              c_Data.servicepath = res.data.RTDATA[i].serverid;
+              c_Data.servicestate = res.data.RTDATA[i].servicestate;
+              c_Data.synopsis = res.data.RTDATA[i].synopsis;
+              c_Data.synopsis = res.data.RTDATA[i].synopsis;
+              that.tableData.push(c_Data);
+            }
+            that.total = res.data.RTDATA.total;
+          } else {
+            //异常结果显示
+            that.$Global.error_Message(that, res.data.RTMSG);
+          }
+        })
+        .catch(function(err) {
+          that.$Global.error_Message(that, err + "");
+        });
+    },
     open(title, synopsis) {
       this.$alert(synopsis, title, {
         confirmButtonText: "关闭"
       });
     },
-    log(historical) {
+    log(in_id) {
       this.dialogTableVisible = true;
-      this.servicelogs = historical;
+      this.select(in_id);
+    },
+    test(){
+      this.$Global.success_notify(this,"标题","内容",1000);
+    },
+    select(in_id){
+      //设置必要参数
+      var that = this;
+      //请求公告信息
+      this.$Axios
+        .post(
+          this.$Global.Back_End_Service + this.$Global.selectServiceVersionLog,
+          this.$qs.stringify({
+            "serviceid": in_id,
+          }),
+          {
+            headers: {
+              token: localStorage.getItem("token")
+            }
+          }
+        )
+        .then(function(res) {
+          if (res.data.RTCODE == "success") {
+            console.log(res.data.RTDATA);
+            //处理公告信息
+            that.servicelogs = res.data.RTDATA;
+          } else {
+            //异常结果显示
+            that.$Global.error_Message(that, res.data.RTMSG);
+          }
+        })
+        .catch(function(err) {
+          that.$Global.error_Message(that, err + "");
+        });
     }
   },
   created() {
@@ -426,6 +207,7 @@ export default {
   },
   mounted() {
     //页面加载后执行
+    this.selectByCriteria();
   }
 };
 </script>

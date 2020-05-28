@@ -94,6 +94,10 @@
     const selectWorks = '/Work/selectByCriteria'
     //按照条件搜索时间轴信息
     const selectTimeAxis = '/TimeAxis/selectByCriteria'
+    //查询公共服务资源
+    const selectBackgroundService = '/BackgroundService/selectByCriteria'
+    //查询后台服务更新日志
+    const selectServiceVersionLog = '/ServiceVersionLog/getServiceVersionLogById'
     //公共方法
     //报错弹窗提示
     function error_Message(importThis,c_message) {
@@ -266,5 +270,7 @@
       selectReports,
       selectWorks,
       selectTimeAxis,
+      selectBackgroundService,
+      selectServiceVersionLog,
     }
 </script>
