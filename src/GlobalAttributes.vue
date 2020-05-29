@@ -1,7 +1,7 @@
 <script type="text/javascript">
     //公共属性
     //后台服务前置名称
-    const Back_End_Service = 'http://localhost:8081'//'/MAIN_SERVICE'
+    const Back_End_Service = 'http://www.cmaple.cn/MAIN_SERVICE'//'/MAIN_SERVICE'
     //前段版本号
     const Version_Number = 'Version 1.0.1'
     //版本类型
@@ -15,7 +15,7 @@
     //GitHubURL
     const GitHubURL = 'https://github.com/congfeng12'
     //静态资源路径
-    const StaticResourcesPath = '/Users/congfeng/Downloads'
+    const StaticResourcesPath = '/www/server/apache-tomcat-8.5.32/webapps/ROOT/static'
     //主页
     const HomePageUrl = '/'
     //关于

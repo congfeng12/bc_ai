@@ -363,9 +363,11 @@ export default {
       //设置必要参数
       var that = this;
       //请求登录用户信息
+      console.log(this.$Global.Back_End_Service + this.$Global.getUserSession);
       this.$Axios
         .post(
           this.$Global.Back_End_Service + this.$Global.getUserSession,
+          
           {},
           {
             headers: {

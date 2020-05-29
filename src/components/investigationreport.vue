@@ -20,7 +20,7 @@ export default {
   created(){
     //页面加载时执行
     //获取域名的上的id值并请求
-    this.pdfUrl = this.$Global.Back_End_Service + this.$Global.getRequestById + this.$route.query.id;
+    this.pdfUrl =  this.$Global.Back_End_Service + this.$Global.getRequestById + this.$route.query.id;
   },
   mounted(){
     //页面加载后执行
